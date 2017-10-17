@@ -29,6 +29,7 @@ gulp.task('sass', function () {
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(prefix('last 2 versions'))
         .pipe(cssmin())
+        .pipe(concat('app.css'))
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('public/css'))
         .pipe(browserSync.stream());
