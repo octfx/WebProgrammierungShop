@@ -1,0 +1,57 @@
+button, a[type="button"] {
+  font-family: $header-font;
+  text-transform: uppercase;
+  border: none;
+  text-align: center;
+  padding: 15px 30px;
+  font-size: 0.9rem;
+  margin: 20px 0;
+
+  &:active {
+    text-decoration: none;
+  }
+
+  &.main-button {
+    background-color: $main-color;
+    color: white;
+
+    &:hover {
+      background-color: $main-color-darker;
+    }
+  }
+
+  &.secondary-button {
+    background-color: white;
+    color: $main-color;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+
+  &.small-button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+}
+
+.buttonbox {
+  width: 200px;
+
+  button, a[type="button"] {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  button:first-child, a[type="button"]:first-child {
+    margin: 20px 0 0 0;
+  }
+
+  button:last-child, a[type="button"]:first-child {
+    margin: 0 0 20px 0;
+  }
+
+}
+

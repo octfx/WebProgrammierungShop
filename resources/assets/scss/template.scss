@@ -1,44 +1,149 @@
 html {
-  font-size: 16px;
+  font-size: 14px;
+  font-family: $main-font;
 
   p {
     font-family: $main-font;
   }
 
-}
-
-.screen {
-  width: 0.8vw;
-}
-
-nav {
-  overflow: hidden;
-  border-bottom: 4px solid $main-color;
-
-  ul li {
-    list-style: none;
-    font-size: 2rem;
-
-    a {
-      color: darkgray;
-      text-decoration: none;
-      float: left;
-      display: block;
-      text-align: center;
-      padding: 14px 16px;
-      font-size: 17px;
-
-      &:hover {
-        background-color: #ddd;
-        color: black;
-      }
-
-      &:active {
-        background-color: #4CAF50;
-        color: white;
-      }
-    }
+  h1, h2,h3, h4, h5, h6 {
+    font-family: $header-font;
   }
 
 }
+
+.screen {
+  min-height: 100vh;
+}
+
+.content {
+  min-height: 200px;
+  position: relative;
+  
+  @media screen {
+    // TODO set diff grid sys
+  }
+
+  width: 80%;
+  left:10%;
+  right:10%;
+
+  .container {
+    padding: 10px;
+    min-height: 100px;
+    margin: 30px auto;
+
+    h1 {
+      font-weight: 300;
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: $font-color-grey;
+      font-family: $header-font;
+    }
+  }
+
+  .scrollable {
+    overflow: hidden;
+    overflow-y: scroll;
+    max-height: 450px;
+  }
+}
+
+nav {
+  padding: 10px 20px;
+  overflow: hidden;
+  border-bottom: 3px solid $main-color;
+  text-align: center;
+
+  ul {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin-right: 10px;
+      display: inline-block;
+
+      a {
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        float: left;
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        font-family: $header-font;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $main-color;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+.loginbar {
+  padding: 0 10px;
+  color: $font-color-grey;
+  font-family: $header-font;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 1rem;
+
+  .fa {
+    color: #2b2b2b;
+    font-weight: 600;
+    margin-right: 5px;
+  }
+
+  a {
+    font-weight: 400;
+    margin-left: 3px;
+  }
+}
+
+footer {
+
+  padding: 10px 20px;
+  border-top: 1px solid #c8c8c8;
+  text-align: center;
+
+  p:first-child {
+    font-family: $header-font;
+  }
+
+  p:last-child {
+    font-family: $main-font;
+    color: $font-color-grey;
+    font-size: 0.9rem;
+  }
+}
+
+.content .container .headerbox {
+  border: 1px solid #e1e1e1;
+  padding: 20px 12px;
+
+  h1 {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .searchbox {
+    float: right;
+  }
+}
+
 

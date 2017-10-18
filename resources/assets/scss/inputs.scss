@@ -1,0 +1,43 @@
+.input-group {
+
+  margin: 10px 0;
+
+  label {
+    font-family: $header-font;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 4px;
+    color: $highlight-color;
+  }
+  input {
+    margin-right: 5px;
+    margin-bottom: 4px;
+  }
+  #forgot-password {
+    font-size: 0.9rem;
+    display: block;
+  }
+
+}
+
+input {
+  line-height: 1rem;
+  padding: 5px;
+}
+
+.searchbox {
+  display: inline-block;
+
+  input {
+    padding: 5px 2rem 5px 5px;
+  }
+
+  i {
+    position: relative;
+    right: 2rem;
+    color: grey;
+  }
+}
+
