@@ -1,6 +1,12 @@
 html {
-  font-size: 14px;
   font-family: $main-font;
+  font-size: 14px;
+
+  body {
+    min-width: 300px;
+    width: auto !important;
+    width: 300px;
+  }
 
   p {
     font-family: $main-font;
@@ -80,6 +86,10 @@ nav {
       }
     }
   }
+
+  @media (max-width: 300px) {
+
+  }
 }
 
 a {
@@ -144,6 +154,23 @@ footer {
   .searchbox {
     float: right;
   }
+
+  @media (max-width: 480px) {
+    .searchbox {
+      display: block;
+      float: none;
+    }
+  }
+
 }
+
+@media screen and (max-device-width: 450px) and (orientation: portrait) {
+
+
+
+}
+
+
+
 
 

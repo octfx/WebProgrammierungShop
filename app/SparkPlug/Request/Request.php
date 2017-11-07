@@ -10,8 +10,28 @@ namespace App\SparkPlug\Request;
 
 class Request
 {
+    private $url;
+    private $getVars = [];
+    private $postVars = [];
+
+    public function __construct(string $route, $options)
+    {
+        $this->route = $route;
+
+        if (is_string($options)) {
+            $this->rawOptions['action'] = $options;
+        }
+
+        if (is_array($options)) {
+            $this->rawOptions = $options;
+        }
+
+        $this->parseOptions();
+    }
+
+
     public static function capture(): Request
     {
-        // ToDo implement capture method
+        return $this;
     }
 }
