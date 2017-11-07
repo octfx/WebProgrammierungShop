@@ -8,7 +8,7 @@
 
 namespace App\SparkPlug\Request;
 
-class Request
+class Request implements RequestInterface
 {
     private $url;
     private $getVars = [];
@@ -33,5 +33,15 @@ class Request
     public static function capture(): Request
     {
         return $this;
+    }
+
+    public function getUri(): string
+    {
+        // TODO: Implement getUri() method.
+    }
+
+    public function getRequestMethod(): string
+    {
+        // TODO: Implement getRequestMethod() method.
     }
 }

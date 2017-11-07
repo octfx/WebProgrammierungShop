@@ -7,63 +7,66 @@
 
 namespace App\SparkPlug\Routing;
 
-
-use App\SparkPlug\Request\Request;
+use App\SparkPlug\Request\RequestInterface;
+use App\SparkPlug\Routing\Exceptions\RouteNotFoundException;
 
 class Router
 {
-    public const CONTROLLER_NS = 'App\Controllers\\';
+    public const CONTROLLER_NAMESPACE = 'App\Controllers\\';
     public const VERBS = ['GET', 'POST'];
 
-    public static $routes = [
-        /** @var  \App\SparkPlug\Routing\RoutingCollection */
-        'GET' => null,
-        /** @var  \App\SparkPlug\Routing\RoutingCollection */
-        'POST' => null,
-    ];
+    /** @var \App\SparkPlug\Routing\RoutingCollection[] */
+    private $routes = [];
 
-    public static function match(Request $request)
+    public function __construct()
     {
-        // ToDo implement Match
+        foreach (static::VERBS as $verb) {
+            $this->routes[$verb] = new RoutingCollection();
+        }
     }
 
-    public static function get(string $route, $options): Route
+    public function getRoutes(): array
     {
-        return static::addRoute('GET', $route, $options);
+        return $this->routes;
     }
 
-    public static function post(string $route, $options): Route
+    public function match(RequestInterface $request): Route
     {
-        return static::addRoute('POST', $route, $options);
-    }
+        if (!in_array($request->getRequestMethod(), static::VERBS)) {
+            throw new RouteNotFoundException();
+        }
 
-    private static function addRoute(string $method, string $route, $options): Route
-    {
-        static::init();
-
-        $route = new Route($route, $options);
-
-        switch ($method) {
-            case 'GET':
-                static::$routes['GET']->add($route);
-                break;
-
-            case 'POST':
-                static::$routes['POST']->add($route);
-                break;
+        try {
+            /** @var \App\SparkPlug\Routing\Route $route */
+            $route = $this->routes[$request->getRequestMethod()]->find($request->getUri());
+        } catch (RouteNotFoundException $e) {
+            foreach ($this->routes[$request->getRequestMethod()] as $route) {
+                if (preg_match(RouteStringConverter::toRegex($route), $request->getUri())) {
+                    return $route;
+                }
+            }
+            throw new RouteNotFoundException();
         }
 
         return $route;
     }
 
-    private static function init()
+    public function get(string $route, $options): Route
     {
-        if (static::$routes['GET'] === null) {
-            static::$routes['GET'] = new RoutingCollection();
-        }
+        return $this->addRoute('GET', $route, $options);
+    }
 
-        if (static::$routes['POST'] === null) {
-            static::$routes['POST'] = new RoutingCollection();
-        }
+    public function post(string $route, $options): Route
+    {
+        return $this->addRoute('POST', $route, $options);
+    }
+
+    private function addRoute(string $method, string $route, $options): Route
+    {
+        $route = new Route($route, $options);
+
+        $this->routes[$method]->add($route);
+
+        return $route;
     }
 }
