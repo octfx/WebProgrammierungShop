@@ -119,15 +119,33 @@ a {
   font-weight: 100;
   font-size: 1rem;
 
-  .fa {
+  #menu-profil-icon .fa {
     color: #2b2b2b;
     font-weight: 600;
     margin-right: 5px;
   }
 
+  #menu-profil-icon.angemeldet:hover .fa {
+    color: $link-hover-color;
+  }
+
   a {
     font-weight: 400;
     margin-left: 3px;
+  }
+}
+
+a.clickable-icon {
+
+  .fa {
+    color: #2b2b2b;
+    font-weight: 400;
+    font-size: 26px;
+    margin: 6px 10px;
+  }
+
+  &:hover .fa {
+    color: $link-hover-color;
   }
 }
 
@@ -218,6 +236,7 @@ input, textarea {
   font-family: $header-font;
   font-size: 1rem;
 }
+
 
 
 
