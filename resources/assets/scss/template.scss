@@ -167,6 +167,24 @@ footer {
       float: none;
     }
   }
+}
+
+.content .container .bottom-pane {
+  border-top: 1px solid $border-color;
+  margin-top: 20px;
+  padding-top: 10px;
+  text-align: center;
+
+  p {
+    color: $font-color-darkgrey;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  div {
+    display: inline-block;
+    text-align: center;
+  }
 
 }
 

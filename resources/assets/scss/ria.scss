@@ -1,8 +1,18 @@
-.ria-image {
-  height: 100px; /* TODO height / width nonstatic? */
+.ria-content {
+  p.ria-description {
+    display: inline-block;
+    color: $font-color-darkgrey;
+    text-align: justify;
+  }
+
+  .ria-image {
+    width: 170px; /* TODO height / width nonstatic? */
+    float: right;
+    padding: 0 0 4px 12px;
+  }
 }
 
-.ria-header{
+.ria-header {
 
   border-bottom: 1px solid $border-color;
   padding: 20px 12px 5px 12px;
@@ -11,6 +21,7 @@
   h2 {
     display: inline-block;
     margin: 0;
+    margin-right: 10px
   }
 
   .publisher-info {
@@ -25,14 +36,26 @@
   color: $font-color-grey;
   font-family: $header-font;
 
-  .user-review-header {
+  span.user-review-header {
     margin-right: 10px;
+    color: $font-color-darkgrey;
   }
 
   .noneditable-star-rating {
     float: right;
   }
+
+  p.user-description {
+    font-size: 1rem;
+  }
 }
+
+.content .container .contentbox {
+  &.user-review {
+    padding-bottom: 10px;
+  }
+}
+
 
 
 

@@ -40,9 +40,13 @@
     display: inline-block;
     font-size: 0;
 
+    &.big-star:before {
+      font: 20px/1 FontAwesome;
+    }
+
     &:before {
       position: relative;
-      font: 18px/1 FontAwesome;
+      font: 17px/1 FontAwesome;
       display: block;
       content: "\f006";
       color: #ccc;
@@ -51,6 +55,12 @@
     &.filled:before,
     &.filled ~ &:before {
       content: "\f005";
+      color: #f0ad4e;
+    }
+
+    &.half-filled:before,
+    &.half-filled ~ &:before {
+      content: "\f123";
       color: #f0ad4e;
     }
 
