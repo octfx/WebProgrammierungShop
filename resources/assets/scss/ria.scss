@@ -16,7 +16,7 @@
 
   border-bottom: 1px solid $border-color;
   padding: 20px 12px 5px 12px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 
   h2 {
     display: inline-block;
@@ -56,7 +56,9 @@
   }
 }
 
-
+.modal-content .ria-image {
+  height: 100px; /* TODO */
+}
 
 
 

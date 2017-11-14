@@ -189,11 +189,35 @@ footer {
 }
 
 @media screen and (max-device-width: 450px) and (orientation: portrait) {
-
+  /* TODO */
 
 
 }
 
+label {
+  display: block;
+  color: $font-color-darkgrey;
+  font-family: $main-font;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+textarea {
+  padding: 10px;
+  overflow-y: scroll;
+  resize: none;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+input, textarea {
+  border: 1px solid $border-color;
+  color: $font-color-grey;
+  font-family: $header-font;
+  font-size: 0.9rem;
+}
 
 
 
