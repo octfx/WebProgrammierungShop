@@ -3,7 +3,7 @@
   direction: rtl;
 
   input[type="radio"] {
-
+    visibility:hidden;
   }
 
   label {
@@ -19,13 +19,11 @@
     }
 
     &:hover:before,
-    &:hover ~ &:before,
+    &:hover ~ label:before,
     &.selected:before,
-    &.selected ~ &:before {
+    &.selected ~ label:before {
+      content: "\f005";
       color: #f0ad4e;
-      background: -webkit-linear-gradient(-45deg, #fcb551 0%, #d69a45 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
   }
