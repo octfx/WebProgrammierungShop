@@ -34,6 +34,12 @@ button, a[type="button"] {
     font-size: 0.85rem;
   }
 
+  &.extra-small-button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+
 }
 
 .buttonbox {
@@ -54,5 +60,9 @@ button, a[type="button"] {
     margin: 0 0 20px 0;
   }
 
+}
+
+a.link-next-to-button {
+  margin-left: 10px;
 }
 

@@ -8,7 +8,7 @@ html {
     width: 300px;
   }
 
-  p {
+  p, span {
     font-family: $main-font;
   }
 
@@ -46,6 +46,12 @@ html {
     }
 
     p {
+      font-size: 1.1rem;
+      color: $font-color-grey;
+      font-family: $header-font;
+    }
+
+    span {
       font-size: 1rem;
       color: $font-color-grey;
       font-family: $header-font;
@@ -128,7 +134,7 @@ a {
 footer {
 
   padding: 10px 20px;
-  border-top: 1px solid #c8c8c8;
+  border-top: 1px solid $border-color;
   text-align: center;
 
   p:first-child {
@@ -142,7 +148,7 @@ footer {
   }
 }
 
-.content .container .headerbox {
+.content .container .contentbox {
   border: 1px solid #e1e1e1;
   padding: 20px 12px;
 

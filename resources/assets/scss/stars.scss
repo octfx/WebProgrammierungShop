@@ -1,0 +1,59 @@
+.editable-star-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+
+  input[type="radio"] {
+
+  }
+
+  label {
+    display: inline-block;
+    font-size: 0;
+
+    &:before {
+      position: relative;
+      font: 24px/1 FontAwesome;
+      display: block;
+      content: "\f006";
+      color: #ccc;
+    }
+
+    &:hover:before,
+    &:hover ~ &:before,
+    &.selected:before,
+    &.selected ~ &:before {
+      color: #f0ad4e;
+      background: -webkit-linear-gradient(-45deg, #fcb551 0%, #d69a45 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+  }
+
+}
+
+.noneditable-star-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+
+  .star {
+    display: inline-block;
+    font-size: 0;
+
+    &:before {
+      position: relative;
+      font: 18px/1 FontAwesome;
+      display: block;
+      content: "\f006";
+      color: #ccc;
+    }
+
+    &.filled:before,
+    &.filled ~ &:before {
+      content: "\f005";
+      color: #f0ad4e;
+    }
+
+  }
+
+}

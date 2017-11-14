@@ -1,0 +1,43 @@
+.ria-image {
+  height: 100px; /* TODO height / width nonstatic? */
+}
+
+.ria-header{
+
+  border-bottom: 1px solid $border-color;
+  padding: 20px 12px 5px 12px;
+  margin-bottom: 20px;
+
+  h2 {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .publisher-info {
+    margin-right: 5px;
+  }
+}
+
+.user-review {
+
+  margin: 10px 0;
+  font-size: 1rem;
+  color: $font-color-grey;
+  font-family: $header-font;
+
+  .user-review-header {
+    margin-right: 10px;
+  }
+
+  .noneditable-star-rating {
+    float: right;
+  }
+}
+
+
+
+
+
+
+
+
