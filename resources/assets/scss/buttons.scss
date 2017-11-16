@@ -50,6 +50,8 @@ button, a[type="button"] {
     display: block;
     width: 100%;
     margin: 0;
+    position: relative;
+    right: 30px;
   }
 
   button:first-child, a[type="button"]:first-child {

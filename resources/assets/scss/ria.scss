@@ -27,6 +27,18 @@
   .publisher-info {
     margin-right: 5px;
   }
+
+  #ria-header-right-pane {
+    float: right;
+
+    @media screen and (max-width: 700px) {
+      display: block;
+      float: none;
+      margin: 10px 0;
+    }
+
+
+  }
 }
 
 .user-review {

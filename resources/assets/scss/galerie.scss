@@ -1,21 +1,55 @@
 .gallery-entry {
-  width: 30%;
-  @media screen {
-    // TODO change width responsively
+  width: 28%;
+  height: 100px;
+
+  border: 2px solid rgba(105, 134, 156, 0.6);
+  padding: 10px;
+
+  @media screen and (min-width: 1600px) {
+    width: 20%;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 40%;
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 90%;
   }
 
   margin: 10px 1%;
   display: inline-block;
   font-family: $header-font;
 
+  position: relative;
+
    img {
-     width: 75px;
-     height: 75px; // TODO
+     width:100%;
+     height: 100%;
      display: inline-block;
      background-color: #e1e1e1;
      text-align: center;
      vertical-align: middle;
      margin-right: 10px;
    }
+
+  span.ria-name {
+    display: inline-block;
+
+    -moz-hyphens: auto;
+    -o-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+
+    float: left;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 2px 4px;
+    color: white;
+  }
 
 }
