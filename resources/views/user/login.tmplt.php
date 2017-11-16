@@ -11,11 +11,11 @@
 <div class="screen">
     <div class="loginbar">
         <i class="fa fa-user-o" aria-hidden="true"></i>
-        <a href="registrierung.html">registrieren</a> oder <a href="login.html">anmelden</a>
+        <a href="/register">registrieren</a> oder <a href="/login">anmelden</a>
     </div>
     <nav>
         <ul>
-            <li><a href="index.tmplt.php">Start</a></li>
+            <li><a href="/">Start</a></li>
             <li><a href="galerieOhneAcc.html">Galerie</a></li>
         </ul>
     </nav>
@@ -38,7 +38,7 @@
 
             <button class="main-button small-button">anmelden</button>
 
-            <a class="link-next-to-button" href="registrierung.html">Noch nicht Registriert?</a>
+            <a class="link-next-to-button" href="/register">Noch nicht Registriert?</a>
         </div>
     </div>
 
