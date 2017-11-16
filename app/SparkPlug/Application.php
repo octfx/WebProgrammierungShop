@@ -8,8 +8,8 @@
 namespace App\SparkPlug;
 
 use App\SparkPlug\Exceptions\ClassNotFoundException;
-use App\SparkPlug\Response\ResponseInterface;
 use App\SparkPlug\Request\Request;
+use App\SparkPlug\Response\ResponseInterface;
 use App\SparkPlug\Response\ViewResponse;
 use App\SparkPlug\Routing\Exceptions\RouteNotFoundException;
 
@@ -63,7 +63,7 @@ class Application
             /** @var \App\SparkPlug\Routing\Route $route */
             $route = $router->match($request);
         } catch (RouteNotFoundException $e) {
-            return new ViewResponse('errors.404');
+            return new ViewResponse('errors.404', 404);
         }
 
         /** @var \App\Controllers\AbstractBaseController $controller */
