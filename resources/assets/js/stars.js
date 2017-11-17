@@ -11,7 +11,7 @@ for(var i = 0; i < editableStarRatings.length; i++) {
                 selectedStarLabels[i].classList.remove('selected');
             }
             var label = closestNodeWithClass(radio, 'label-rating');
-            if(label != null) {
+            if(label !== null) {
                 label.classList.add('selected');
             }
         });
@@ -21,11 +21,11 @@ for(var i = 0; i < editableStarRatings.length; i++) {
 var closestNodeWithClass = function(startElement, nodeClass) {
     var el = startElement;
 
-    while (el.className != nodeClass) {
+    while (el.className !== nodeClass) {
         el = el.parentNode;
         if (!el) {
             return null;
         }
     }
     return el;
-}
+};
