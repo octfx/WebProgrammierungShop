@@ -11,7 +11,7 @@
         <div class="screen">
             <div class="loginbar">
                 <i class="fa fa-user-o" aria-hidden="true"></i>
-                <a href="/register">registrieren</a> oder <a href="/login">anmelden</a>
+                <a href="@route('register')">registrieren</a> oder <a href="@route('login')">anmelden</a>
             </div>
             <nav>
                 <ul>
