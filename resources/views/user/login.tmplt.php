@@ -1,6 +1,7 @@
 @use('app')
 @set('title', 'Login')
 @set('content')
+<div class="container">
     <h1>Anmeldung</h1>
 
     <div class="input-group">
@@ -17,4 +18,5 @@
     <button class="main-button small-button">anmelden</button>
 
     <a class="link-next-to-button" href="/register">Noch nicht Registriert?</a>
+</div>
 @endset

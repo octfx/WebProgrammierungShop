@@ -21,9 +21,7 @@
             </nav>
 
             <div class="content">
-                <div class="container">
-                    @var('content')
-                </div>
+                @var('content')
             </div>
 
             <footer>
@@ -32,4 +30,7 @@
             </footer>
         </div>
     </body>
+
+    <script type="text/javascript" src="js/app.min.js"></script>
+
 </html>

@@ -4,3 +4,4 @@
 $router->get('/', 'PageController@showIndexView')->name('index');
 $router->get('/login', 'User\AccountController@showLoginView')->name('login');
 $router->get('/register', 'User\AccountController@showRegisterView')->name('register');
+$router->get('/gallery', 'Gallery\GalleryController@showGalleryView')->name('gallery');
