@@ -5,7 +5,6 @@ html {
   body {
     min-width: 300px;
     width: auto !important;
-    width: 300px;
   }
 
   p, span {
@@ -23,7 +22,7 @@ html {
 }
 
 .content {
-  min-height: 70vh;
+  max-height: 70vh; /* TODO height of footer, header and content */
   position: relative;
 
   width: 70%;
@@ -165,7 +164,7 @@ a.clickable-icon {
 }
 
 footer {
-  height: 10vh;
+  min-height: 10vh;
   padding: 10px 20px;
   border-top: 1px solid $border-color;
   text-align: center;

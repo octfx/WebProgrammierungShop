@@ -12,13 +12,13 @@
             <div class="loginbar">
                 <i class="fa fa-user-o" aria-hidden="true"></i>
                 <a href="/register">registrieren</a> oder <a href="/login">anmelden</a>
+                <nav>
+                    <ul>
+                        <li><a href="/" class="active">Start</a></li>
+                        <li><a href="/gallery">Galerie</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active">Start</a></li>
-                    <li><a href="#">Galerie</a></li>
-                </ul>
-            </nav>
 
             <div class="content">
                 @var('content')
@@ -29,6 +29,8 @@
                 <p>Website im Rahmen des Kurses Webprogrammierung im WS17 an der <a href="https://www.ostfalia.de/">Ostfalia</a>.</p>
             </footer>
         </div>
+
+       <!-- @var('modals') TODO modals -->
     </body>
 
     <script type="text/javascript" src="js/app.min.js"></script>

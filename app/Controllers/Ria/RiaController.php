@@ -5,16 +5,16 @@
  * Time: 16:38
  */
 
-namespace App\Controllers\Gallery;
+namespace App\Controllers\Ria;
 
 use App\Controllers\AbstractBaseController;
 use App\SparkPlug\Views\View;
 
-class GalleryController extends AbstractBaseController
+class RiaController extends AbstractBaseController
 {
-    public function showGalleryView()
+    public function showRiaDetailsView()
     {
-        return new View('gallery.gallery');
+        return new View('ria.riaDetails');
     }
 
 }

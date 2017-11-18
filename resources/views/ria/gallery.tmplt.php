@@ -16,97 +16,97 @@
 
     <div class="scrollable">
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria"> <!-- TODO set link -->
                 <img alt="pic" src=""/>
                 <span class="ria-name">Eine Ria</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Hund</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Haus</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Ostfalia</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Webprogrammierung</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Eine Ria</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Eine Ria 1000</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Eine Ria</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">++++ Eine Ria</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="r/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Eine Ria</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Bla</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">bla bla</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Eine Ria</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Eine Ria</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Eine Ria</span>
             </a>
         </div>
         <div class="gallery-entry">
-            <a href="riaDetailsOhneAcc.html">
+            <a href="/ria">
                 <img alt="pic" src=""/>
                 <span class="ria-name">Eine Ria</span>
             </a>
