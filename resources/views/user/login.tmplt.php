@@ -17,6 +17,6 @@
 
     <button class="main-button small-button">anmelden</button>
 
-    <a class="link-next-to-button" href="/register">Noch nicht Registriert?</a>
+    <a class="link-next-to-button" href="@route('register')">Noch nicht Registriert?</a>
 </div>
 @endset
