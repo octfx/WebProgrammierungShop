@@ -29,8 +29,6 @@
                 <p>Website im Rahmen des Kurses Webprogrammierung im WS17 an der <a href="https://www.ostfalia.de/">Ostfalia</a>.</p>
             </footer>
         </div>
-
-       <!-- @var('modals') TODO modals -->
     </body>
 
     <script type="text/javascript" src="js/app.min.js"></script>
