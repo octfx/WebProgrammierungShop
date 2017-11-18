@@ -61,6 +61,7 @@ class View implements ViewInterface, ResponseInterface
     private function renderView(): void
     {
         $this->renderRoutes();
+        $this->renderSubViews();
 
         if (!preg_match("/@use\(\'([a-z]+)\'\)/", $this->rawContent, $template)) {
             $this->renderedView = $this->rawContent;
@@ -81,29 +82,6 @@ class View implements ViewInterface, ResponseInterface
         $this->renderedView = $template;
     }
 
-    private function getSetsFromView(): array
-    {
-        $simpleSets = [];
-        $content = [];
-
-        preg_match_all("/@set\(\'([\w-]+)\',\s?\'([\w-]+)\'\)/", $this->rawContent, $matches);
-
-        if (count($matches) === 3) {
-            $simpleSets = array_combine($matches[1], $matches[2]);
-        }
-
-
-        preg_match_all("/@set\(\'([\w-]+)\'\)(.*?)@endset/s", $this->rawContent, $matches);
-
-        if (count($matches) === 3) {
-            $content = array_combine($matches[1], $matches[2]);
-        }
-
-        $vars = array_replace($simpleSets, $content);
-
-        return $vars;
-    }
-
     private function renderRoutes(): void
     {
         $routeNames = $this->getRoutesFromView();
@@ -117,9 +95,53 @@ class View implements ViewInterface, ResponseInterface
         }
     }
 
+    private function renderSubViews(): void
+    {
+        $subTemplates = $this->getSubTemplatesFromView();
+
+        foreach ($subTemplates as $subTemplate) {
+            $view = new View($subTemplate);
+            $this->rawContent = str_replace("@include('{$subTemplate}')", $view->getContent(), $this->rawContent);
+        }
+    }
+
+    private function getSetsFromView(): array
+    {
+        $simpleSets = [];
+        $content = [];
+
+        preg_match_all("/@set\(\'([\w-]+)\',\s?\'([\w\s-]+)\'\)/", $this->rawContent, $matches);
+
+        if (count($matches) === 3) {
+            $simpleSets = array_combine($matches[1], $matches[2]);
+        }
+
+
+        preg_match_all("/@set\(\'([\w-]+)\'\)([\w\W]+?)@endset/s", $this->rawContent, $matches);
+
+        if (count($matches) === 3) {
+            $content = array_combine($matches[1], $matches[2]);
+        }
+
+        $vars = array_replace($simpleSets, $content);
+
+        return $vars;
+    }
+
     private function getRoutesFromView(): array
     {
         preg_match_all("/@route\(\'([\w-]+)\'\)/", $this->rawContent, $matches);
+
+        if (count($matches) === 2) {
+            return $matches[1];
+        }
+
+        return [];
+    }
+
+    private function getSubTemplatesFromView(): array
+    {
+        preg_match_all("/@include\(\'([\w-]+)\'\)/", $this->rawContent, $matches);
 
         if (count($matches) === 2) {
             return $matches[1];
