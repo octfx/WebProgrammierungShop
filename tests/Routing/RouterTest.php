@@ -16,8 +16,8 @@ class RouterTest extends TestCase
     private $router;
 
     /**
-     * @covers Router::get()
-     * @covers Router::getRoutes()
+     * @covers \App\SparkPlug\Routing\Router::get()
+     * @covers \App\SparkPlug\Routing\Router::getRoutes()
      */
     public function testAddRoute()
     {
