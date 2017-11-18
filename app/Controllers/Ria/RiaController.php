@@ -12,7 +12,7 @@ use App\SparkPlug\Views\View;
 
 class RiaController extends AbstractBaseController
 {
-    public function showRiaDetailsView()
+    public function showRiaDetailsView(/*TODO $riaId*/)
     {
         return new View('ria.riaDetails');
     }
