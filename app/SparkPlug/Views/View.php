@@ -19,34 +19,40 @@ class View implements ViewInterface, ResponseInterface
     private $name;
     private $rawContent;
     private $httpCode;
+    private $variables;
     private $renderedView;
 
     public function __construct(string $name, int $httpCode = 200)
     {
         $this->name = str_replace('.', DIRECTORY_SEPARATOR, $name).static::TEMPLATE_EXTENSION;
 
-        ob_start();
-        include app()->getBasePath().static::TEMPLATE_PATH.$this->name;
-        $content = ob_get_clean();
-
-        if ($content === false) {
+        if (!is_file(app()->getBasePath().static::TEMPLATE_PATH.$this->name)) {
             throw new ViewNotFoundException("View {$this->name} not found!");
         }
 
-        $this->rawContent = $content;
         $this->httpCode = $httpCode;
-
-        $this->renderView();
     }
 
     public function getContent(): string
     {
+        $this->renderView();
+
         return $this->renderedView;
+    }
+
+    public function getRawContent(): string
+    {
+        return $this->getViewFileContent();
     }
 
     public function getHttpCode(): int
     {
         return $this->httpCode;
+    }
+
+    public function setVars(array $vars): void
+    {
+        $this->variables = $vars;
     }
 
     /**
@@ -58,8 +64,22 @@ class View implements ViewInterface, ResponseInterface
         echo $this->getContent();
     }
 
+    private function getViewFileContent(): string
+    {
+        ob_start();
+        if (is_array($this->variables)) {
+            extract($this->variables);
+        }
+        include app()->getBasePath().static::TEMPLATE_PATH.$this->name;
+        return ob_get_clean();
+    }
+
     private function renderView(): void
     {
+        $content = $this->getViewFileContent();
+
+        $this->rawContent = $content;
+
         $this->renderRoutes();
         $this->renderSubViews();
 

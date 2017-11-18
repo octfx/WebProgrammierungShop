@@ -15,6 +15,7 @@ class Route
     private $name = '';
     private $controller;
     private $method;
+    private $arguments = [];
     private $route;
 
     private $rawOptions = [];
@@ -25,7 +26,7 @@ class Route
             $route = '/'.$route;
         }
 
-        $this->route = $route;
+        $this->route = strtolower($route);
 
         if (is_string($options)) {
             $this->rawOptions['action'] = $options;
@@ -43,6 +44,25 @@ class Route
         $this->name = $name;
 
         return $this;
+    }
+
+    public function setArguments($args): void
+    {
+        if (!is_array($args)) {
+            $args = [$args];
+        }
+
+        $this->arguments = $args;
+    }
+
+    public function hasArgs(): bool
+    {
+        return !empty($this->arguments);
+    }
+
+    public function getArguments(): array
+    {
+        return $this->arguments;
     }
 
     public function getName(): ?string

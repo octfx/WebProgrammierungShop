@@ -16,12 +16,15 @@ class RouteStringConverterTest extends TestCase
     private $expectedRegex = [
         '/index'        => '\/index',
         '/user/profile' => '\/user\/profile',
-        '/user/[?]'     => '\/user\/[\w]*',
+        '/user/[?]'     => '\/user\/([\w]*)',
     ];
 
     /** @var  \App\SparkPlug\Routing\Router */
     private $router;
 
+    /**
+     * @covers \App\SparkPlug\Routing\RouteStringConverter
+     */
     public function testRegexConversion()
     {
         $regexStart = RouteStringConverter::REGEX_START;
@@ -38,7 +41,7 @@ class RouteStringConverterTest extends TestCase
 
     protected function setUp()
     {
-        $app = require __DIR__.'/../config/app.php';
+        $app = require __DIR__.'/../../config/app.php';
         $this->router = app()->make(Router::class, true);
         $this->router->get('/index', 'IndexController@test');
         $this->router->get('/user/profile', 'UserController@test');
