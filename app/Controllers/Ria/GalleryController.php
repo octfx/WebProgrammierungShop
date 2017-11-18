@@ -5,7 +5,7 @@
  * Time: 16:38
  */
 
-namespace App\Controllers\Gallery;
+namespace App\Controllers\Ria;
 
 use App\Controllers\AbstractBaseController;
 use App\SparkPlug\Views\View;

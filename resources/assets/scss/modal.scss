@@ -18,15 +18,12 @@
   padding: 0;
   border: 1px solid #888;
   width: 80%;
+  max-width: 800px;
 
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s;
-
-  img {
-
-  }
 
   textarea {
     height: 180px;

@@ -2,7 +2,7 @@
 
 var modalBewertung = document.getElementById('modal-bewertung');
 var btnBewertung = document.getElementById('btn-bewertung');
-var spanBewertung = modalBewertung.getElementsByClassName('close')[0];
+var closeBewertungModal = modalBewertung.getElementsByClassName('close')[0];
 var saveBtnBewertung = document.getElementById('modal-bewertung-save');
 var deleteBtnBewertung = document.getElementById('modal-bewertung-delete');
 
@@ -10,7 +10,7 @@ btnBewertung.onclick = function () {
     modalBewertung.style.display = 'block';
 };
 
-spanBewertung.onclick = function () {
+closeBewertungModal.onclick = function () {
     modalBewertung.style.display = 'none';
 };
 
@@ -40,10 +40,10 @@ deleteBtnBewertung.onclick = function () {
 
 /* --------------- Bearbeiten Modal --------------- */
 
-/*
+
 var modalBearbeiten = document.getElementById('modal-bearbeiten');
 var btnBearbeiten = document.getElementById('btn-bearbeiten');
-var spanBearbeiten = modalBearbeiten.getElementsByClassName('close')[0];
+var closeBearbeitenModal = modalBearbeiten.getElementsByClassName('close')[0];
 var saveBtnBearbeiten = document.getElementById('modal-bearbeiten-save');
 var deleteBtnBearbeiten = document.getElementById('modal-bearbeiten-delete');
 
@@ -51,7 +51,7 @@ btnBearbeiten.onclick = function() {
     modalBearbeiten.style.display = 'block';
 };
 
-spanBearbeiten.onclick = function() {
+closeBearbeitenModal.onclick = function() {
     modal.style.display = 'none';
 };
 
@@ -71,5 +71,5 @@ deleteBtnBearbeiten.onclick = function() {
     modalBearbeiten.style.display = 'none';
 };
 
-*/
+
 

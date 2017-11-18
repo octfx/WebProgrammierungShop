@@ -11,11 +11,11 @@
         <div class="screen">
             <div class="loginbar">
                 <i class="fa fa-user-o" aria-hidden="true"></i>
-                <a href="/register">registrieren</a> oder <a href="/login">anmelden</a>
+                <a href="@route('register')">registrieren</a> oder <a href="@route('login')">anmelden</a>
                 <nav>
                     <ul>
-                        <li><a href="/" class="active">Start</a></li>
-                        <li><a href="/gallery">Galerie</a></li>
+                        <li><a href="@route('index')" class="active">Start</a></li>
+                        <li><a href="@route('gallery')">Galerie</a></li>
                     </ul>
                 </nav>
             </div>

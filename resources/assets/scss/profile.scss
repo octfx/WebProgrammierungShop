@@ -5,6 +5,14 @@
     color: $font-color-darkgrey;
   }
 
+  span:first-child {
+    text-align: center;
+
+    div {
+      margin-right: 30px
+    }
+  }
+
   #profile-img {
     min-width: 100px;
     width: 20vw;
@@ -16,10 +24,6 @@
 
   span {
 
-    :first-of-type {
-      text-align: center;
-    }
-    
     float: left;
   }
 
@@ -37,5 +41,13 @@
     display: table;
     clear: both;
   }
+}
+
+#input-ria-file {
+  display: none;
+}
+
+#profile-upload-user-img-input {
+  display: none;
 }
 

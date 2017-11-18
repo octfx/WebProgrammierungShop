@@ -22,7 +22,7 @@ html {
 }
 
 .content {
-  max-height: 70vh; /* TODO height of footer, header and content */
+  min-height: 70vh; /* TODO height of footer, header and content */
   position: relative;
 
   width: 70%;
@@ -164,7 +164,7 @@ a.clickable-icon {
 }
 
 footer {
-  min-height: 10vh;
+  max-height: 10vh;
   padding: 10px 20px;
   border-top: 1px solid $border-color;
   text-align: center;
