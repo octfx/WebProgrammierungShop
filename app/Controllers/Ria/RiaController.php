@@ -22,8 +22,15 @@ class RiaController extends AbstractBaseController
      *
      * @return \App\SparkPlug\Views\View
      */
-    public function showRiaDetailsView()
+    public function showRiaDetailsView($id)
     {
-        return new View('ria.riaDetails');
+        $view = new View('ria.riaDetails');
+        $view->setVars(
+            [
+                'id' => $id
+            ]
+        );
+
+        return $view;
     }
 }
