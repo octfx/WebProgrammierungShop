@@ -7,7 +7,7 @@
 
 namespace App\Controllers\Ria;
 
-use App\Controllers\AbstractBaseController;
+use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Views\View;
 
 /**
@@ -15,19 +15,21 @@ use App\SparkPlug\Views\View;
  *
  * @package App\Controllers\Ria
  */
-class RiaController extends AbstractBaseController
+class RiaController extends Controller
 {
     /**
      * Gibt RiaDetail View zurück
      *
+     * @param int $id ID der RIA
+     *
      * @return \App\SparkPlug\Views\View
      */
-    public function showRiaDetailsView($id)
+    public function showRiaDetailsView(int $id)
     {
         $view = new View('ria.riaDetails');
         $view->setVars(
             [
-                'id' => $id
+                'id' => $id,
             ]
         );
 

@@ -7,7 +7,7 @@
 
 namespace App\Controllers\Ria;
 
-use App\Controllers\AbstractBaseController;
+use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Views\View;
 
 /**
@@ -15,7 +15,7 @@ use App\SparkPlug\Views\View;
  *
  * @package App\Controllers\Ria
  */
-class GalleryController extends AbstractBaseController
+class GalleryController extends Controller
 {
     /**
      * Gibt Gallerie View zurück
