@@ -10,11 +10,20 @@ namespace App\Controllers\Profile;
 use App\Controllers\AbstractBaseController;
 use App\SparkPlug\Views\View;
 
+/**
+ * Class ProfileController
+ *
+ * @package App\Controllers\Profile
+ */
 class ProfileController extends AbstractBaseController
 {
+    /**
+     * Gibt Profil-View zurück
+     *
+     * @return \App\SparkPlug\Views\View
+     */
     public function showProfileView()
     {
         return new View('profile.profile');
     }
-
 }

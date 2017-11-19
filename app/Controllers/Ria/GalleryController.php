@@ -10,11 +10,20 @@ namespace App\Controllers\Ria;
 use App\Controllers\AbstractBaseController;
 use App\SparkPlug\Views\View;
 
+/**
+ * Class GalleryController
+ *
+ * @package App\Controllers\Ria
+ */
 class GalleryController extends AbstractBaseController
 {
+    /**
+     * Gibt Gallerie View zurück
+     *
+     * @return \App\SparkPlug\Views\View
+     */
     public function showGalleryView()
     {
         return new View('ria.gallery');
     }
-
 }

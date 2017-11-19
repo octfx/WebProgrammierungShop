@@ -10,11 +10,20 @@ namespace App\Controllers\Ria;
 use App\Controllers\AbstractBaseController;
 use App\SparkPlug\Views\View;
 
+/**
+ * Class RiaController
+ *
+ * @package App\Controllers\Ria
+ */
 class RiaController extends AbstractBaseController
 {
-    public function showRiaDetailsView(/*TODO $riaId*/)
+    /**
+     * Gibt RiaDetail View zurück
+     *
+     * @return \App\SparkPlug\Views\View
+     */
+    public function showRiaDetailsView()
     {
         return new View('ria.riaDetails');
     }
-
 }
