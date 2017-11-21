@@ -3,9 +3,7 @@ window.onload = function () {
     var modalUploadRia = document.getElementById('modal-upload-ria');
     var modalUploadRia_openBtn = document.getElementById('btn-upload-ria');
     var modalUploadRia_closeXBtn = document.getElementById('modal-upload-ria-closeX');
-    if(modalUploadRia !== null) {
-        modalUploadRia_closeXBtn = modalUploadRia.getElementById('modal-edit-ria-closeX');
-    }
+    modalUploadRia_closeXBtn = document.getElementsByClassName('modal-upload-ria-closeX')[0];
     var modalUploadRia_saveBtn = document.getElementById('modal-upload-ria-save');
     var modalUploadRia_closeBtn = document.getElementById('modal-upload-ria-close');
 
@@ -14,50 +12,53 @@ window.onload = function () {
     var modalUploadRia_iconRadios = document.getElementsByClassName('modal-upload-ria-icon-radio');
 
     if (modalUploadRia_openBtn !== null) {
-        modalUploadRia_openBtn.addEventListener('click', function () {
+        modalUploadRia_openBtn.onclick = function () {
+            // TODO if(debug === true) {
+            console.log("Open edit ria modal button clicked")
+            // }
             modalUploadRia.style.display = 'block';
-        });
+        };
     }
 
     if (modalUploadRia_closeXBtn !== null && modalUploadRia !== null) {
-        modalUploadRia_closeXBtn.addEventListener('click', function () {
+        modalUploadRia_closeXBtn.onclick = function () {
             modalUploadRia.style.display = 'none';
-        });
+        };
     }
 
-    window.addEventListener('click', function (event) {
+    window.onclick = function (event) {
         if (event.target == modalUploadRia && modalUploadRia !== null) {
             modalUploadRia.style.display = 'none';
         }
-    });
+    };
 
     if (modalUploadRia_saveBtn !== null && modalUploadRia !== null) {
-        modalUploadRia_saveBtn.addEventListener('click', function () {
+        modalUploadRia_saveBtn.onclick = function () {
             /* TODO save */
             modalUploadRia.style.display = 'none';
-        });
+        };
     }
 
     if (modalUploadRia_closeBtn !== null && modalUploadRia !== null) {
-        modalUploadRia_closeBtn.addEventListener('click', function () {
+        modalUploadRia_closeBtn.onclick = function () {
             modalUploadRia.style.display = 'none';
-        });
+        };
     }
 
     if (modalUploadRia_chooseFileBtn !== null && modalUploadRia_fileInput !== null) {
-        modalUploadRia_chooseFileBtn.addEventListener('click', function (event) {
+        modalUploadRia_chooseFileBtn.onclick = function (event) {
             event.preventDefault();
             modalUploadRia_fileInput.click();
-        });
+        };
     }
 
     if(modalUploadRia_iconRadios !== null) {
         for(var i = 0; i < modalUploadRia_iconRadios.length; i++) {
-            modalUploadRia_iconRadios[i].addEventListener('click', function () {
+            modalUploadRia_iconRadios[i].onclick = function () {
                 removeSelectedFromAllIconRadios();
                 this.classList.add('selected');
                 getClassNameOfChosenIcon();
-            });
+            };
         }
     }
 

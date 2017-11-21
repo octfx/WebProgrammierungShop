@@ -3,39 +3,37 @@ window.onload = function () {
     var modalReviewRia = document.getElementById('modal-review-ria');
     var modalReviewRia_openBtn = document.getElementById('btn-review-ria');
     var modalReviewRia_closeXBtn;
-    if(modalReviewRia !== null) {
-        modalReviewRia_closeXBtn = modalReviewRia.getElementById('modal-review-ria-closeX');
-    }
+    modalReviewRia_closeXBtn = modalReviewRia.getElementsByClassName('modal-review-ria-closeX')[0];
     var modalReviewRia_saveBtn = document.getElementById('modal-review-ria-save');
     var modalReviewRia_deleteBtn = document.getElementById('modal-review-ria-delete');
 
     if (modalReviewRia_openBtn !== null) {
-        modalReviewRia_openBtn.addEventListener('click', function () {
+        modalReviewRia_openBtn.onclick = function () {
             modalReviewRia.style.display = 'block';
-        });
+        };
     }
 
     if (modalReviewRia_closeXBtn !== null) {
-        modalReviewRia_closeXBtn.addEventListener('click', function () {
+        modalReviewRia_closeXBtn.onclick = function () {
             modalReviewRia.style.display = 'none';
-        });
+        };
     }
 
-    window.addEventListener('click', function (event) {
+    window.onclick = function (event) {
         if (event.target === modalReviewRia && modalReviewRia !== null) {
             modalReviewRia.style.display = 'none';
         }
-    });
+    };
 
     if (modalReviewRia_saveBtn !== null && modalReviewRia !== null) {
-        modalReviewRia_saveBtn.addEventListener('click', function () {
+        modalReviewRia_saveBtn.onclick = function () {
             /* TODO save */
             modalReviewRia.style.display = 'none';
-        });
+        };
     }
 
     if (modalReviewRia_deleteBtn !== null && modalReviewRia !== null) {
-        modalReviewRia_deleteBtn.addEventListener('click', function () {
+        modalReviewRia_deleteBtn.onclick = function () {
 
             // reset selected stars
             var selectedStarLabels = modalReviewRia.getElementsByClassName('label-rating selected');
@@ -47,7 +45,7 @@ window.onload = function () {
             document.getElementById('modal-review-ria-description').value = '';
 
             modalReviewRia.style.display = 'none';
-        });
+        };
     }
 
 };
