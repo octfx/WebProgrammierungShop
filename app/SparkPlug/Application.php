@@ -10,8 +10,6 @@ namespace App\SparkPlug;
 use App\SparkPlug\Exceptions\ClassNotFoundException;
 use App\SparkPlug\Request\Request;
 use App\SparkPlug\Response\ResponseInterface;
-use App\SparkPlug\Routing\Exceptions\RouteNotFoundException;
-use App\SparkPlug\Views\View;
 
 /**
  * Application Container
@@ -51,10 +49,25 @@ class Application
      * Registriert einen Klassennamen als Singleton und erstellt eine Instanz
      *
      * @param string $className
+     *
+     * @throws \App\SparkPlug\Exceptions\ClassNotFoundException
      */
     public function singleton(string $className): void
     {
-        $this->resolvedSingletons[$className] = new $className();
+        $this->resolvedSingletons[$className] = $this->make($className);
+    }
+
+    /**
+     * Registriert einen Klassennamen als Singleton und erstellt eine Instanz mit den gegebenen Argumenten
+     *
+     * @param string $className
+     * @param array  $args
+     *
+     * @throws \App\SparkPlug\Exceptions\ClassNotFoundException
+     */
+    public function singletonWith(string $className, array $args): void
+    {
+        $this->resolvedSingletons[$className] = $this->makeWith($className, $args);
     }
 
     /**
@@ -69,15 +82,35 @@ class Application
      */
     public function make(string $className, bool $new = false)
     {
-        if (!class_exists($className)) {
-            throw new ClassNotFoundException("Class {$className} not defined or loaded!");
-        }
+        $this->checkIfClassExist($className);
 
         if (isset($this->resolvedSingletons[$className]) && !$new) {
             return $this->resolvedSingletons[$className];
         }
 
         return new $className();
+    }
+
+    /**
+     * Instanziert eine Klasse des gegebenen Namens mit Argumenten, oder gibt eine Instanz zurück, wenn Klassenname als
+     * Singleton registriert wurde
+     *
+     * @param string $className Name der Klasse
+     * @param array  $args
+     * @param bool   $new       Ignoriert registrierte Singletons
+     *
+     * @return object
+     */
+    public function makeWith(string $className, array $args, bool $new = false)
+    {
+        $this->checkIfClassExist($className);
+
+        if (isset($this->resolvedSingletons[$className]) && !$new) {
+            return $this->resolvedSingletons[$className];
+        }
+        $reflection = new \ReflectionClass($className);
+
+        return $reflection->newInstanceArgs($args);
     }
 
     /**
@@ -92,14 +125,10 @@ class Application
         /** @var \App\SparkPlug\Routing\Router $router */
         $router = $this->make(\App\SparkPlug\Routing\Router::class);
 
-        try {
-            /** @var \App\SparkPlug\Routing\Route $route */
-            $route = $router->match($request);
-        } catch (RouteNotFoundException $e) {
-            return new View('errors.404', 404);
-        }
+        /** @var \App\SparkPlug\Routing\Route $route */
+        $route = $router->match($request);
 
-        /** @var \App\Controllers\AbstractBaseController $controller */
+        /** @var \App\SparkPlug\Controllers\AbstractController $controller */
         $controller = $this->make($route->getController());
         $controller->setRequest($request);
 
@@ -129,6 +158,13 @@ class Application
 
         foreach ($files as $file) {
             require_once $file;
+        }
+    }
+
+    private function checkIfClassExist(string $className): void
+    {
+        if (!class_exists($className)) {
+            throw new ClassNotFoundException("Class {$className} not defined or loaded!");
         }
     }
 }

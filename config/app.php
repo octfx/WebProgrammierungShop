@@ -1,10 +1,18 @@
-<?php declare(strict_types = 1);
-/**
- * Bootstrap the App
- */
-$app = new \App\SparkPlug\Application(realpath(__DIR__.'/../'));
+<?php
 
-$app->singleton(\App\SparkPlug\Routing\Router::class);
-$app->loadRoutes();
+return [
+    /**
+     * True wenn Exception-Details mit ausgegeben werden sollen
+     */
+    'debug' => true,
 
-return $app;
+    /**
+     * Timezone welche beim Laden der App gesetzt wird
+     */
+    'timezone' => 'Europe/Berlin',
+
+    /**
+     * Log-Level des Loggers
+     */
+    'log_level' => 'debug',
+];

@@ -8,14 +8,21 @@
 
 namespace App\Controllers;
 
-
-use App\SparkPlug\Response\ViewResponse;
-use App\SparkPlug\Views\RawView;
+use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Views\View;
-use App\SparkPlug\Views\ViewInterface;
 
-class PageController extends AbstractBaseController
+/**
+ * Class PageController
+ *
+ * @package App\Controllers
+ */
+class PageController extends Controller
 {
+    /**
+     * Startseite des Shops
+     *
+     * @return \App\SparkPlug\Views\View
+     */
     public function showIndexView()
     {
         return new View('index');
