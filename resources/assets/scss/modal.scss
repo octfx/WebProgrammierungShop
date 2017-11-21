@@ -97,19 +97,19 @@
   cursor: pointer;
 }
 
-/* --------- upload ria modal ---------- */
+/* --------- upload, edit ria modal ---------- */
 
-#modal-upload-ria {
+#modal-upload-ria, #modal-edit-ria {
 
-  #modal-upload-ria-input-file {
+  #modal-upload-ria-input-file, #modal-edit-ria-input-file {
     display: none;
   }
 
-  #modal-upload-ria-icon-grid {
+  #modal-upload-ria-icon-grid, #modal-edit-ria-icon-grid {
 
     display: table-cell;
 
-    .modal-upload-ria-icon {
+    .modal-upload-ria-icon, .modal-edit-ria-icon {
       border: 1px solid $border-color;
       width: 24px;
       height: 24px;
@@ -122,7 +122,7 @@
       }
     }
 
-    .modal-upload-ria-icon-radio {
+    .modal-upload-ria-icon-radio, .modal-edit-ria-icon-radio {
       cursor:pointer;
 
       &.selected .fa {
