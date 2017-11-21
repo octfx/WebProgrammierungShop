@@ -2,7 +2,7 @@
 <div id="modal-review-ria" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <span class="modal-closeX">&times;</span>
+            <span class="modal-review-ria-closeX modal-closeX">&times;</span>
             <h2>RIA bewerten</h2>
         </div>
         <div class="modal-body">
@@ -29,7 +29,7 @@
         </div>
         <div class="modal-footer">
             <a id="modal-review-ria-save" type="button" class="extra-small-button main-button">Speichern</a>
-            <a id="modal-review-ria-delete" type="button" class="extra-small-button secondary-button">Löschen</a>
+            <a id="modal-review-ria-close" type="button" class="extra-small-button secondary-button">Abbrechen</a>
         </div>
     </div>
 </div>

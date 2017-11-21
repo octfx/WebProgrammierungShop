@@ -2,7 +2,7 @@
 <div id="modal-upload-ria" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <span class="modal-closeX" class="modal-upload-ria-closeX">&times;</span>
+            <span class="modal-closeX modal-upload-ria-closeX">&times;</span>
             <h2>RIA hochladen</h2>
         </div>
         <div class="modal-body">
