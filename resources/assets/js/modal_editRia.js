@@ -1,29 +1,41 @@
-var modalBearbeiten = document.getElementById('modal-bearbeiten');
-var btnBearbeiten = document.getElementById('btn-bearbeiten');
-var closeBearbeitenModal = modalBearbeiten.getElementsByClassName('close')[0];
-var saveBtnBearbeiten = document.getElementById('modal-bearbeiten-save');
-var deleteBtnBearbeiten = document.getElementById('modal-bearbeiten-delete');
+window.onload = function () {
 
-btnBearbeiten.onclick = function() {
-    modalBearbeiten.style.display = 'block';
-};
+    var modalEditRia = document.getElementById('modal-edit-ria');
+    var modalEditRia_openBtn = document.getElementById('btn-edit-ria');
+    var modalEditRia_closeXBtn = document.getElementById('modal-edit-ria-closeX');
+    var modalEditRia_saveBtn = document.getElementById('modal-edit-ria-save');
+    var modalEditRia_deleteBtn = document.getElementById('modal-edit-ria-delete');
 
-closeBearbeitenModal.onclick = function() {
-    modal.style.display = 'none';
-};
-
-window.onclick = function(event) {
-    if (event.target == modalBearbeiten) {
-        modalBearbeiten.style.display = 'none';
+    if (modalEditRia_openBtn !== null) {
+        modalEditRia_openBtn.onclick = function () {
+            modalEditRia.style.display = 'block';
+        };
     }
-};
 
-saveBtnBearbeiten.onclick = function() {
-    // TODO save
-    modalBearbeiten.style.display = 'none';
-};
+    if (modalEditRia_closeXBtn !== null && modalEditRia !== null) {
+        modalEditRia_closeXBtn.onclick = function () {
+            modalEditRia.style.display = 'none';
+        };
+    }
 
-deleteBtnBearbeiten.onclick = function() {
-    // TODO delete
-    modalBearbeiten.style.display = 'none';
-};
+    window.onclick = function (event) {
+        if (event.target === modalEditRia && modalEditRia !== null) {
+            modalEditRia.style.display = 'none';
+        }
+    };
+
+    if (modalEditRia_saveBtn !== null && modalEditRia !== null) {
+        modalEditRia_saveBtn.onclick = function () {
+            // TODO save
+            modalEditRia.style.display = 'none';
+        };
+    }
+
+    if (modalEditRia_deleteBtn !== null && modalEditRia !== null) {
+        modalEditRia_deleteBtn.onclick = function () {
+            // TODO delete
+            modalEditRia.style.display = 'none';
+        };
+    }
+
+}

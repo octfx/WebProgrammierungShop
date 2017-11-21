@@ -3,7 +3,7 @@
 @set('content')
 <div class="container">
     <div class="ria-header">
-        <h2>RIA-Titel @var('id')</h2>
+        <h2>RIA - <?php echo $id; ?></h2>
 
         <span class="noneditable-star-rating">
                         <span class="star big-star star5"></span>
@@ -87,11 +87,11 @@
         <div>
             <p>Geben Sie Ihre Bewertung ab.</p>
             <!-- Open review ria modal -->
-            <a type="button" id="btn-bewertung" class="main-button small-button">Bewerten</a>
+            <a type="button" id="btn-review-ria" class="main-button small-button">Bewerten</a>
 
             <p>RIA bearbeiten</p>
             <!-- Open edit ria modal -->
-            <a type="button" id="btn-bearbeiten" class="main-button small-button">Bearbeiten</a>
+            <a type="button" id="btn-edit-ria" class="main-button small-button">Bearbeiten</a>
         </div>
     </div>
 </div>

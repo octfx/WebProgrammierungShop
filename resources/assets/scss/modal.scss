@@ -9,7 +9,7 @@
   height: 100%;
   overflow: auto;
   background-color: black; /* fallback */
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -40,10 +40,6 @@
     padding: 2px 16px;
   }
 
-  #btn-modal-change-icon {
-    float: right;
-  }
-
   .modal-footer {
     padding: 2px 16px;
     border-top: 1px solid $border-color;
@@ -65,27 +61,74 @@
   }
 }
 
-
 @-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0
+  }
+  to {
+    top: 0;
+    opacity: 1
+  }
 }
 
 @keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0
+  }
+  to {
+    top: 0;
+    opacity: 1
+  }
 }
 
-.close {
+.modal-closeX {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.modal-closeX:hover,
+.modal-closeX:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* --------- upload ria modal ---------- */
+
+#modal-upload-ria {
+
+  #modal-upload-ria-input-file {
+    display: none;
+  }
+
+  #modal-upload-ria-icon-grid {
+
+    display: table-cell;
+
+    .modal-upload-ria-icon {
+      border: 1px solid $border-color;
+      width: 24px;
+      height: 24px;
+      padding: 6px;
+      float: left;
+
+      .fa {
+        font-size: 24px;
+        color: $border-color;
+      }
+    }
+
+    .modal-upload-ria-icon-radio {
+      cursor:pointer;
+
+      &.selected .fa {
+        color: $link-hover-color;
+      }
+    }
+
+  }
 }

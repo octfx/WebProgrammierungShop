@@ -21,6 +21,9 @@
             </div>
 
             <div class="content">
+                <noscript>
+                    <h3>Sie haben JavaScript in Ihrem Browser deaktiviert. Diese Website benötigt JavaScript.</h3>
+                </noscript>
                 @var('content')
             </div>
 
