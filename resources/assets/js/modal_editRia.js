@@ -7,35 +7,35 @@ window.onload = function () {
     var modalEditRia_deleteBtn = document.getElementById('modal-edit-ria-delete');
 
     if (modalEditRia_openBtn !== null) {
-        modalEditRia_openBtn.onclick = function () {
+        modalEditRia_openBtn.addEventListener('click', function () {
             modalEditRia.style.display = 'block';
-        };
+        });
     }
 
     if (modalEditRia_closeXBtn !== null && modalEditRia !== null) {
-        modalEditRia_closeXBtn.onclick = function () {
+        modalEditRia_closeXBtn.addEventListener('click', function () {
             modalEditRia.style.display = 'none';
-        };
+        });
     }
 
-    window.onclick = function (event) {
+    window.addEventListener('click', function (event) {
         if (event.target === modalEditRia && modalEditRia !== null) {
             modalEditRia.style.display = 'none';
         }
-    };
+    });
 
     if (modalEditRia_saveBtn !== null && modalEditRia !== null) {
-        modalEditRia_saveBtn.onclick = function () {
+        modalEditRia_saveBtn.addEventListener('click', function () {
             // TODO save
             modalEditRia.style.display = 'none';
-        };
+        });
     }
 
     if (modalEditRia_deleteBtn !== null && modalEditRia !== null) {
-        modalEditRia_deleteBtn.onclick = function () {
+        modalEditRia_deleteBtn.addEventListener('click', function () {
             // TODO delete
             modalEditRia.style.display = 'none';
-        };
+        });
     }
 
 }

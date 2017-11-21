@@ -7,32 +7,32 @@ window.onload = function () {
     var modalReviewRia_deleteBtn = document.getElementById('modal-review-ria-delete');
 
     if (modalReviewRia_openBtn !== null) {
-        modalReviewRia_openBtn.onclick = function () {
+        modalReviewRia_openBtn.addEventListener('click', function () {
             modalReviewRia.style.display = 'block';
-        };
+        });
     }
 
     if (modalReviewRia_closeXBtn !== null) {
-        modalReviewRia_closeXBtn.onclick = function () {
+        modalReviewRia_closeXBtn.addEventListener('click', function () {
             modalReviewRia.style.display = 'none';
-        };
+        });
     }
 
-    window.onclick = function (event) {
+    window.addEventListener('click', function (event) {
         if (event.target === modalReviewRia && modalReviewRia !== null) {
             modalReviewRia.style.display = 'none';
         }
-    };
+    });
 
     if (modalReviewRia_saveBtn !== null && modalReviewRia !== null) {
-        modalReviewRia_saveBtn.onclick = function () {
+        modalReviewRia_saveBtn.addEventListener('click', function () {
             /* TODO save */
             modalReviewRia.style.display = 'none';
-        };
+        });
     }
 
     if (modalReviewRia_deleteBtn !== null && modalReviewRia !== null) {
-        modalReviewRia_deleteBtn.onclick = function () {
+        modalReviewRia_deleteBtn.addEventListener('click', function () {
 
             // reset selected stars
             var selectedStarLabels = modalReviewRia.getElementsByClassName('label-rating selected');
@@ -44,7 +44,7 @@ window.onload = function () {
             document.getElementById('modal-review-ria-description').value = '';
 
             modalReviewRia.style.display = 'none';
-        };
+        });
     }
 
 };
