@@ -2,7 +2,10 @@ window.onload = function () {
 
     var modalEditRia = document.getElementById('modal-edit-ria');
     var modalEditRia_openBtn = document.getElementById('btn-edit-ria');
-    var modalEditRia_closeXBtn = document.getElementById('modal-edit-ria-closeX');
+    var modalEditRia_closeXBtn;
+    if(modalEditRia !== null) {
+        modalEditRia_closeXBtn = modalEditRia.getElementById('modal-edit-ria-closeX');
+    }
     var modalEditRia_saveBtn = document.getElementById('modal-edit-ria-save');
     var modalEditRia_deleteBtn = document.getElementById('modal-edit-ria-delete');
 

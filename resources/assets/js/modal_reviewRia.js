@@ -2,7 +2,10 @@ window.onload = function () {
 
     var modalReviewRia = document.getElementById('modal-review-ria');
     var modalReviewRia_openBtn = document.getElementById('btn-review-ria');
-    var modalReviewRia_closeXBtn = document.getElementById('modal-review-ria-closeX');
+    var modalReviewRia_closeXBtn;
+    if(modalReviewRia !== null) {
+        modalReviewRia_closeXBtn = modalReviewRia.getElementById('modal-review-ria-closeX');
+    }
     var modalReviewRia_saveBtn = document.getElementById('modal-review-ria-save');
     var modalReviewRia_deleteBtn = document.getElementById('modal-review-ria-delete');
 

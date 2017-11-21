@@ -3,6 +3,9 @@ window.onload = function () {
     var modalUploadRia = document.getElementById('modal-upload-ria');
     var modalUploadRia_openBtn = document.getElementById('btn-upload-ria');
     var modalUploadRia_closeXBtn = document.getElementById('modal-upload-ria-closeX');
+    if(modalUploadRia !== null) {
+        modalUploadRia_closeXBtn = modalUploadRia.getElementById('modal-edit-ria-closeX');
+    }
     var modalUploadRia_saveBtn = document.getElementById('modal-upload-ria-save');
     var modalUploadRia_closeBtn = document.getElementById('modal-upload-ria-close');
 
