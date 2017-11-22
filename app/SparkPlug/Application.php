@@ -20,9 +20,11 @@ use App\SparkPlug\Response\ResponseInterface;
  */
 class Application
 {
+    /** @var  Application */
     private static $instance;
     private $basePath;
     private $resolvedSingletons = [];
+    private $bindings = [];
 
     /**
      * Application constructor.
@@ -43,6 +45,11 @@ class Application
     public static function getInstance(): Application
     {
         return static::$instance;
+    }
+
+    public function bind(string $interface, string $implementation): void
+    {
+        $this->bindings[$interface] = $implementation;
     }
 
     /**
@@ -82,7 +89,7 @@ class Application
      */
     public function make(string $className, bool $new = false)
     {
-        $this->checkIfClassExist($className);
+        $className = $this->checkClassNameForBindings($className);
 
         if (isset($this->resolvedSingletons[$className]) && !$new) {
             return $this->resolvedSingletons[$className];
@@ -103,11 +110,12 @@ class Application
      */
     public function makeWith(string $className, array $args, bool $new = false)
     {
-        $this->checkIfClassExist($className);
+        $className = $this->checkClassNameForBindings($className);
 
         if (isset($this->resolvedSingletons[$className]) && !$new) {
             return $this->resolvedSingletons[$className];
         }
+
         $reflection = new \ReflectionClass($className);
 
         return $reflection->newInstanceArgs($args);
@@ -161,10 +169,12 @@ class Application
         }
     }
 
-    private function checkIfClassExist(string $className): void
+    private function checkClassNameForBindings(string $className): string
     {
-        if (!class_exists($className)) {
-            throw new ClassNotFoundException("Class {$className} not defined or loaded!");
+        if (isset($this->bindings[$className])) {
+            $className = $this->bindings[$className];
         }
+
+        return $className;
     }
 }

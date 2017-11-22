@@ -10,6 +10,17 @@ $app = new \App\SparkPlug\Application(realpath(__DIR__.'/../'));
 $app->singleton(\App\SparkPlug\Routing\Router::class);
 $app->singleton(\App\SparkPlug\Config::class);
 
+switch (config('database.default')) {
+    case 'sqlite':
+        $dbImplementation = \App\SparkPlug\Database\SqliteDB::class;
+        break;
+
+    default:
+        throw new Exception("DB Driver for DB ".config('database.default')." not implemented");
+}
+
+$app->bind(\App\SparkPlug\Database\DBAccessInterface::class, $dbImplementation);
+
 /**
  * Load Routes
  */

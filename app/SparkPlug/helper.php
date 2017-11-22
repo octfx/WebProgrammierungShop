@@ -38,7 +38,7 @@ if (!function_exists('config')) {
      *
      * @param string $key
      *
-     * @return array|bool|mixed
+     * @return string|array|bool|mixed
      */
     function config(string $key)
     {
