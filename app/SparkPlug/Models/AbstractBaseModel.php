@@ -20,16 +20,14 @@ use App\SparkPlug\Models\Exceptions\ModelNotFoundException;
  */
 abstract class AbstractBaseModel
 {
-    /** @var DBAccessInterface */
-    private $db;
-    private $attributes;
-    private $query;
-
     protected $table;
     protected $primary_key;
     protected $fillable = [];
     protected $hidden = [];
-
+    /** @var DBAccessInterface */
+    private $db;
+    private $attributes;
+    private $query;
 
     public function __construct($options = null)
     {
@@ -68,7 +66,6 @@ abstract class AbstractBaseModel
 
     public function all(): ModelCollection
     {
-        /** @var \PDOStatement $statement */
         $statement = $this->db->getDB()->query("SELECT * FROM {$this->table}");
 
         $collection = new ModelCollection();
@@ -78,6 +75,68 @@ abstract class AbstractBaseModel
         }
 
         return $collection;
+    }
+
+    public function save()
+    {
+        if (!isset($this->attributes[$this->primary_key])) {
+            $this->createModelFromAttributes();
+        } else {
+            $this->updateModelByAttributes();
+        }
+    }
+
+    public function __toString()
+    {
+        $return = "";
+
+        foreach ($this->attributes as $key => $attribute) {
+            if (!in_array($key, $this->hidden)) {
+                $return .= "{$key}: {$attribute}\n";
+            }
+        }
+
+        return $return;
+    }
+
+    private function updateModelByAttributes()
+    {
+        $fillableAttributes = $this->getFillableAttributes();
+        if (!empty($fillableAttributes)) {
+            $statement = $this->db->getDB()->query(
+                "UPDATE {$this->table} SET ".implode(
+                    ' = ?, ',
+                    array_keys($fillableAttributes)
+                )."= ? WHERE {$this->primary_key} = {$this->attributes[$this->primary_key]}"
+            );
+            $statement->execute(array_values($fillableAttributes));
+        }
+    }
+
+    private function createModelFromAttributes()
+    {
+        $fillableAttributes = $this->getFillableAttributes();
+        if (!empty($fillableAttributes)) {
+
+            $values = '';
+            for ($i = 0; $i < count($fillableAttributes); $i++) {
+                $values .= '?, ';
+            }
+            $values = rtrim($values, ', ');
+
+
+            $statement = $this->db->getDB()->query(
+                "INSERT INTO {$this->table} (".implode(',', array_keys($fillableAttributes)).") VALUES ({$values})"
+            );
+            $statement->execute(array_values($fillableAttributes));
+
+            $this->attributes[$this->primary_key] = $this->db->getDB()->lastInsertId();
+        }
+    }
+
+    private function getFillableAttributes()
+    {
+        return array_intersect_key($this->attributes, array_flip($this->fillable));
     }
 
     private function loadModelById(int $id)
@@ -98,18 +157,5 @@ abstract class AbstractBaseModel
     private function getDB()
     {
         $this->db = app()->make(DBAccessInterface::class);
-    }
-
-    public function __toString()
-    {
-        $return = "";
-
-        foreach ($this->attributes as $key => $attribute) {
-            if (!in_array($key, $this->hidden)) {
-                $return .= "{$key}: {$attribute}\n";
-            }
-        }
-
-        return $return;
     }
 }
