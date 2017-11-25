@@ -12,9 +12,11 @@ use App\SparkPlug\Models\AbstractBaseModel as Model;
 class User extends Model
 {
     protected $table = 'users';
+
     protected $hidden = [
         'password',
     ];
+
     protected $fillable = [
         'username',
         'email',

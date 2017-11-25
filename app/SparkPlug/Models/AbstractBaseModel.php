@@ -8,6 +8,7 @@
 namespace App\SparkPlug\Models;
 
 use App\Models\User;
+use App\SparkPlug\Collections\CollectionInterface;
 use App\SparkPlug\Database\DBAccessInterface;
 use App\SparkPlug\Database\Exceptions\QueryException;
 use App\SparkPlug\Models\Exceptions\MissingTableException;
@@ -27,7 +28,9 @@ abstract class AbstractBaseModel
     /** @var DBAccessInterface */
     private $db;
     private $attributes;
+    /** @var  \PDOStatement */
     private $query;
+    private $queryString;
 
     public function __construct($options = null)
     {
@@ -64,17 +67,11 @@ abstract class AbstractBaseModel
         $this->attributes[$name] = $value;
     }
 
-    public function all(): ModelCollection
+    public function all()
     {
         $statement = $this->db->getDB()->query("SELECT * FROM {$this->table}");
 
-        $collection = new ModelCollection();
-
-        foreach ($statement->fetchAll() as $user) {
-            $collection->add(new User($user));
-        }
-
-        return $collection;
+        return $this->createCollectionFromResult($statement->fetchAll());
     }
 
     public function save()
@@ -84,6 +81,70 @@ abstract class AbstractBaseModel
         } else {
             $this->updateModelByAttributes();
         }
+    }
+
+    public function query($cols = []): AbstractBaseModel
+    {
+        $query = "SELECT ";
+        if (empty($cols)) {
+            $query .= '* ';
+        } else {
+            if (is_array($cols)) {
+                $query .= rtrim(implode(', ', $cols), ', ').' ';
+            } else {
+                $query .= $cols.' ';
+            }
+        }
+
+        $query = "{$query} from {$this->table} ";
+
+        $this->queryString = $query;
+
+
+        return $this;
+    }
+
+    public function where($col, $comparator, $value): AbstractBaseModel
+    {
+        $addString = " WHERE ";
+        if (str_contains($this->queryString, 'WHERE')) {
+            $addString = " AND ";
+        }
+
+        $this->queryString .= "{$addString} {$col} {$comparator} {$value}";
+
+        $this->query = $this->db->getDB()->prepare($this->queryString);
+
+        return $this;
+    }
+
+    public function fetch()
+    {
+        if (is_null($this->query)) {
+            return false;
+        }
+
+        $this->query->execute();
+
+        $result = $this->query->fetch();
+
+        if (!empty($result)) {
+            return new static($result);
+        }
+
+        return false;
+    }
+
+
+    public function fetchAll()
+    {
+        if (is_null($this->query)) {
+            return false;
+        }
+
+        $this->query->execute();
+
+        return $this->createCollectionFromResult($this->query->fetchAll());
     }
 
     public function __toString()
@@ -97,6 +158,17 @@ abstract class AbstractBaseModel
         }
 
         return $return;
+    }
+
+    private function createCollectionFromResult(array $result): CollectionInterface
+    {
+        $collection = new ModelCollection();
+
+        foreach ($result as $model) {
+            $collection->add(new static($model));
+        }
+
+        return $collection;
     }
 
     private function updateModelByAttributes()
@@ -115,20 +187,18 @@ abstract class AbstractBaseModel
 
     private function createModelFromAttributes()
     {
-        $fillableAttributes = $this->getFillableAttributes();
-        if (!empty($fillableAttributes)) {
-
+        if (!empty($this->attributes)) {
             $values = '';
-            for ($i = 0; $i < count($fillableAttributes); $i++) {
+            for ($i = 0; $i < count($this->attributes); $i++) {
                 $values .= '?, ';
             }
             $values = rtrim($values, ', ');
 
 
             $statement = $this->db->getDB()->query(
-                "INSERT INTO {$this->table} (".implode(',', array_keys($fillableAttributes)).") VALUES ({$values})"
+                "INSERT INTO {$this->table} (".implode(',', array_keys($this->attributes)).") VALUES ({$values})"
             );
-            $statement->execute(array_values($fillableAttributes));
+            $statement->execute(array_values($this->attributes));
 
             $this->attributes[$this->primary_key] = $this->db->getDB()->lastInsertId();
         }

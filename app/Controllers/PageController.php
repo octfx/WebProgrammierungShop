@@ -8,6 +8,7 @@
 
 namespace App\Controllers;
 
+use App\Models\User;
 use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Views\View;
 
@@ -25,6 +26,10 @@ class PageController extends Controller
      */
     public function showIndexView()
     {
+        $user = new User();
+
+        echo $user->query()->where('user_id', '!=', 3)->fetchAll();
+
         return new View('index');
     }
 }
