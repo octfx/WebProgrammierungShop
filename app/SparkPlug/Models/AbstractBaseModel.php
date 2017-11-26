@@ -175,6 +175,7 @@ abstract class AbstractBaseModel
     {
         $fillableAttributes = $this->getFillableAttributes();
         if (!empty($fillableAttributes)) {
+            $fillableAttributes['updated_at'] = date('Y-m-d H:i:s');
             $statement = $this->db->getDB()->query(
                 "UPDATE {$this->table} SET ".implode(
                     ' = ?, ',
@@ -189,15 +190,18 @@ abstract class AbstractBaseModel
     {
         if (!empty($this->attributes)) {
             $values = '';
-            for ($i = 0; $i < count($this->attributes); $i++) {
+            for ($i = 0; $i < count($this->attributes) + 2; $i++) {
                 $values .= '?, ';
             }
             $values = rtrim($values, ', ');
 
+            $this->attributes['created_at'] = date('Y-m-d H:i:s');
+            $this->attributes['updated_at'] = date('Y-m-d H:i:s');
 
-            $statement = $this->db->getDB()->query(
+            $statement = $this->db->getDB()->prepare(
                 "INSERT INTO {$this->table} (".implode(',', array_keys($this->attributes)).") VALUES ({$values})"
             );
+
             $statement->execute(array_values($this->attributes));
 
             $this->attributes[$this->primary_key] = $this->db->getDB()->lastInsertId();

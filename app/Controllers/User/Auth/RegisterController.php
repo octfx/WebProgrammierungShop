@@ -7,6 +7,7 @@
 
 namespace App\Controllers\User\Auth;
 
+use App\Models\User;
 use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Views\View;
 use App\SparkPlug\Views\ViewInterface;
@@ -26,5 +27,18 @@ class RegisterController extends Controller
     public function showRegisterView(): ViewInterface
     {
         return new View('user.auth.register');
+    }
+
+    public function register()
+    {
+        $user = new User();
+
+        $user->name = $this->request->get('username');
+        $user->email = "{$this->request->get('email')}@ostfalia.de";
+        $user->password = $this->request->get('password');
+
+        $user->save();
+
+        return redirect('/');
     }
 }

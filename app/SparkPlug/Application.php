@@ -10,6 +10,7 @@ namespace App\SparkPlug;
 use App\SparkPlug\Exceptions\ClassNotFoundException;
 use App\SparkPlug\Request\Request;
 use App\SparkPlug\Response\ResponseInterface;
+use App\SparkPlug\Views\RawView;
 
 /**
  * Application Container
@@ -126,9 +127,9 @@ class Application
      *
      * @param \App\SparkPlug\Request\Request $request Aktueller Request
      *
-     * @return \App\SparkPlug\Response\ResponseInterface
+     * @return mixed
      */
-    public function handle(Request $request): ResponseInterface
+    public function handle(Request $request)
     {
         /** @var \App\SparkPlug\Routing\Router $router */
         $router = $this->make(\App\SparkPlug\Routing\Router::class);
@@ -140,7 +141,13 @@ class Application
         $controller = $this->make($route->getController());
         $controller->setRequest($request);
 
-        return call_user_func_array([$controller, $route->getMethod()], $route->getArguments());
+        $return = call_user_func_array([$controller, $route->getMethod()], $route->getArguments());
+
+        if (!$return instanceof ResponseInterface) {
+            return new RawView();
+        }
+
+        return $return;
     }
 
     /**

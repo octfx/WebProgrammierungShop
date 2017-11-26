@@ -15,8 +15,8 @@
             <p>In diesem Store können Sie Ihre RIAs mit einer Vielzahl an Community-Mitgliedern teilen, sich von Werken der Community inspirieren lassen, diese downloaden und bewerten.</p>
             <p>Erstellen Sie einen Account und legen Sie los!</p>
             <div class="buttonbox">
-                <a type="button" href="@route('register')" class="main-button">Registrieren</a>
-                <a href="@route('login')" class="main-button">Ich habe schon einen Account.</a>
+                <a type="button" href="@route('register_form')" class="main-button">Registrieren</a>
+                <a href="data" class="main-button">Ich habe schon einen Account.</a>
             </div>
         }
     </div>

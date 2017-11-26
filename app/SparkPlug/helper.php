@@ -76,3 +76,15 @@ if (!function_exists('database_path')) {
         return app()->getBasePath()."/storage/database/{$path}";
     }
 }
+
+if (!function_exists('redirect')) {
+    /**
+     * @param string $path
+     *
+     * @return \App\SparkPlug\Response\Redirect
+     */
+    function redirect(string $path)
+    {
+        return app()->makeWith(\App\SparkPlug\Response\Redirect::class, [$path])->send();
+    }
+}
