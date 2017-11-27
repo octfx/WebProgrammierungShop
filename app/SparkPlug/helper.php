@@ -88,3 +88,25 @@ if (!function_exists('redirect')) {
         return app()->makeWith(\App\SparkPlug\Response\Redirect::class, [$path])->send();
     }
 }
+
+if (!function_exists('bcrypt')) {
+    /**
+     * @param string $string String to hash
+     *
+     * @return bool|string
+     */
+    function bcrypt(string $string)
+    {
+        return password_hash($string, PASSWORD_BCRYPT);
+    }
+}
+
+if (!function_exists('old')) {
+    function old(string $key)
+    {
+        /** @var \App\SparkPlug\Session $session */
+        $session = app()->make(\App\SparkPlug\Session::class);
+
+        return $session->get($key);
+    }
+}

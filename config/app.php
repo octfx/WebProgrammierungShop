@@ -15,4 +15,9 @@ return [
      * Log-Level des Loggers
      */
     'log_level' => 'debug',
+
+    /**
+     * Session Prefix
+     */
+    'session_prefix' => 'webshop',
 ];

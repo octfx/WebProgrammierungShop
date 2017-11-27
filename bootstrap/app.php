@@ -9,6 +9,7 @@ $app = new \App\SparkPlug\Application(realpath(__DIR__.'/../'));
  */
 $app->singleton(\App\SparkPlug\Routing\Router::class);
 $app->singleton(\App\SparkPlug\Config::class);
+$app->singleton(\App\SparkPlug\Session::class);
 
 switch (config('database.default')) {
     case 'sqlite':
