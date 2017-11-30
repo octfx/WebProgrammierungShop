@@ -25,13 +25,28 @@ abstract class AbstractBaseModel
     protected $primary_key;
     protected $fillable = [];
     protected $hidden = [];
+    private $attributes;
+
     /** @var DBAccessInterface */
     private $db;
-    private $attributes;
     /** @var  \PDOStatement */
     private $query;
-    private $queryString;
+    private $queryparams = [
+        'type' => 'SELECT',
+        'what' => '',
+        'where' => [],
+        'joins' => [],
+    ];
 
+    /**
+     * AbstractBaseModel constructor.
+     *
+     * @param null $options
+     *
+     * @throws \App\SparkPlug\Database\Exceptions\QueryException
+     * @throws \App\SparkPlug\Models\Exceptions\MissingTableException
+     * @throws \App\SparkPlug\Models\Exceptions\ModelNotFoundException
+     */
     public function __construct($options = null)
     {
         $this->getDB();
@@ -69,9 +84,7 @@ abstract class AbstractBaseModel
 
     public function all()
     {
-        $statement = $this->db->getDB()->query("SELECT * FROM {$this->table}");
-
-        return $this->createCollectionFromResult($statement->fetchAll());
+        return $this->query()->fetchAll();
     }
 
     public function save()
@@ -85,49 +98,49 @@ abstract class AbstractBaseModel
 
     public function query($cols = []): AbstractBaseModel
     {
-        $query = "SELECT ";
         if (empty($cols)) {
-            $query .= '* ';
+            $this->queryparams['what'] = '*';
         } else {
             if (is_array($cols)) {
-                $query .= rtrim(implode(', ', $cols), ', ').' ';
+                $this->queryparams['what'] = rtrim(implode(', ', $cols), ', ');
             } else {
-                $query .= $cols.' ';
+                $this->queryparams['what'] = $cols;
             }
         }
-
-        $query = "{$query} from {$this->table} ";
-
-        $this->queryString = $query;
-
 
         return $this;
     }
 
     public function where($col, $comparator, $value): AbstractBaseModel
     {
-        $addString = " WHERE ";
-        if (str_contains($this->queryString, 'WHERE')) {
-            $addString = " AND ";
+        $this->queryparams['where'][] = "{$col} {$comparator} {$value}";
+
+        return $this;
+    }
+
+    public function join(string $table, string $side = ''): AbstractBaseModel
+    {
+        if (in_array(strtolower($side), ['left', 'right'])) {
+            $side = strtoupper($side);
         }
 
-        $this->queryString .= "{$addString} {$col} {$comparator} {$value}";
-
-        $this->query = $this->db->getDB()->prepare($this->queryString);
+        $this->queryparams['joins'][] = "{$side} JOIN {$table} ON {$this->table}.{$this->primary_key} = {$table}.{$this->primary_key}";
 
         return $this;
     }
 
     public function fetch()
     {
-        if (is_null($this->query)) {
+        if (is_null($this->queryparams['what'])) {
             return false;
         }
+
+        $this->query = $this->db->getDB()->prepare($this->assembleQueryString());
 
         $this->query->execute();
 
         $result = $this->query->fetch();
-
+var_dump($result);
         if (!empty($result)) {
             return new static($result);
         }
@@ -138,13 +151,21 @@ abstract class AbstractBaseModel
 
     public function fetchAll()
     {
-        if (is_null($this->query)) {
+        if (is_null($this->queryparams['what'])) {
             return false;
         }
 
+        $this->query = $this->db->getDB()->prepare($this->assembleQueryString())->execute();
+
         $this->query->execute();
 
-        return $this->createCollectionFromResult($this->query->fetchAll());
+        $result = $this->query->fetch();
+
+        if (!empty($result)) {
+            return $this->createCollectionFromResult($this->query->fetchAll());
+        }
+
+        return false;
     }
 
     public function __toString()
@@ -158,6 +179,27 @@ abstract class AbstractBaseModel
         }
 
         return $return;
+    }
+
+    private function assembleQueryString(): string
+    {
+        $p = $this->queryparams;
+
+        $where = '';
+        if (!empty($this->queryparams['where'])) {
+            $where = 'WHERE '.rtrim(implode('AND ', $p['where']), 'AND ');
+        }
+
+        $join = '';
+        if (!empty($this->queryparams['joins'])) {
+            $join = implode(' ', $this->queryparams['joins']);
+        }
+
+        $string = "{$p['type']} {$p['what']} FROM {$this->table} {$join} {$where}";
+
+        echo $string;
+
+        return $string;
     }
 
     private function createCollectionFromResult(array $result): CollectionInterface

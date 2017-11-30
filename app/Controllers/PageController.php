@@ -26,6 +26,12 @@ class PageController extends Controller
      */
     public function showIndexView()
     {
+        $user = new User();
+
+        $test = $user->query()->join('comments', 'left')->fetch();
+
+        echo $test;
+
         return new View('index');
     }
 }

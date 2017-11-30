@@ -20,14 +20,30 @@ class Validation
         'float',
         'string',
         'url',
+        'unique',
+        'username',
     ];
 
     private $failedRules = [];
 
+    /**
+     * Validate Data against Rules
+     *
+     * @param array $rules
+     * @param       $data
+     *
+     * @return array
+     * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
+     * @throws \InvalidArgumentException
+     */
     public function validate(array $rules, $data): array
     {
         if ($data instanceof Request) {
             $data = $data->all();
+        }
+
+        if (!is_array($data)) {
+            throw new InvalidArgumentException("The data Attribute should be either an array or an Request object");
         }
 
         foreach ($rules as $name => $rule) {
@@ -72,5 +88,4 @@ class Validation
 
         return $pass;
     }
-
 }
