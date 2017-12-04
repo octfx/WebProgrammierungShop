@@ -140,7 +140,7 @@ abstract class AbstractBaseModel
         $this->query->execute();
 
         $result = $this->query->fetch();
-var_dump($result);
+
         if (!empty($result)) {
             return new static($result);
         }

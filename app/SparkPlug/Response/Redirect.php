@@ -22,8 +22,11 @@ class Redirect implements ResponseInterface
      */
     public function send(): void
     {
+        $url = config('app.url');
+
         http_response_code(301);
-        header("Location: {$this->path}");
-        echo "Redirecting to {$this->path}";
+        header("Location: {$url}{$this->path}");
+        echo "Redirecting to {$url}{$this->path}";
+        exit;
     }
 }

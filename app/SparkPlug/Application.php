@@ -7,7 +7,7 @@
 
 namespace App\SparkPlug;
 
-use App\SparkPlug\Exceptions\ClassNotFoundException;
+use App\SparkPlug\Exceptions\TokenMissMatchException;
 use App\SparkPlug\Request\Request;
 use App\SparkPlug\Response\ResponseInterface;
 use App\SparkPlug\Views\RawView;
@@ -26,6 +26,8 @@ class Application
     private $basePath;
     private $resolvedSingletons = [];
     private $bindings = [];
+    /** @var Request */
+    private $request;
 
     /**
      * Application constructor.
@@ -58,7 +60,6 @@ class Application
      *
      * @param string $className
      *
-     * @throws \App\SparkPlug\Exceptions\ClassNotFoundException
      */
     public function singleton(string $className): void
     {
@@ -71,7 +72,6 @@ class Application
      * @param string $className
      * @param array  $args
      *
-     * @throws \App\SparkPlug\Exceptions\ClassNotFoundException
      */
     public function singletonWith(string $className, array $args): void
     {
@@ -86,7 +86,6 @@ class Application
      * @param bool   $new       Ignoriert registrierte Singletons
      *
      * @return mixed
-     * @throws \App\SparkPlug\Exceptions\ClassNotFoundException
      */
     public function make(string $className, bool $new = false)
     {
@@ -128,9 +127,14 @@ class Application
      * @param \App\SparkPlug\Request\Request $request Aktueller Request
      *
      * @return mixed
+     * @throws \App\SparkPlug\Routing\Exceptions\RouteNotFoundException
+     * @throws \App\SparkPlug\Exceptions\TokenMissMatchException
      */
     public function handle(Request $request)
     {
+        $this->request = $request;
+        $this->checkCsrfToken();
+
         /** @var \App\SparkPlug\Routing\Router $router */
         $router = $this->make(\App\SparkPlug\Routing\Router::class);
 
@@ -176,6 +180,13 @@ class Application
         }
     }
 
+    public function __destruct()
+    {
+        $session = $this->make(Session::class);
+        unset($session->error);
+        session_set('previous_page', $this->request->getUri());
+    }
+
     private function checkClassNameForBindings(string $className): string
     {
         if (isset($this->bindings[$className])) {
@@ -183,5 +194,19 @@ class Application
         }
 
         return $className;
+    }
+
+    /**
+     * @throws \App\SparkPlug\Exceptions\TokenMissMatchException
+     */
+    private function checkCsrfToken()
+    {
+        $token = $this->request->get('csrf_token');
+
+        if ($token !== false) {
+            if (!hash_equals($token, csrf_token())) {
+                throw new TokenMissMatchException('Possible CSRF Attempt');
+            }
+        }
     }
 }

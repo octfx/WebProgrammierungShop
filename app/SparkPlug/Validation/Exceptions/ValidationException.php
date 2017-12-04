@@ -11,5 +11,8 @@ use Exception;
 
 class ValidationException extends Exception
 {
-
+    public function __construct(array $failedRules)
+    {
+        $this->message = implode('<br>', $failedRules);
+    }
 }

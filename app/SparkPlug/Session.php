@@ -29,11 +29,29 @@ class Session
         if (session_status() !== PHP_SESSION_ACTIVE) {
             $this->started = session_start();
         }
+        session_regenerate_id(true);
     }
 
     public function get(string $key)
     {
         return $this->__get($key);
+    }
+
+    public function set(string $name, $value)
+    {
+        $this->__set($name, $value);
+    }
+
+    public function pull(string $key)
+    {
+        if (!$this->__isset($key)) {
+            return;
+        }
+
+        $content = $this->get($key);
+        $this->__unset($key);
+
+        return $content;
     }
 
     /**

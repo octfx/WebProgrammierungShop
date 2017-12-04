@@ -1,6 +1,7 @@
 @use('app')
 @set('title', 'Mein Profil')
 @set('content')
+<?php echo app()->make(\App\SparkPlug\Auth\Auth::class)->getUser() ?>
 
 <div class="container">
     <div id="profile-details">

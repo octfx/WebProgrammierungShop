@@ -1,18 +1,27 @@
+<?php
+$session = app()->make(\App\SparkPlug\Session::class);
+?>
 @use('app')
 @set('title', 'Registrieren')
 @set('content')
 <div class="container">
     <h1>Registrierung</h1>
 
+    <?php
+    if (isset($session->error)) {
+        echo "<div class=error>{$session->pull('error')}</div>";
+    }
+    ?>
     <form method="post" action="@route('register')">
+        <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>" />
         <div class="input-group">
             <label for="login-name-input">Benutzername</label>
-            <input id="login-name-input" type="text" name="username" required tabindex="1"/>
+            <input id="login-name-input" type="text" name="username" required tabindex="1" value="<?php echo old('username'); ?>"/>
         </div>
 
         <div class="input-group">
             <label for="login-email-input">E-Mail</label>
-            <input id="login-email-input" type="text" name="email" required tabindex="2"/>@ostfalia.de
+            <input id="login-email-input" type="email" name="email" required tabindex="2" value="<?php echo old('email'); ?>"/>
         </div>
 
         <div class="input-group">
@@ -22,7 +31,7 @@
 
         <div class="input-group">
             <label for="login-passwort-wiederholt-input">Passwort wiederholen</label>
-            <input id="login-passwort-wiederholt-input" type="password" name="password_2" required tabindex="4"/>
+            <input id="login-passwort-wiederholt-input" type="password" name="password_confirmation" required tabindex="4"/>
         </div>
 
         <button class="main-button small-button" tabindex="5">registrieren</button>

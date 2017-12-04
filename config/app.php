@@ -2,6 +2,11 @@
 
 return [
     /**
+     * APP Url
+     */
+    'url' => 'http://localhost',
+
+    /**
      * True wenn Exception-Details mit ausgegeben werden sollen
      */
     'debug' => true,

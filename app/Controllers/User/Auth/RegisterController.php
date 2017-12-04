@@ -9,6 +9,7 @@ namespace App\Controllers\User\Auth;
 
 use App\Models\User;
 use App\SparkPlug\Controllers\AbstractController as Controller;
+use App\SparkPlug\Validation\Validation;
 use App\SparkPlug\Views\View;
 use App\SparkPlug\Views\ViewInterface;
 
@@ -29,16 +30,36 @@ class RegisterController extends Controller
         return new View('user.auth.register');
     }
 
+    /**
+     * @return \App\SparkPlug\Response\Redirect
+     * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
+     */
     public function register()
     {
-        $user = new User();
+        $validator = new Validation();
 
-        $user->name = $this->request->get('username');
-        $user->email = "{$this->request->get('email')}@ostfalia.de";
-        $user->password = $this->request->get('password');
+        $data = $validator->validate(
+            [
+                'username' => 'username|unique:users|min:3|max:255',
+                'password' => 'confirmed|min:3|max:255',
+                'email' => 'email|unique:users|max:255',
+            ],
+            $this->request
+        );
 
-        $user->save();
+        $user = new User($data);
+        $user->password = bcrypt($data['password']);
 
-        return redirect('/');
+        try {
+            $user->save();
+        } catch (\PDOException $e) {
+            session_set('error', 'Benutzername bereits vergeben');
+
+            return back();
+        }
+
+        session_set('message', 'Erfolgreich registriert');
+
+        return redirect('/login');
     }
 }
