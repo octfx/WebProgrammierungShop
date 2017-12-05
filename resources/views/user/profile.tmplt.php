@@ -1,7 +1,7 @@
 @use('app')
 @set('title', 'Mein Profil')
 @set('content')
-<?php echo app()->make(\App\SparkPlug\Auth\Auth::class)->getUser() ?>
+<?php $user = app()->make(\App\SparkPlug\Auth\Auth::class)->getUser() ?>
 
 <div class="container">
     <div id="profile-details">
@@ -19,8 +19,8 @@
             </div>
         </span>
         <span>
-            <h3>Hallo, USER</h3>
-            <p>Mail: ***@ostfalia.de</p>
+            <h3>Hallo, <?php echo $user->username; ?></h3>
+            <p>Mail: <?php echo $user->email; ?></p>
             <p id="password-text">Passwort: ********</p>
             <a id="btn-change-password" type="button" class="extra-small-button main-button">Ändern</a>
         </span>

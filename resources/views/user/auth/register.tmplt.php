@@ -1,17 +1,10 @@
-<?php
-$session = app()->make(\App\SparkPlug\Session::class);
-?>
 @use('app')
 @set('title', 'Registrieren')
 @set('content')
 <div class="container">
     <h1>Registrierung</h1>
 
-    <?php
-    if (isset($session->error)) {
-        echo "<div class=error>{$session->pull('error')}</div>";
-    }
-    ?>
+    @include('snippets.errors')
     <form method="post" action="@route('register')">
         <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>" />
         <div class="input-group">
