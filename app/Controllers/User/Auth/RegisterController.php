@@ -8,6 +8,7 @@
 namespace App\Controllers\User\Auth;
 
 use App\Models\User;
+use App\SparkPlug\Auth\Auth;
 use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Validation\Validation;
 use App\SparkPlug\Views\View;
@@ -27,6 +28,10 @@ class RegisterController extends Controller
      */
     public function showRegisterView(): ViewInterface
     {
+        if (login_check()) {
+            return redirect('/profile');
+        }
+
         return new View('user.auth.register');
     }
 
@@ -36,13 +41,17 @@ class RegisterController extends Controller
      */
     public function register()
     {
+        if (login_check()) {
+            return redirect('/profile');
+        }
+
         $validator = new Validation();
 
         $data = $validator->validate(
             [
                 'username' => 'username|unique:users|min:3|max:255',
                 'password' => 'confirmed|min:3|max:255',
-                'email' => 'email|unique:users|max:255',
+                'email'    => 'email|unique:users|max:255',
             ],
             $this->request
         );
@@ -58,8 +67,10 @@ class RegisterController extends Controller
             return back();
         }
 
-        session_set('message', 'Erfolgreich registriert');
+        /** @var Auth $auth */
+        $auth = app()->make(Auth::class);
+        $auth->attempt($this->request->all());
 
-        return redirect('/login');
+        return redirect('/profile');
     }
 }
