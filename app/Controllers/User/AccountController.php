@@ -25,6 +25,10 @@ class AccountController extends Controller
      */
     public function showProfileView()
     {
+        if (!login_check()) {
+            return redirect('/login');
+        }
+
         return new View('user.profile');
     }
 }

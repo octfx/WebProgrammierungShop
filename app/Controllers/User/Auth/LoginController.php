@@ -37,6 +37,8 @@ class LoginController extends Controller
      */
     public function login()
     {
+        var_dump($this->request->all());
+        die();
         $validator = new Validation();
 
         $validator->validate(
