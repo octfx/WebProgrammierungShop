@@ -16,14 +16,14 @@
 
     <div class="scrollable">
         <div class="gallery-entry">
-            <a href="@route('riaDetails')"> <!-- TODO set link -->
+            <a href="@route('riaDetails', 1)"> <!-- TODO set link -->
                 <div class="gallery-ria-icon">
                     <i class="fa fa-file" aria-hidden="true"></i>
                 </div>
                 <span class="ria-name">Eine Ria</span>
             </a>
         </div>
-        <a href="@route('riaDetails')">
+        <a href="@route('riaDetails', 2)">
             <div class="gallery-entry">
                 <div class="gallery-ria-icon">
                     <i class="fa fa-file" aria-hidden="true"></i>

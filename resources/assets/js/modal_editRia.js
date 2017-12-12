@@ -14,7 +14,7 @@ var modalEditRia_iconRadios = document.getElementsByClassName('modal-edit-ria-ic
 if (modalEditRia_openBtn !== null) {
     modalEditRia_openBtn.onclick = function () {
         // TODO if(debug === true) {
-        console.log("Open edit ria modal button clicked")
+        console.log("Open edit ria modal button clicked");
         // }
         modalEditRia.style.display = 'block';
     };

@@ -4,7 +4,7 @@ return [
     /**
      * APP Url
      */
-    'url' => 'http://localhost',
+    'url' => 'http://localhost:30000',
 
     /**
      * True wenn Exception-Details mit ausgegeben werden sollen

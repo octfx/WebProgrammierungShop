@@ -62,7 +62,7 @@
 
             <div>
                 <label for="input-upload-ria-title">RIA Titel</label>
-                <input id="input-upload-ria-title" type="text" placeholder="RIA Title">
+                <input id="input-upload-ria-title" type="text">
             </div>
 
             <div>
@@ -79,7 +79,7 @@
         </div>
         <div class="modal-footer">
             <a id="modal-upload-ria-save" type="button" class="extra-small-button main-button">Speichern</a>
-            <a id="modal-upload-ria-close" type="button" class="extra-small-button secondary-button">Löschen</a>
+            <a id="modal-upload-ria-close" type="button" class="extra-small-button secondary-button">Abbrechen</a>
         </div>
     </div>
 </div>

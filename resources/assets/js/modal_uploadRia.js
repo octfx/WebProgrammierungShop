@@ -11,7 +11,7 @@ var modalEditRia_iconRadios = document.getElementsByClassName('modal-upload-ria-
 if (modalUploadRia_openBtn !== null) {
     modalUploadRia_openBtn.onclick = function () {
         // TODO if(debug === true) {
-        console.log("Open upload ria modal button clicked")
+        console.log("Open upload ria modal button clicked");
         // }
         modalUploadRia.style.display = 'block';
     };
