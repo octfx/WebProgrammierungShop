@@ -37,11 +37,9 @@ class LoginController extends Controller
      */
     public function login()
     {
-        var_dump($this->request->all());
-        die();
         $validator = new Validation();
 
-        $validator->validate(
+        $data = $validator->validate(
             [
                 'username' => 'username|min:3|max:255',
                 'password' => 'min:3|max:255',
@@ -52,7 +50,7 @@ class LoginController extends Controller
         /** @var Auth $auth */
         $auth = app()->make(Auth::class);
         if (!$auth->attempt(
-            $this->request->all()
+            $data
         )) {
             /** @var Session $session */
             session_set('error', ['Benutzername oder Passwort falsch!']);
@@ -64,6 +62,9 @@ class LoginController extends Controller
         return redirect('/profile');
     }
 
+    /**
+     * @return \App\SparkPlug\Response\Redirect
+     */
     public function logout()
     {
         session_set('user', null);

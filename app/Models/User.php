@@ -9,6 +9,10 @@ namespace App\Models;
 
 use App\SparkPlug\Models\AbstractBaseModel as Model;
 
+/**
+ * Class User
+ * @package App\Models
+ */
 class User extends Model
 {
     protected $table = 'users';
@@ -18,13 +22,19 @@ class User extends Model
     ];
 
     protected $fillable = [
-        'name',
+        'username',
         'email',
     ];
 
+    /**
+     * Gibt alle RIAs des Users als Collection zurück
+     *
+     * @return \App\SparkPlug\Collections\CollectionInterface|\App\SparkPlug\Models\ModelCollection|bool
+     */
     public function rias()
     {
         $rias = new Ria();
+
         return $rias->query()->where('user_id', '=', $this->user_id)->fetchAll();
     }
 }

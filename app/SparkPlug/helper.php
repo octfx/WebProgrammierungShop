@@ -90,6 +90,11 @@ if (!function_exists('redirect')) {
 }
 
 if (!function_exists('back')) {
+    /**
+     * Erstellt einen Redirect auf die vorherige Seite
+     *
+     * @return mixed
+     */
     function back()
     {
         return app()->makeWith(\App\SparkPlug\Response\Redirect::class, [session_get('previous_page')])->send();
@@ -140,6 +145,12 @@ if (!function_exists('login_check')) {
 }
 
 if (!function_exists('session_set')) {
+    /**
+     * Setzt einen Wert in der Session
+     *
+     * @param string $name
+     * @param mixed  $value
+     */
     function session_set(string $name, $value)
     {
         $session = app()->make(\App\SparkPlug\Session::class);
@@ -148,6 +159,13 @@ if (!function_exists('session_set')) {
 }
 
 if (!function_exists('session_get')) {
+    /**
+     * Holt einen Wert aus der Session
+     *
+     * @param string $name
+     *
+     * @return mixed
+     */
     function session_get(string $name)
     {
         $session = app()->make(\App\SparkPlug\Session::class);
@@ -157,6 +175,12 @@ if (!function_exists('session_get')) {
 }
 
 if (!function_exists('csrf_token')) {
+    /**
+     * Holt CSRF Token aus Session oder generiert einen
+     *
+     * @return string
+     * @throws \Exception
+     */
     function csrf_token(): string
     {
         $token = session_get('csrf_token');
