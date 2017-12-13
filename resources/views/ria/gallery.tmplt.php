@@ -28,7 +28,7 @@
                 <div class="gallery-ria-icon">
                     <i class="fa fa-file" aria-hidden="true"></i>
                 </div>
-                <span class="ria-name">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</span>
+                <span class="ria-name">Hallo</span>
             </div>
         </a>
         <a href="@route('riaDetails')">

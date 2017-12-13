@@ -9,3 +9,7 @@ $router->post('/register', 'User\Auth\RegisterController@register')->name('regis
 $router->get('/gallery', 'Ria\GalleryController@showGalleryView')->name('gallery');
 $router->get('/ria/[0]', 'Ria\RiaController@showRiaDetailsView')->name('riaDetails');
 $router->get('/profile', 'User\AccountController@showProfileView')->name('profile');
+
+$router->post('/uploadRia', 'Ria\RiaController@uploadRia')->name('uploadRia');
+$router->post('/editRia', 'Ria\RiaController@editRia')->name('editRia');
+$router->post('/changePassword', 'User\AccountController@changePassword')->name('changePassword');

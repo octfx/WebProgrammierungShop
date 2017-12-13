@@ -35,4 +35,77 @@ class RiaController extends Controller
 
         return $view;
     }
+
+    /**
+     * Lädt Ria hoch
+     *
+     */
+    public function uploadRia()
+    {
+        $validator = new Validation();
+
+        $data = $validator->validate(
+            [
+                // TODO set data
+                'riaTitle' => 'string|unique:rias|min:1|max:255',
+                'riaDescription' => 'string|max:1000',
+                'riaFile'    => '',
+                'riaIcon' => 'alpha_dash|min:2|max:20'
+            ],
+            $this->request
+        );
+
+        $ria = new Ria();
+        $ria->name = $data['riaTitle'];
+        $ria->icon = $data['riaIcon'];
+        $ria->description = $data['riaDescription'];
+        $ria->user_id = app()->make(Auth::class)->getUser().user_id;
+
+        try {
+            $ria->save();
+        } catch (\PDOException $e) {
+            session_set('error', ['Fehler beim Speichern der RIA']);
+
+            return back();
+        }
+    }
+
+    /**
+     * Bearbeiten der Ria
+     *
+     */
+    public function editRia()
+    {
+        $validator = new Validation();
+
+        $data = $validator->validate(
+            [
+                // TODO set data
+                'riaTitle' => 'string|unique:rias|min:1|max:255',
+                'riaDescription' => 'string|max:1000',
+                'riaFile'    => '',
+                'riaIcon' => 'alpha_dash|min:2|max:20'
+            ],
+            $this->request
+        );
+
+        /* TODO get ria, set values and save
+
+        $ria->name = $data['riaTitle'];
+        $ria->icon = $data['riaIcon'];
+        $ria->description = $data['riaDescription'];
+        $ria->user_id = app()->make(Auth::class)->getUser().user_id;
+
+        try {
+            $ria->save();
+        } catch (\PDOException $e) {
+            session_set('error', ['Fehler beim Speichern der RIA']);
+
+            return back();
+        }
+        */
+
+    }
+
+
 }

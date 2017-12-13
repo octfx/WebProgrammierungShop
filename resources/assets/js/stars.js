@@ -1,4 +1,5 @@
 var editableStarRatings = document.getElementsByClassName('editable-star-rating');
+var ratingValue = document.getElementsByName('ratingDoubleValue');
 
 if (editableStarRatings !== null) {
     for (var i = 0; i < editableStarRatings.length; i++) {
@@ -45,7 +46,9 @@ var createNonEditableStarRating = function (rating, ratingDiv) {
         innerHtml += '"></span>';
     }
 
-    ratingDiv.innerHTML = innerHtml;
+    if(ratingDiv !== null) {
+        ratingDiv.innerHTML = innerHtml;
+    }
 };
 
 /**
@@ -77,8 +80,10 @@ var getStarNumFromRating = function (rating) {
 // TODO fetch rating from view when accessible in view
 // var rating = getPageData("ria-details", "rating");
 
-var rating = 3.4;
-createNonEditableStarRating(rating, document.getElementById('ria-details-header-star-rating'));
+if(ratingValue !== null) {
+    createNonEditableStarRating(ratingValue.value, document.getElementById('ria-details-header-star-rating'));
+}
+
 
 
 

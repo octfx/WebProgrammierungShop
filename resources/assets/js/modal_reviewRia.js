@@ -9,7 +9,7 @@ var modalReviewRia_closeBtn = document.getElementById('modal-review-ria-close');
  */
 var modalReviewRia_resetModalInputs = function() {
 
-    if(modalReviewRia != null) {
+    if(modalReviewRia !== null) {
         // reset selected stars
         var selectedStarLabels = modalReviewRia.getElementsByClassName('label-rating selected');
         for (var i = 0; i < selectedStarLabels.length; i++) {
@@ -18,7 +18,7 @@ var modalReviewRia_resetModalInputs = function() {
 
         // reset description content
         var modalReviewRiaDesc = document.getElementById('modal-review-ria-description');
-        if(modalReviewRiaDesc != null) {
+        if(modalReviewRiaDesc !== null) {
             modalReviewRiaDesc.value = '';
         }
     }

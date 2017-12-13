@@ -128,7 +128,19 @@
       &.selected .fa {
         color: $link-hover-color;
       }
+
+      input {
+        display: none;
+      }
     }
 
+  }
+}
+
+/* change password modal */
+
+#modal-change-password {
+  .modal-content {
+    max-width: 500px;
   }
 }

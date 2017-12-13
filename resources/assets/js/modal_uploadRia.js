@@ -8,11 +8,8 @@ var modalUploadRia_chooseFileBtn = document.getElementById('modal-upload-ria-cho
 var modalUploadRia_fileInput = document.getElementById('modal-upload-ria-input-file');
 var modalEditRia_iconRadios = document.getElementsByClassName('modal-upload-ria-icon-radio');
 
-if (modalUploadRia_openBtn !== null) {
+if (modalUploadRia_openBtn !== null && modalUploadRia !== null) {
     modalUploadRia_openBtn.onclick = function () {
-        // TODO if(debug === true) {
-        console.log("Open upload ria modal button clicked");
-        // }
         modalUploadRia.style.display = 'block';
     };
 }
@@ -26,7 +23,7 @@ if (modalUploadRia_closeXBtn !== null && modalUploadRia !== null) {
 }
 
 window.onclick = function (event) {
-    if (event.target == modalUploadRia && modalUploadRia !== null) {
+    if (event.target === modalUploadRia && modalUploadRia !== null) {
         modalUploadRia.style.display = 'none';
     }
 };
@@ -56,6 +53,7 @@ if (modalEditRia_iconRadios !== null) {
         modalEditRia_iconRadios[i].onclick = function () {
             removeSelectedFromAllIconRadios();
             this.classList.add('selected');
+            this.getElementsByTagName('input')[0].setAttribute("checked", "checked");
             // TODO process chosen icon with getClassNameOfChosenIcon();
         };
     }
@@ -66,6 +64,7 @@ var removeSelectedFromAllIconRadios = function () {
     if (modalEditRia_iconRadios !== null) {
         for (var i = 0; i < modalEditRia_iconRadios.length; i++) {
             modalEditRia_iconRadios[i].classList.remove('selected');
+            modalEditRia_iconRadios[i].getElementsByTagName('input')[0].setAttribute("checked", "");
         }
     }
 };
