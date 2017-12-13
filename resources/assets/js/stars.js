@@ -1,5 +1,5 @@
 var editableStarRatings = document.getElementsByClassName('editable-star-rating');
-var ratingValue = document.getElementsByName('ratingDoubleValue');
+var noneditableRatings = document.getElementsByClassName('noneditable-star-rating');
 
 if (editableStarRatings !== null) {
     for (var i = 0; i < editableStarRatings.length; i++) {
@@ -77,11 +77,17 @@ var getStarNumFromRating = function (rating) {
     }
 };
 
-// TODO fetch rating from view when accessible in view
-// var rating = getPageData("ria-details", "rating");
+for(var i = 0; i < noneditableRatings.length; i++) {
 
-if(ratingValue !== null) {
-    createNonEditableStarRating(ratingValue.value, document.getElementById('ria-details-header-star-rating'));
+    var ratingVal = noneditableRatings[i].getAttribute('data-value');
+    // TODO if(debug === true) {
+        console.log("DB rating value is " + ratingVal);
+    // }
+
+    if(ratingVal !== null) {
+        createNonEditableStarRating(ratingVal, noneditableRatings[i]);
+    }
+
 }
 
 

@@ -5,7 +5,7 @@
     <div class="ria-header">
         <h2>RIA - <?php echo $id; ?></h2>
 
-        <span id="ria-details-header-star-rating" class="noneditable-star-rating">
+        <span id="ria-details-header-star-rating" class="noneditable-star-rating" data-value="3.4"> <!-- TODO set rating value from db -->
                         <span class="star big-star star5"></span>
                          <span class="star big-star star4"></span>
                         <span class="star big-star star3 half-filled"></span>
