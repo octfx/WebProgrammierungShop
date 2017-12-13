@@ -62,7 +62,7 @@ class RegisterController extends Controller
         try {
             $user->save();
         } catch (\PDOException $e) {
-            session_set('error', ['Benutzername bereits vergeben']);
+            session_set('error', ['Datenbankfehler, bitte später erneut versuchen']);
 
             return back();
         }
