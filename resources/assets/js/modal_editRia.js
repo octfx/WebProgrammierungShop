@@ -7,15 +7,42 @@ var modalEditRia_deleteBtn = document.getElementById('modal-edit-ria-delete');
 var modalEditRia_chooseFileBtn = document.getElementById('modal-edit-ria-choose-file');
 var modalEditRia_fileInput = document.getElementById('modal-edit-ria-input-file');
 
-/*
-var modalEditRia_iconRadios = document.getElementsByClassName('modal-edit-ria-icon-radio');
-*/
+/**
+ *  reset all inputs of modal, so that inputs are clear when reopened
+ */
+var modalEditRia_resetModalInputs = function() {
+
+    if(modalEditRia !== null) {
+        // reset icon to db icon
+
+
+        // reset title to db title
+        var modalEditRiaTitle = document.getElementById('input-edit-ria-title');
+        if(modalEditRiaTitle !== null) {
+           // TODO  modalEditRiaTitle.value =
+        }
+
+        // reset description content to db description
+        var modalEditRiaDesc = document.getElementById('modal-edit-ria-description');
+        if(modalEditRiaDesc !== null) {
+            modalReviewRiaDesc.value = '';
+        }
+    }
+};
+
+var modalEditRia_closeModal = function () {
+    if(modalEditRia !== null) {
+        modalEditRia.style.display = 'none';
+    }
+    modalEditRia_resetModalInputs();
+};
+
 
 if (modalEditRia_openBtn !== null) {
     modalEditRia_openBtn.onclick = function () {
-        // TODO if(debug === true) {
-        console.log("Open edit ria modal button clicked");
-        // }
+        if(debug) {
+            console.log("Open edit ria modal button clicked");
+        }
         modalEditRia.style.display = 'block';
     };
 }
@@ -23,28 +50,31 @@ if (modalEditRia_openBtn !== null) {
 if (modalEditRia_closeXBtn !== null && modalEditRia !== null) {
     for (var i = 0; i < modalEditRia_closeXBtn.length; i++) {
         modalEditRia_closeXBtn[i].onclick = function () {
-            modalEditRia.style.display = 'none';
+            if(debug) {
+                console.log("Close edit ria modal button clicked");
+            }
+            modalEditRia_closeModal();
         };
     }
 }
 
 window.onclick = function (event) {
     if (event.target === modalEditRia && modalEditRia !== null) {
-        modalEditRia.style.display = 'none';
+        modalEditRia_closeModal();
     }
 };
 
 if (modalEditRia_saveBtn !== null && modalEditRia !== null) {
     modalEditRia_saveBtn.onclick = function () {
         // TODO save
-        modalEditRia.style.display = 'none';
+        modalEditRia_closeModal();
     };
 }
 
 if (modalEditRia_deleteBtn !== null && modalEditRia !== null) {
     modalEditRia_deleteBtn.onclick = function () {
         // TODO delete
-        modalEditRia.style.display = 'none';
+        modalEditRia_closeModal();
     };
 }
 
@@ -54,51 +84,3 @@ if (modalEditRia_chooseFileBtn !== null && modalEditRia_fileInput !== null) {
         modalEditRia_fileInput.click();
     };
 }
-
-/*
-
-if (modalEditRia_iconRadios !== null) {
-    for (var i = 0; i < modalEditRia_iconRadios.length; i++) {
-        modalEditRia_iconRadios[i].onclick = function () {
-            removeSelectedFromAllIconRadios();
-            this.classList.add('selected');
-            // TODO process chosen icon with getClassNameOfChosenIcon();
-        };
-    }
-}
-
-
-var removeSelectedFromAllIconRadios = function () {
-    if (modalEditRia_iconRadios !== null) {
-        for (var i = 0; i < modalEditRia_iconRadios.length; i++) {
-            modalEditRia_iconRadios[i].classList.remove('selected');
-        }
-    }
-};
-*/
-/**
- * @return font awesome icon class name of selected icon
- */
-/*
-var getClassNameOfChosenIcon = function () {
-    if (modalEditRia_iconRadios !== null) {
-        for (var i = 0; i < modalEditRia_iconRadios.length; i++) {
-            if (modalEditRia_iconRadios[i].classList.contains('selected')) {
-
-                var fa = modalEditRia_iconRadios[i].getElementsByClassName('fa')[0];
-                for (var j = 0; j < fa.classList.length; j++) {
-
-                    if (fa.classList[j].match('fa-')) {
-
-                        // TODO if(debug === true) {
-                        console.log("Font awesome icon for RIA with class " + fa.classList[j] + " selected");
-                        // }
-                        return fa.classList[j];
-                    }
-                }
-            }
-        }
-    }
-    return null;
-}
-*/

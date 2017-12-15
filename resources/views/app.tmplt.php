@@ -43,5 +43,6 @@
 </body>
 
 <script type="text/javascript" src="/js/app.min.js"></script>
+<script>var debug = <?php echo config('app.debug'); ?></script>
 
 </html>

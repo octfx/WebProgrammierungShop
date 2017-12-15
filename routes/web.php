@@ -11,5 +11,5 @@ $router->get('/ria/[0]', 'Ria\RiaController@showRiaDetailsView')->name('riaDetai
 $router->get('/profile', 'User\AccountController@showProfileView')->name('profile');
 
 $router->post('/uploadRia', 'Ria\RiaController@uploadRia')->name('uploadRia');
-$router->post('/editRia', 'Ria\RiaController@editRia')->name('editRia');
+$router->post('/editRia/[0]', 'Ria\RiaController@editRia')->name('editRia');
 $router->post('/changePassword', 'User\AccountController@changePassword')->name('changePassword');

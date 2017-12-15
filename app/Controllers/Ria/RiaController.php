@@ -30,6 +30,7 @@ class RiaController extends Controller
         $view->setVars(
             [
                 'id' => $id,
+                'ria' => new Ria($id),
             ]
         );
 
@@ -59,6 +60,7 @@ class RiaController extends Controller
         $ria->name = $data['riaTitle'];
         $ria->icon = $data['riaIcon'];
         $ria->description = $data['riaDescription'];
+        $ria->storage_path = $data['riaFile'];
         $ria->user_id = app()->make(Auth::class)->getUser().user_id;
 
         try {
@@ -74,7 +76,7 @@ class RiaController extends Controller
      * Bearbeiten der Ria
      *
      */
-    public function editRia()
+    public function editRia(int $id)
     {
         $validator = new Validation();
 
@@ -89,10 +91,10 @@ class RiaController extends Controller
             $this->request
         );
 
-        /* TODO get ria, set values and save
-
+        $ria = new Ria($id);
         $ria->name = $data['riaTitle'];
         $ria->icon = $data['riaIcon'];
+        $ria->storage_path = $data['riaFile'];
         $ria->description = $data['riaDescription'];
         $ria->user_id = app()->make(Auth::class)->getUser().user_id;
 
@@ -103,7 +105,6 @@ class RiaController extends Controller
 
             return back();
         }
-        */
 
     }
 

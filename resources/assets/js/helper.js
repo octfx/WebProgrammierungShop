@@ -23,4 +23,4 @@ var getPageData = function(pageName, dataName) {
         return dataHtmlElement.getAttribute('data-' + dataName);
     }
     return null;
-}
+};
