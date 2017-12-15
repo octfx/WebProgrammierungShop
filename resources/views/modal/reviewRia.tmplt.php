@@ -36,8 +36,8 @@
                 <textarea id="modal-review-ria-description"></textarea>
             </div>
             <div class="modal-footer">
-                <a id="modal-review-ria-save" type="button" class="extra-small-button main-button">Speichern</a>
-                <a id="modal-review-ria-close" type="button" class="extra-small-button secondary-button">Abbrechen</a>
+                <a id="modal-review-ria-save" class="button extra-small-button main-button">Speichern</a>
+                <a id="modal-review-ria-close" class="button extra-small-button secondary-button">Abbrechen</a>
             </div>
 
         </form>

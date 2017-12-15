@@ -25,7 +25,7 @@
             </div>
             <div class="modal-footer">
                 <button id="modal-change-password-save" type="submit" class="extra-small-button main-button">Änderungen speichern</button>
-                <a id="modal-change-password-cancel" type="button" class="extra-small-button secondary-button">Abbrechen</a>
+                <a id="modal-change-password-cancel" class="button extra-small-button secondary-button">Abbrechen</a>
             </div>
 
         </form>

@@ -1,4 +1,4 @@
-button, a[type="button"] {
+button, a.button {
   font-family: $header-font;
   text-transform: uppercase;
   border: none;
@@ -47,7 +47,7 @@ button, a[type="button"] {
   width: 200px;
   margin: 0 auto;
 
-  button, a[type="button"] {
+  button, a.button {
     display: block;
     width: 100%;
     margin: 0;
@@ -55,11 +55,11 @@ button, a[type="button"] {
     right: 30px;
   }
 
-  button:first-child, a[type="button"]:first-child {
+  button:first-child, a.button:first-child {
     margin: 20px 0 0 0;
   }
 
-  button:last-child, a[type="button"]:last-child {
+  button:last-child, a.button:last-child {
     margin: 0 0 20px 0;
   }
 

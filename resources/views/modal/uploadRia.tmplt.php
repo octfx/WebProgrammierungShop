@@ -1,4 +1,4 @@
-<!-- ------- upload ria modal -------- -->
+<!--  upload ria modal -->
 <div id="modal-upload-ria" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -88,20 +88,20 @@
 
                 <div>
                     <label for="modal-upload-ria-description">Beschreibung</label>
-                    <textarea id="modal-upload-ria-description" name="riaDescription" tabindex="2" value="<?php echo old('riaDescription'); ?>"></textarea>
+                    <textarea id="modal-upload-ria-description" name="riaDescription" tabindex="2"><?php echo old('riaDescription'); ?></textarea>
                 </div>
 
                 <div>
                     <label>RIA Datei</label>
                     <p>Wählen Sie eine Datei im .war Format aus.</p>
-                    <a style="margin-left: 10px" id="modal-upload-ria-choose-file" type="button" class="extra-small-button main-button">Datei auswählen...</a>
+                    <button id="modal-upload-ria-choose-file" class="extra-small-button main-button">Datei auswählen...</button>
                     <input type="file" id="modal-upload-ria-input-file" accept=".war" name="riaFile">
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-            <a id="modal-upload-ria-save" type="button" class="extra-small-button main-button">Speichern</a>
-            <a id="modal-upload-ria-close" type="button" class="extra-small-button secondary-button">Abbrechen</a>
+            <button id="modal-upload-ria-save" class="extra-small-button main-button">Speichern</button>
+            <button id="modal-upload-ria-close" class="extra-small-button secondary-button">Abbrechen</button>
         </div>
     </div>
 </div>

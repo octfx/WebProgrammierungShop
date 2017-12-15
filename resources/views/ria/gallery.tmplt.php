@@ -147,7 +147,7 @@
 
     <p>Laden Sie Ihre Inhalte hoch.</p>
     <!-- Trigger upload ria modal -->
-    <a id="btn-upload-ria" type="button" class="small-button main-button">Hochladen</a>
+    <a id="btn-upload-ria" class="button small-button main-button">Hochladen</a>
 
 </div>
 @include('modal.uploadRia')

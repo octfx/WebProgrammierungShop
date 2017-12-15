@@ -15,7 +15,7 @@
 
         <div id="ria-header-right-pane">
             <span class="publisher-info">von USER - am 01.09.2017</span>
-            <a type="button" href="/login" class="main-button extra-small-button">Anmelden</a>
+            <a href="@route('login') class="main-button extra-small-button">Anmelden</a>
             <!-- TODO download link, nonstatic content -->
         </div>
     </div>
@@ -25,6 +25,7 @@
             <div class="ria-details-icon">
                 <i class="fa fa-file" aria-hidden="true"></i>
             </div>
+            <?php echo $ria->description; ?>
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
             sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
             magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -89,11 +90,11 @@
         <div>
             <p>Geben Sie Ihre Bewertung ab.</p>
             <!-- Open review ria modal -->
-            <a type="button" id="btn-review-ria" class="main-button small-button">Bewerten</a>
+            <a id="btn-review-ria" class="main-button small-button">Bewerten</a>
 
             <p>RIA bearbeiten</p>
             <!-- Open edit ria modal -->
-            <a type="button" id="btn-edit-ria" class="main-button small-button">Bearbeiten</a>
+            <a id="btn-edit-ria" class="main-button small-button">Bearbeiten</a>
         </div>
     </div>
 </div>

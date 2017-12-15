@@ -12,9 +12,13 @@ var modalEditRia_fileInput = document.getElementById('modal-edit-ria-input-file'
  */
 var modalEditRia_resetModalInputs = function() {
 
+    if(debug) {
+        console.log("Resetting edit RIA modal input values to database values");
+    }
+
     if(modalEditRia !== null) {
         // reset icon to db icon
-
+        // TODO resetting to db values, ajax
 
         // reset title to db title
         var modalEditRiaTitle = document.getElementById('input-edit-ria-title');
@@ -35,6 +39,10 @@ var modalEditRia_closeModal = function () {
         modalEditRia.style.display = 'none';
     }
     modalEditRia_resetModalInputs();
+
+    if(debug) {
+        console.log("Edit RIA modal closed");
+    }
 };
 
 
@@ -44,6 +52,9 @@ if (modalEditRia_openBtn !== null) {
             console.log("Open edit ria modal button clicked");
         }
         modalEditRia.style.display = 'block';
+        if(debug) {
+            console.log("Showing edit RIA modal");
+        }
     };
 }
 
@@ -66,6 +77,10 @@ window.onclick = function (event) {
 
 if (modalEditRia_saveBtn !== null && modalEditRia !== null) {
     modalEditRia_saveBtn.onclick = function () {
+        if(debug) {
+            console.log("Saving RIA values");
+        }
+
         // TODO save
         modalEditRia_closeModal();
     };

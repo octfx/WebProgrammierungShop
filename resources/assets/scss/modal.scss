@@ -54,7 +54,7 @@
       clear: both;
     }
 
-    button, a[type="button"] {
+    button, a.button {
       float: right;
       margin-left: 15px;
     }
@@ -98,6 +98,10 @@
 }
 
 /* --------- upload, edit ria modal ---------- */
+
+#modal-upload-ria-choose-file, #modal-edit-ria-choose-file {
+ margin-left: 10px;
+}
 
 #modal-upload-ria, #modal-edit-ria {
 

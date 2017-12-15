@@ -8,7 +8,7 @@
         </div>
 
         @include('snippets.errors')
-        <form method="post" action="href="@route('editRia', $id)"">
+        <form id="modal-edit-ria-form" method="post" action="href="@route('editRia', $id)"">
 
             <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>" />
 
@@ -97,13 +97,13 @@
                 <div>
                     <label>RIA Datei</label>
                     <p>Dateiname.war</p> <!-- TODO file name and other ria data from db -->
-                    <a style="margin-left: 10px" id="modal-edit-ria-choose-file" type="button" class="extra-small-button main-button">Andere Datei auswählen...</a>
+                    <button id="modal-edit-ria-choose-file" class="extra-small-button main-button">Andere Datei auswählen...</button>
                     <input type="file" id="modal-edit-ria-input-file" accept=".war" name="riaFile" value="<?php $ria->storage_path ?>">
                 </div>
             </div>
             <div class="modal-footer">
-                <a id="modal-edit-ria-save" type="button" class="extra-small-button main-button">Speichern</a>
-                <a id="modal-edit-ria-delete" type="button" class="extra-small-button secondary-button">Löschen</a>
+                <button id="modal-edit-ria-save" type="submit" class="extra-small-button main-button">Speichern</button>
+                <a id="modal-edit-ria-delete" class="button extra-small-button secondary-button">Löschen</a>
             </div>
         </form>
     </div>
