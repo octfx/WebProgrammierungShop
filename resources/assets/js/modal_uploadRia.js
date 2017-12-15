@@ -30,7 +30,7 @@ window.onclick = function (event) {
 
 if (modalUploadRia_saveBtn !== null && modalUploadRia !== null) {
     modalUploadRia_saveBtn.onclick = function () {
-        /* TODO save */
+        document.getElementById('ria-upload-form').submit();
         modalUploadRia.style.display = 'none';
     };
 }
@@ -53,7 +53,7 @@ if (modalEditRia_iconRadios !== null) {
         modalEditRia_iconRadios[i].onclick = function () {
             removeSelectedFromAllIconRadios();
             this.classList.add('selected');
-            this.getElementsByTagName('input')[0].setAttribute("checked", "checked");
+            this.getElementsByTagName('input')[0].checked = true;
             // TODO process chosen icon with getClassNameOfChosenIcon();
         };
     }

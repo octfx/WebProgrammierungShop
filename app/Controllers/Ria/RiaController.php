@@ -7,7 +7,10 @@
 
 namespace App\Controllers\Ria;
 
+use App\Models\Ria;
+use App\SparkPlug\Auth\Auth;
 use App\SparkPlug\Controllers\AbstractController as Controller;
+use App\SparkPlug\Validation\Validation;
 use App\SparkPlug\Views\View;
 
 /**
@@ -29,7 +32,7 @@ class RiaController extends Controller
         $view = new View('ria.riaDetails');
         $view->setVars(
             [
-                'id' => $id,
+                'id'  => $id,
                 'ria' => new Ria($id),
             ]
         );
@@ -40,6 +43,7 @@ class RiaController extends Controller
     /**
      * Lädt Ria hoch
      *
+     * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
      */
     public function uploadRia()
     {
@@ -48,20 +52,17 @@ class RiaController extends Controller
         $data = $validator->validate(
             [
                 // TODO set data
-                'riaTitle' => 'string|unique:rias|min:1|max:255',
-                'riaDescription' => 'string|max:1000',
-                'riaFile'    => '',
-                'riaIcon' => 'alpha_dash|min:2|max:20'
+                'name'        => 'string|unique:rias|min:1|max:255',
+                'description' => 'string|max:1000',
+                //'riaFile'     => 'string',
+                'icon_name'   => 'alpha_dash|min:2|max:20',
             ],
             $this->request
         );
 
-        $ria = new Ria();
-        $ria->name = $data['riaTitle'];
-        $ria->icon = $data['riaIcon'];
-        $ria->description = $data['riaDescription'];
+        $ria = new Ria($data);
         $ria->storage_path = $data['riaFile'];
-        $ria->user_id = app()->make(Auth::class)->getUser().user_id;
+        $ria->user_id = app()->make(Auth::class)->getUser()->user_id;
 
         try {
             $ria->save();
@@ -75,6 +76,10 @@ class RiaController extends Controller
     /**
      * Bearbeiten der Ria
      *
+     * @param int $id
+     *
+     * @return mixed
+     * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
      */
     public function editRia(int $id)
     {
@@ -83,10 +88,10 @@ class RiaController extends Controller
         $data = $validator->validate(
             [
                 // TODO set data
-                'riaTitle' => 'string|unique:rias|min:1|max:255',
+                'riaTitle'       => 'string|unique:rias|min:1|max:255',
                 'riaDescription' => 'string|max:1000',
-                'riaFile'    => '',
-                'riaIcon' => 'alpha_dash|min:2|max:20'
+                'riaFile'        => '',
+                'riaIcon'        => 'alpha_dash|min:2|max:20',
             ],
             $this->request
         );
@@ -96,7 +101,7 @@ class RiaController extends Controller
         $ria->icon = $data['riaIcon'];
         $ria->storage_path = $data['riaFile'];
         $ria->description = $data['riaDescription'];
-        $ria->user_id = app()->make(Auth::class)->getUser().user_id;
+        $ria->user_id = app()->make(Auth::class)->getUser()->user_id;
 
         try {
             $ria->save();

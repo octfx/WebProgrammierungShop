@@ -16,4 +16,10 @@ use App\SparkPlug\Models\AbstractBaseModel as Model;
 class Ria extends Model
 {
     protected $table = 'rias';
+
+    protected $fillable = [
+        'name',
+        'description',
+        'icon_name',
+    ];
 }
