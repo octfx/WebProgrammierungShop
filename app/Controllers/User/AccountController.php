@@ -7,6 +7,7 @@
 
 namespace App\Controllers\User;
 
+use App\SparkPlug\Auth\Auth;
 use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Views\View;
 
@@ -29,7 +30,14 @@ class AccountController extends Controller
             return redirect('/login');
         }
 
-        return new View('user.profile');
+        $view = new View('user.profile');
+        $view->setVars(
+            [
+                'rias' => app()->make(Auth::class)->getUser()->rias(),
+            ]
+        );
+
+        return $view;
     }
 
 
@@ -46,6 +54,7 @@ class AccountController extends Controller
         );
 
         $userId = app()->make(Auth::class)->getUser().user_id;
+
         /* TODO get user, change password
         $user->password = bcrypt($data['password']);
 
@@ -57,6 +66,7 @@ class AccountController extends Controller
         }
         }
      */
+
         return redirect('/profile');
     }
 

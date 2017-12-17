@@ -7,6 +7,7 @@
 
 namespace App\Controllers\Ria;
 
+use App\Models\Ria;
 use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Views\View;
 
@@ -24,6 +25,12 @@ class GalleryController extends Controller
      */
     public function showGalleryView()
     {
-        return new View('ria.gallery');
+        $rias = new Ria();
+        $rias = $rias->query()->where('visible', '=', 1)->where('deleted', '=', 0)->fetchAll();
+
+        $view = new View('ria.gallery');
+        $view->setVars(['rias' => $rias]);
+
+        return $view;
     }
 }
