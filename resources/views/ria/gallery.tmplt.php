@@ -15,134 +15,16 @@
     </div>
 
     <div class="scrollable">
+        <?php foreach ($rias as $ria) { ?>
         <div class="gallery-entry">
-            <a href="@route('riaDetails', 1)"> <!-- TODO set link -->
+            <a href="@route('riaDetails', <?php echo $ria->ria_id; ?>)"> <!-- TODO set link -->
                 <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
+                    <i class="fa fa-<?php echo $ria->icon_name; ?>" aria-hidden="true"></i>
                 </div>
-                <span class="ria-name">Eine Ria</span>
+                <span class="ria-name"><?php echo $ria->name; ?></span>
             </a>
         </div>
-        <a href="@route('riaDetails', 2)">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Hallo</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Eine Ria</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Test</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Webprogrammierung...</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">10000 Eine Ria</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Eine Ria 10000</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Eine Ria</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">++++ Eine Ria</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Eine Ria</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Bla</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">bla bla</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Haus</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">Hund</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                    <div class="gallery-ria-icon">
-                        <i class="fa fa-file" aria-hidden="true"></i>
-                    </div>
-                    <span class="ria-name">Eine Ria</span>
-            </div>
-        </a>
-        <a href="@route('riaDetails')">
-            <div class="gallery-entry">
-                <div class="gallery-ria-icon">
-                    <i class="fa fa-file" aria-hidden="true"></i>
-                </div>
-                <span class="ria-name">whatever</span>
-            </div>
-        </a>
+        <?php } ?>
     </div>
 
     <p>Laden Sie Ihre Inhalte hoch.</p>

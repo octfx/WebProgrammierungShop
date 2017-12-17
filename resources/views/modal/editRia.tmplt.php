@@ -8,7 +8,7 @@
         </div>
 
         @include('snippets.errors')
-        <form id="modal-edit-ria-form" method="post" action="href="@route('editRia', $id)"">
+        <form id="modal-edit-ria-form" method="post" action="@route('editRia', <?php echo $id; ?>)">
 
             <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>" />
 
@@ -86,19 +86,19 @@
 
                 <div>
                     <label for="input-edit-ria-title">RIA Titel</label>
-                    <input id="input-edit-ria-title" type="text" name="riaTitle" required tabindex="1" value="<?php $ria->name ?>">
+                    <input id="input-edit-ria-title" type="text" name="riaTitle" required tabindex="1" value="<?php echo $ria->name ?>">
                 </div>
 
                 <div>
                     <label for="modal-edit-ria-description">Beschreibung</label>
-                    <textarea id="modal-edit-ria-description" name="riaDescription" tabindex="2" value="<?php $ria->description ?>">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet</textarea>
+                    <textarea id="modal-edit-ria-description" name="riaDescription" tabindex="2"><?php echo $ria->description ?></textarea>
                 </div>
 
                 <div>
                     <label>RIA Datei</label>
                     <p>Dateiname.war</p> <!-- TODO file name and other ria data from db -->
                     <button id="modal-edit-ria-choose-file" class="extra-small-button main-button">Andere Datei auswählen...</button>
-                    <input type="file" id="modal-edit-ria-input-file" accept=".war" name="riaFile" value="<?php $ria->storage_path ?>">
+                    <input type="file" id="modal-edit-ria-input-file" accept=".war" name="riaFile" value="<?php echo $ria->storage_path ?>">
                 </div>
             </div>
             <div class="modal-footer">
