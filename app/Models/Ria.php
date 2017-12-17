@@ -22,4 +22,17 @@ class Ria extends Model
         'description',
         'icon_name',
     ];
+
+    public function user()
+    {
+        return new User($this->user_id);
+    }
+
+    public function ratings()
+    {
+        $ratings = new Rating();
+        $ratings = $ratings->query()->where('ria_id', '=', $this->ria_id)->fetchAll();
+
+        return $ratings;
+    }
 }
