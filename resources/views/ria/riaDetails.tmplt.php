@@ -25,14 +25,14 @@
             <?php if (!login_check()) { ?>
                 <a href="@route('login')" class="main-button extra-small-button">Anmelden</a>
             <?php } ?>
-            <!-- TODO download link, nonstatic content -->
+            <a href="<?php echo $ria->storage_path; ?>">Downloaden</a>
         </div>
     </div>
 
     <div class="ria-content">
         <div class="ria-description">
             <div class="ria-details-icon">
-                <i class="fa fa-file" aria-hidden="true"></i>
+                <i class="fa fa-<?php echo $ria->icon_name; ?>" aria-hidden="true"></i>
             </div>
             <?php echo htmlspecialchars($ria->description); ?>
         </div>
@@ -57,7 +57,11 @@
                 </span>
                 <p class="user-description"><?php echo htmlspecialchars($rating->comment); ?></p>
             </div>
-        <?php } ?>
+        <?php }
+        if (count($ria->ratings()) === 0) {
+            echo '<h3>Noch keine Bewertungen abgegeben';
+        }
+        ?>
     </div>
 
     <div class="bottom-pane">

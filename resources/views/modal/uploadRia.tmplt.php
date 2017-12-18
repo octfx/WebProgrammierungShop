@@ -8,7 +8,7 @@
         <div class="modal-body">
 
             @include('snippets.errors')
-            <form method="post" action="@route('uploadRia')" id="ria-upload-form">
+            <form method="post" action="@route('uploadRia')" id="ria-upload-form" enctype="multipart/form-data">
                 <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>" />
 
                 <label>Icon wählen</label>

@@ -93,13 +93,6 @@
                     <label for="modal-edit-ria-description">Beschreibung</label>
                     <textarea id="modal-edit-ria-description" name="riaDescription" tabindex="2"><?php echo $ria->description ?></textarea>
                 </div>
-
-                <div>
-                    <label>RIA Datei</label>
-                    <p>Dateiname.war</p> <!-- TODO file name and other ria data from db -->
-                    <button id="modal-edit-ria-choose-file" class="extra-small-button main-button">Andere Datei auswählen...</button>
-                    <input type="file" id="modal-edit-ria-input-file" accept=".war" name="riaFile" value="<?php echo $ria->storage_path ?>">
-                </div>
             </div>
             <div class="modal-footer">
                 <button id="modal-edit-ria-save" type="submit" class="extra-small-button main-button">Speichern</button>

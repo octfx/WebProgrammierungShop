@@ -19,6 +19,10 @@ class RatingController extends Controller
      */
     public function addRating()
     {
+        if (!login_check()) {
+            return redirect('/login');
+        }
+
         $validator = new Validation();
 
         $data = $validator->validate(
