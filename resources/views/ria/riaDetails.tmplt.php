@@ -3,7 +3,7 @@
 @set('content')
 <div class="container">
     <div class="ria-header">
-        <h2>RIA - <?php echo $ria->ria_id; ?></h2>
+        <h2>RIA - <?php echo $ria->name; ?></h2>
 
         <span id="ria-details-header-star-rating" class="noneditable-star-rating"
               data-value="<?php echo $ria->totalRating(); ?>"> <!-- TODO set rating value from db -->

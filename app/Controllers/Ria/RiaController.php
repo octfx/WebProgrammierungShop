@@ -66,6 +66,16 @@ class RiaController extends Controller
 
         if (pathinfo($data['riaFile']['name'], PATHINFO_EXTENSION) !== 'war') {
             session_set('error', ['Es dürfen nur WAR Dateien hochgeladen werden']);
+            session_set('name', $data['name']);
+            session_set('description', $data['description']);
+
+            return back();
+        }
+
+        if ($data['riaFile']['size'] > $this->maxFileUploadInBytes()) {
+            session_set('error', ['Datei zu groß']);
+            session_set('name', $data['name']);
+            session_set('description', $data['description']);
 
             return back();
         }
@@ -79,8 +89,8 @@ class RiaController extends Controller
         $fileName = sha1($data['riaFile']['name'].uniqid()).'.'.pathinfo($data['riaFile']['name'], PATHINFO_EXTENSION);
         $fileName = 'rias/'.$fileName;
 
-        if (!move_uploaded_file($data['riaFile']['tmp_name'], storage_path('').'/'.$fileName)) {
-            session_set('error', ['Fehler beim Speichern der RIA', $fileName, $data]);
+        if (!move_uploaded_file($data['riaFile']['tmp_name'], storage_path('').$fileName)) {
+            session_set('error', ['Fehler beim Speichern der RIA']);
 
             return back();
         }
@@ -90,7 +100,7 @@ class RiaController extends Controller
         try {
             $ria->save();
         } catch (\PDOException $e) {
-            session_set('error', ['Fehler beim Speichern der RIA', $e->getMessage()]);
+            session_set('error', ['Fehler beim Speichern der RIA']);
 
             return back();
         }
@@ -148,5 +158,37 @@ class RiaController extends Controller
         return back();
     }
 
+    /**
+     * @param $val
+     *
+     * @return int|string
+     */
+    private function returnBytes($val)
+    {
+        $val = trim($val);
+        $last = strtolower($val[strlen($val) - 1]);
+        $val = intval($val);
 
+        switch ($last) {
+            case 'g':
+            case 'm':
+            case 'k':
+                $val *= 1024;
+                break;
+        }
+
+        return $val;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function maxFileUploadInBytes()
+    {
+        $maxUpload = $this->returnBytes(ini_get('upload_max_filesize'));
+        $maxPost = $this->returnBytes(ini_get('post_max_size'));
+        $memoryLimit = $this->returnBytes(ini_get('memory_limit'));
+
+        return min($maxUpload, $maxPost, $memoryLimit);
+    }
 }

@@ -29,7 +29,11 @@
                     <span class="ria-name"><?php echo $ria->name; ?></span>
                 </a>
             </div>
-        <?php } ?>
+        <?php }
+        if (count($rias) === 0) {
+            echo '<h3>Noch keine RIAs hochgeladen</h3>';
+        }
+        ?>
     </div>
 
     <p>Laden Sie Ihre Inhalte hoch.</p>

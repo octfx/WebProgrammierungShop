@@ -59,7 +59,6 @@ class AccountController extends Controller
 
         $user = app()->make(Auth::class)->getUser();
 
-        /* TODO get user, change password */
         $user->password = bcrypt($data['password']);
 
         try {
