@@ -8,7 +8,7 @@
         </div>
 
         @include('snippets.errors')
-        <form method="post" action="@route('changePassword')">
+        <form method="post" action="@route('changePassword')" id="modal-change-password-form">
             <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>" />
 
             <div class="modal-body">

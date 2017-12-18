@@ -65,13 +65,13 @@ class AccountController extends Controller
         try {
             $user->save();
         } catch (\PDOException $e) {
-            session_set('error', ['Fehler bei der Speicherung']);
+            session_set('error', ['Fehler bei der Speicherung', $e->getMessage()]);
 
-            return back();
+            //return back();
         }
 
         session_set('message', 'Passwort gespeichert');
 
-        return redirect('/profile');
+        return back();
     }
 }

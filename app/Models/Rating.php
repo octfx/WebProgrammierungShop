@@ -17,6 +17,11 @@ class Rating extends Model
 {
     protected $table = 'ratings';
 
+    protected $fillable = [
+        'rating',
+        'comment',
+    ];
+
     public function user()
     {
         return new User($this->user_id);

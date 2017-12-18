@@ -35,4 +35,20 @@ class Ria extends Model
 
         return $ratings;
     }
+
+    public function totalRating(): float
+    {
+        $ratings = new Rating();
+        $ratings = $ratings->query('rating')->where('ria_id', '=', $this->ria_id)->fetchAll();
+
+        $sum = 0;
+        if (!empty($ratings) && count($ratings) > 0) {
+            foreach ($ratings as $rating) {
+                $sum += intval($rating['rating']);
+            }
+            $sum = round($sum / count($ratings), 1);
+        }
+
+        return $sum;
+    }
 }

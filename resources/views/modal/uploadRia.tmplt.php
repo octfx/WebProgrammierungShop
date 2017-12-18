@@ -1,5 +1,5 @@
 <!--  upload ria modal -->
-<div id="modal-upload-ria" class="modal" <?php if (!is_null(session_get('error'))) { echo 'style="display: block;"'; } ?>>
+<div id="modal-upload-ria" class="modal" <?php if (session_has('error')) { echo 'style="display: block;"'; } ?>>
     <div class="modal-content">
         <div class="modal-header">
             <span class="modal-closeX modal-upload-ria-closeX">&times;</span>

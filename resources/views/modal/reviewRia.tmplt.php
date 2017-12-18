@@ -1,5 +1,5 @@
 <!-- modal review ria -->
-<div id="modal-review-ria" class="modal">
+<div id="modal-review-ria" class="modal" <?php if (session_has('error')) { echo 'style="display: block;"'; } ?>>
     <div class="modal-content">
         <div class="modal-header">
             <span class="modal-review-ria-closeX modal-closeX">&times;</span>
@@ -7,9 +7,9 @@
         </div>
 
         @include('snippets.errors')
-        <form method="post" action="@route('register')">
-
+        <form method="post" action="@route('add_rating')" id="ria-review-modal">
             <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>" />
+            <input type="hidden" name="ria_id" value="<?php echo $id; ?>" />
             <div class="modal-body">
 
                 <label style="margin-top:0;">Wertung</label>
@@ -33,7 +33,7 @@
                      </label>
                 </span>
                 <label for="modal-review-ria-description">Beschreibung</label>
-                <textarea id="modal-review-ria-description"></textarea>
+                <textarea id="modal-review-ria-description" name="comment"></textarea>
             </div>
             <div class="modal-footer">
                 <a id="modal-review-ria-save" class="button extra-small-button main-button">Speichern</a>

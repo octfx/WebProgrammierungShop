@@ -53,7 +53,7 @@ class RiaController extends Controller
             [
                 // TODO set data
                 'name'        => 'string|unique:rias|min:1|max:255',
-                'description' => 'string|max:1000',
+                'description' => 'string|min:3|max:1000',
                 //'riaFile'     => 'string',
                 'icon_name'   => 'alpha_dash|min:2|max:20',
             ],
@@ -71,6 +71,8 @@ class RiaController extends Controller
 
             return back();
         }
+
+        return back();
     }
 
     /**
@@ -88,29 +90,29 @@ class RiaController extends Controller
         $data = $validator->validate(
             [
                 // TODO set data
-                'riaTitle'       => 'string|unique:rias|min:1|max:255',
+                'riaTitle'       => 'string|min:1|max:255',
                 'riaDescription' => 'string|max:1000',
-                'riaFile'        => '',
+                'riaFile'        => 'nullable',
                 'riaIcon'        => 'alpha_dash|min:2|max:20',
             ],
             $this->request
         );
 
         $ria = new Ria($id);
+        var_dump($ria);
         $ria->name = $data['riaTitle'];
-        $ria->icon = $data['riaIcon'];
-        $ria->storage_path = $data['riaFile'];
+        $ria->icon_name = $data['riaIcon'];
         $ria->description = $data['riaDescription'];
-        $ria->user_id = app()->make(Auth::class)->getUser()->user_id;
-
+        var_dump($ria);
         try {
             $ria->save();
         } catch (\PDOException $e) {
-            session_set('error', ['Fehler beim Speichern der RIA']);
-
-            return back();
+            session_set('error', ['Fehler beim Speichern der RIA', $e->getMessage()]);
+echo $e->getMessage();
+return;
+            //return back();
         }
-
+echo 'succ';
     }
 
 

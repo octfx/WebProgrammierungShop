@@ -16,7 +16,7 @@
             <label for="login-passwort-input">Passwort</label>
             <input id="login-passwort-input" name="password" type="password" required tabindex="2"/>
         </div>
-<input type="file" name="test" accept=".war">
+
         <button class="main-button small-button">anmelden</button>
     </form>
 

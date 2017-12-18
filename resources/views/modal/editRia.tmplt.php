@@ -1,5 +1,5 @@
 <!-- modal edit ria -->
-<div id="modal-edit-ria" class="modal">
+<div id="modal-edit-ria" class="modal" <?php if (session_has('error')) { echo 'style="display: block;"'; } ?>>
 
     <div class="modal-content">
         <div class="modal-header">
@@ -18,7 +18,7 @@
                 <div id="modal-upload-ria-icon-grid">
                     <!-- selected default icon for ria -->
                     <div class="modal-upload-ria-icon modal-upload-ria-icon-radio selected">
-                        <input type="radio" name="riaIcon" value="file">
+                        <input type="radio" name="riaIcon" value="file" checked>
                         <i class="fa fa-file" aria-hidden="true"></i>
                     </div>
                     <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
