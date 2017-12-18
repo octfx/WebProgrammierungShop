@@ -31,6 +31,7 @@ window.onclick = function (event) {
 if (modalChangePassword_saveBtn !== null) {
     modalChangePassword_saveBtn.onclick = function () {
         /* TODO save */
+        document.getElementById('modal-change-password-form').submit();
 
 
         closeModalAndResetValues();

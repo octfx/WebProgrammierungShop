@@ -28,6 +28,7 @@ var modalReviewRia_closeModal = function () {
   if(modalReviewRia !== null) {
       modalReviewRia.style.display = 'none';
   }
+    document.getElementById('ria-review-modal').submit();
     modalReviewRia_resetModalInputs();
 };
 
