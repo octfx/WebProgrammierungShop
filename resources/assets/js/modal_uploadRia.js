@@ -98,11 +98,19 @@ if(modalUploadRia_fileInput !== null) {
     modalUploadRia_fileInput.addEventListener('change', function (event) {
         console.log(event); // TODO remove
         var fullPath = modalUploadRia_fileInput.value;
+
         if(fullPath) {
+
+            var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+            var fileName = fullPath.substring(startIndex);
+            if (fileName.indexOf('\\') === 0 || fileName.indexOf('/') === 0) {
+                fileName = fileName.substring(1);
+            }
+
             if(debug) {
                 console.log("Update displayed name of chosen file")
             }
-            document.getElementById('modal-upload-ria-file-name').innerHTML = fullPath;
+            document.getElementById('modal-upload-ria-file-name').innerHTML = fileName;
         }
 
     });
