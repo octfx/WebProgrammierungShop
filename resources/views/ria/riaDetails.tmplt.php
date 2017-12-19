@@ -23,9 +23,11 @@
                     )
                 ); ?></span>
             <?php if (!login_check()) { ?>
-                <a href="@route('login')" class="main-button extra-small-button">Anmelden</a>
+                <a href="@route('login')" class="button main-button extra-small-button">Anmelden</a>
             <?php } ?>
-            <a href="<?php echo $ria->storage_path; ?>">Downloaden</a>
+            <?php if (login_check()) { ?>
+                <a class="button main-button extra-small-button" href="<?php echo $ria->storage_path; ?>">Downloaden</a>
+            <?php } ?>
         </div>
     </div>
 
@@ -74,7 +76,7 @@
             <?php if ($ria->user_id == app()->make(\App\SparkPlug\Auth\Auth::class)->getUser()->user_id) { ?>
                 <p>RIA bearbeiten</p>
                 <!-- Open edit ria modal -->
-                <a id="btn-edit-ria" class="main-button small-button">Bearbeiten</a>
+                <a class="button main-button small-button" id="btn-edit-ria" class="main-button small-button">Bearbeiten</a>
             <?php } ?>
         </div>
     </div>

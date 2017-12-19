@@ -23,7 +23,7 @@ $auth = app()->make(\App\SparkPlug\Auth\Auth::class);
             <p>Erstellen Sie einen Account und legen Sie los!</p>
             <div class="buttonbox">
                 <a href="@route('register_form')" class="button main-button">Registrieren</a>
-                <a href="@route('login_form')" class="button main-button">Ich habe schon einen Account.</a>
+                <a href="@route('login_form')" class="button secondary-button">Ich habe schon einen Account.</a>
             </div>
         <?php } ?>
     </div>
