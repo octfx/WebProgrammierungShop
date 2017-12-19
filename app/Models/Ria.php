@@ -20,7 +20,7 @@ class Ria extends Model
     protected $fillable = [
         'name',
         'description',
-        'icon_name',
+        'icon_id',
     ];
 
     /**

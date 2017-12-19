@@ -26,7 +26,7 @@
                 <a href="@route('login')" class="button main-button extra-small-button">Anmelden</a>
             <?php } ?>
             <?php if (login_check()) { ?>
-                <a class="button main-button extra-small-button" href="<?php echo $ria->storage_path; ?>">Downloaden</a>
+                <a class="button main-button extra-small-button" href="/<?php echo $ria->storage_path.\App\Controllers\Ria\RiaController::RIA_EXTENSION; ?>">Downloaden</a>
             <?php } ?>
         </div>
     </div>
@@ -37,6 +37,7 @@
                 <i class="fa fa-<?php echo $ria->icon_name; ?>" aria-hidden="true"></i>
             </div>
             <?php echo htmlspecialchars($ria->description); ?>
+            <iframe src="/<?php echo $ria->storage_path; ?>/" scrolling="auto" sandbox="allow-scripts"></iframe>
         </div>
 
     </div>

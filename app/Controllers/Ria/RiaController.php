@@ -12,6 +12,7 @@ use App\SparkPlug\Auth\Auth;
 use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Validation\Validation;
 use App\SparkPlug\Views\View;
+use ZipArchive;
 
 /**
  * Class RiaController
@@ -20,6 +21,8 @@ use App\SparkPlug\Views\View;
  */
 class RiaController extends Controller
 {
+    const RIA_EXTENSION = '.war';
+
     /**
      * Gibt RiaDetail View zurück
      *
@@ -59,21 +62,13 @@ class RiaController extends Controller
                 'name'        => 'string|unique:rias|min:1|max:255',
                 'description' => 'string|min:3|max:1000',
                 'riaFile'     => 'file',
-                'icon_name'   => 'alpha_dash|min:2|max:20',
+                'icon_id'     => 'int|exists:icons',
             ],
             $this->request
         );
 
-        if (pathinfo($data['riaFile']['name'], PATHINFO_EXTENSION) !== 'war') {
+        if ('.'.pathinfo($data['riaFile']['name'], PATHINFO_EXTENSION) !== static::RIA_EXTENSION) {
             session_set('error', ['Es dürfen nur WAR Dateien hochgeladen werden']);
-            session_set('name', $data['name']);
-            session_set('description', $data['description']);
-
-            return back();
-        }
-
-        if ($data['riaFile']['size'] > $this->maxFileUploadInBytes()) {
-            session_set('error', ['Datei zu groß']);
             session_set('name', $data['name']);
             session_set('description', $data['description']);
 
@@ -83,24 +78,44 @@ class RiaController extends Controller
         $ria = new Ria();
         $ria->name = $data['name'];
         $ria->description = $data['description'];
-        $ria->icon_name = $data['icon_name'];
+        $ria->icon_id = $data['icon_id'];
         $ria->user_id = app()->make(Auth::class)->getUser()->user_id;
 
-        $fileName = sha1($data['riaFile']['name'].uniqid()).'.'.pathinfo($data['riaFile']['name'], PATHINFO_EXTENSION);
+        $fileHash = sha1($data['riaFile']['name'].uniqid());
+        $fileName = $fileHash;
         $fileName = 'rias/'.$fileName;
 
-        if (!move_uploaded_file($data['riaFile']['tmp_name'], storage_path('').$fileName)) {
+        if (!move_uploaded_file($data['riaFile']['tmp_name'], storage_path('').$fileName.static::RIA_EXTENSION)) {
             session_set('error', ['Fehler beim Speichern der RIA']);
+            session_set('name', $data['name']);
+            session_set('description', $data['description']);
 
             return back();
         }
 
         $ria->storage_path = $fileName;
 
+        $zip = new ZipArchive();
+        $archive = $zip->open(storage_path('').$fileName.static::RIA_EXTENSION);
+
+        if ($archive !== true) {
+            session_set('error', ['Fehler beim Entpacken der RIA']);
+            unlink(storage_path('').$fileName.static::RIA_EXTENSION);
+            session_set('name', $data['name']);
+            session_set('description', $data['description']);
+
+            return back();
+        }
+
+        $zip->extractTo(storage_path('').$fileName);
+        $zip->close();
+
         try {
             $ria->save();
         } catch (\PDOException $e) {
             session_set('error', ['Fehler beim Speichern der RIA']);
+            session_set('name', $data['name']);
+            session_set('description', $data['description']);
 
             return back();
         }
@@ -158,37 +173,9 @@ class RiaController extends Controller
         return back();
     }
 
-    /**
-     * @param $val
-     *
-     * @return int|string
-     */
-    private function returnBytes($val)
+
+    private function saveFile()
     {
-        $val = trim($val);
-        $last = strtolower($val[strlen($val) - 1]);
-        $val = intval($val);
 
-        switch ($last) {
-            case 'g':
-            case 'm':
-            case 'k':
-                $val *= 1024;
-                break;
-        }
-
-        return $val;
-    }
-
-    /**
-     * @return mixed
-     */
-    private function maxFileUploadInBytes()
-    {
-        $maxUpload = $this->returnBytes(ini_get('upload_max_filesize'));
-        $maxPost = $this->returnBytes(ini_get('post_max_size'));
-        $memoryLimit = $this->returnBytes(ini_get('memory_limit'));
-
-        return min($maxUpload, $maxPost, $memoryLimit);
     }
 }

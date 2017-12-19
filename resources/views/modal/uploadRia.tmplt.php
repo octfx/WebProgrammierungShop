@@ -16,7 +16,7 @@
                     <!-- selected default icon for ria -->
                     <?php foreach (app()->make(\App\Models\Icon::class)->all() as $icon) { ?>
                         <div class="modal-upload-ria-icon modal-upload-ria-icon-radio <?php if ($icon->name == 'file') { ?>selected<?php } ?>">
-                            <input type="radio" name="riaIcon" value="<?php echo $icon->name ?>" <?php if ($icon->name == 'file') { ?>checked<?php } ?>>
+                            <input type="radio" name="icon_id" value="<?php echo $icon->icon_id ?>" <?php if ($icon->name == 'file') { ?>checked<?php } ?>>
                             <i class="fa fa-<?php echo $icon->name ?>" aria-hidden="true"></i>
                         </div>
                     <?php } ?>

@@ -26,7 +26,7 @@
             <div class="gallery-entry">
                 <a href="@route('riaDetails', <?php echo $ria->ria_id; ?>)"> <!-- TODO set link -->
                     <div class="gallery-ria-icon">
-                        <i class="fa fa-<?php echo $ria->icon_name; ?>" aria-hidden="true"></i>
+                        <i class="fa fa-<?php echo $ria->icon(); ?>" aria-hidden="true"></i>
                     </div>
                     <span class="ria-name"><?php echo $ria->name; ?></span>
                 </a>
