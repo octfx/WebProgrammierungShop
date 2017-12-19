@@ -17,7 +17,7 @@
                 <label>Icon</label>
                 <div id="modal-upload-ria-icon-grid">
 
-                    <?php foreach ($icons as $icon) { ?>
+                    <?php foreach (app()->make(\App\Models\Icon::class)->all() as $icon) { ?>
                         <div class="modal-upload-ria-icon modal-upload-ria-icon-radio <?php if ($ria->icon() == $icon->name) { ?>selected<?php } ?>">
                             <input type="radio" name="riaIcon" value="<?php $icon->name ?>" <?php if ($ria->icon() == $icon->name) { ?>checked<?php } ?>>
                             <i class="fa fa-<?php $icon->name ?>" aria-hidden="true"></i>

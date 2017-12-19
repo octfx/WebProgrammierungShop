@@ -14,70 +14,12 @@
                 <label>Icon wählen</label>
                 <div id="modal-upload-ria-icon-grid">
                     <!-- selected default icon for ria -->
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio selected">
-                        <input type="radio" name="icon_name" value="file" checked>
-                        <i class="fa fa-file" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="user">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="car">
-                        <i class="fa fa-car" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="bell">
-                        <i class="fa fa-bell" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="university">
-                        <i class="fa fa-university" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="area-chart">
-                        <i class="fa fa-area-chart" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="cube">
-                        <i class="fa fa-cube" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="camera">
-                        <i class="fa fa-camera" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="calculator">
-                        <i class="fa fa-calculator" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="envelope">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="coffee">
-                        <i class="fa fa-coffee" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="rocket">
-                        <i class="fa fa-rocket" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="hourglass">
-                        <i class="fa fa-hourglass" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="folder-open">
-                        <i class="fa fa-folder-open" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="microphone">
-                        <i class="fa fa-microphone" aria-hidden="true"></i>
-                    </div>
-                    <div class="modal-upload-ria-icon modal-upload-ria-icon-radio">
-                        <input type="radio" name="icon_name" value="flag">
-                        <i class="fa fa-flag" aria-hidden="true"></i>
-                    </div>
+                    <?php foreach (app()->make(\App\Models\Icon::class)->all() as $icon) { ?>
+                        <div class="modal-upload-ria-icon modal-upload-ria-icon-radio <?php if ($icon->name == 'file') { ?>selected<?php } ?>">
+                            <input type="radio" name="riaIcon" value="<?php echo $icon->name ?>" <?php if ($icon->name == 'file') { ?>checked<?php } ?>>
+                            <i class="fa fa-<?php echo $icon->name ?>" aria-hidden="true"></i>
+                        </div>
+                    <?php } ?>
 
             </div>
 
