@@ -4,6 +4,10 @@ if(riaGallerySearchInput !== null) {
     riaGallerySearchInput.addEventListener('input', function() {
         var searchInput = this.value.toLowerCase();
 
+        if(debug) {
+            console.log('Search for ria named ' + searchInput);
+        }
+
         var galleryEntries = document.getElementsByClassName('gallery-entry');
 
         for(var i = 0; i < galleryEntries.length; i++) {

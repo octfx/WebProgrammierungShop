@@ -13,28 +13,9 @@ var modalEditRia_fileInput = document.getElementById('modal-edit-ria-input-file'
 var modalEditRia_resetModalInputs = function() {
 
     if(debug) {
-        console.log("Resetting edit RIA modal input values to database values");
+        console.log("Resetting edit ria modal input values to database values");
     }
-
-    if(modalEditRia !== null) {
-
-        location.reload();
-
-        // reset icon to db icon
-        // TODO resetting to db values, ajax
-
-        // reset title to db title
-        var modalEditRiaTitle = document.getElementById('input-edit-ria-title');
-        if(modalEditRiaTitle !== null) {
-           // TODO  modalEditRiaTitle.value =
-        }
-
-        // reset description content to db description
-        var modalEditRiaDesc = document.getElementById('modal-edit-ria-description');
-        if(modalEditRiaDesc !== null) {
-            modalReviewRiaDesc.value = '';
-        }
-    }
+    location.reload();
 };
 
 var modalEditRia_closeModal = function () {
@@ -44,7 +25,7 @@ var modalEditRia_closeModal = function () {
     modalEditRia_resetModalInputs();
 
     if(debug) {
-        console.log("Edit RIA modal closed");
+        console.log("Edit ria modal closed");
     }
 };
 
@@ -56,7 +37,7 @@ if (modalEditRia_openBtn !== null) {
         }
         modalEditRia.style.display = 'block';
         if(debug) {
-            console.log("Showing edit RIA modal");
+            console.log("Showing edit ria modal");
         }
     };
 }
@@ -81,7 +62,7 @@ window.onclick = function (event) {
 if (modalEditRia_saveBtn !== null && modalEditRia !== null) {
     modalEditRia_saveBtn.onclick = function () {
         if(debug) {
-            console.log("Saving RIA values");
+            console.log("Saving ria values");
         }
 
         // TODO save
@@ -91,7 +72,9 @@ if (modalEditRia_saveBtn !== null && modalEditRia !== null) {
 
 if (modalEditRia_cancelBtn !== null && modalEditRia !== null) {
     modalEditRia_cancelBtn.onclick = function () {
-        // TODO delete
+        if(debug) {
+            console.log("Cancel editing ria button clicked");
+        }
         modalEditRia_closeModal();
     };
 }
@@ -99,6 +82,9 @@ if (modalEditRia_cancelBtn !== null && modalEditRia !== null) {
 if (modalEditRia_chooseFileBtn !== null && modalEditRia_fileInput !== null) {
     modalEditRia_chooseFileBtn.onclick = function (event) {
         event.preventDefault();
+        if(debug) {
+            console.log("Choose file button clicked");
+        }
         modalEditRia_fileInput.click();
     };
 }

@@ -10,13 +10,19 @@ var changePasswordModal_input2 = document.getElementById('modal-change-password-
 
 if(profileBtnChangePassword !== null) {
     profileBtnChangePassword.onclick = function () {
-            modalChangePassword.style.display = 'block';
+        if(debug) {
+            console.log('Open change password modal button clicked');
+        }
+        modalChangePassword.style.display = 'block';
     };
 }
 
 if (modalChangePassword_closeXBtn !== null) {
     for (var i = 0; i < modalChangePassword_closeXBtn.length; i++) {
         modalChangePassword_closeXBtn[i].onclick = function () {
+            if(debug) {
+                console.log('Close change password modal button clicked');
+            }
             closeModalAndResetValues();
         };
     }
@@ -40,6 +46,9 @@ if (modalChangePassword_saveBtn !== null) {
 
 if (modalChangePassword_cancelBtn !== null) {
     modalChangePassword_cancelBtn.onclick = function () {
+        if(debug) {
+            console.log('Cancel button in change password modal clicked');
+        }
         closeModalAndResetValues();
     };
 }
@@ -53,6 +62,9 @@ var closeModalAndResetValues = function() {
     }
     if(modalChangePassword !== null) {
         modalChangePassword.style.display = 'none';
+    }
+    if(debug) {
+        console.log('Change password modal closed and modal values resetted');
     }
 
 };

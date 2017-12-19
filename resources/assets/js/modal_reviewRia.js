@@ -9,6 +9,10 @@ var modalReviewRia_closeBtn = document.getElementById('modal-review-ria-close');
  */
 var modalReviewRia_resetModalInputs = function() {
 
+    if(debug) {
+        console.log("Reset review ria modal inputs");
+    }
+
     if(modalReviewRia !== null) {
         // reset selected stars
         var selectedStarLabels = modalReviewRia.getElementsByClassName('label-rating selected');
@@ -28,15 +32,19 @@ var modalReviewRia_closeModal = function () {
   if(modalReviewRia !== null) {
       modalReviewRia.style.display = 'none';
   }
-    modalReviewRia_resetModalInputs();
+  modalReviewRia_resetModalInputs();
+  if(debug) {
+      console.log('Review ria modal closed');
+  }
+
 };
 
 
 if (modalReviewRia_openBtn !== null) {
     modalReviewRia_openBtn.onclick = function () {
-        // TODO if(debug === true) {
-        console.log("Open review ria modal button clicked")
-        // }
+        if(debug) {
+            console.log("Open review ria modal button clicked")
+        }
         modalReviewRia.style.display = 'block';
     };
 }

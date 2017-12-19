@@ -2,6 +2,11 @@ var editableStarRatings = document.getElementsByClassName('editable-star-rating'
 var noneditableRatings = document.getElementsByClassName('noneditable-star-rating');
 
 if (editableStarRatings !== null) {
+
+    if(debug) {
+        console.log('Initialize editable star ratings');
+    }
+
     for (var i = 0; i < editableStarRatings.length; i++) {
         var inputs = editableStarRatings[i].getElementsByClassName('input-rating');
 
@@ -29,9 +34,9 @@ if (editableStarRatings !== null) {
 var createNonEditableStarRating = function (rating, ratingDiv) {
     var numOfStars = getStarNumFromRating(rating);
 
-    // TODO if(debug === true) {
-    console.log("DB rating value processed to " + numOfStars + " stars to be showed");
-    // }
+    if(debug) {
+        console.log("DB rating value of " + rating + " processed to " + numOfStars + " stars to be showed");
+    }
     var innerHtml = '';
 
     for(var i = 5; i >= 1; i--) {
@@ -80,9 +85,9 @@ var getStarNumFromRating = function (rating) {
 for(var i = 0; i < noneditableRatings.length; i++) {
 
     var ratingVal = noneditableRatings[i].getAttribute('data-value');
-    // TODO if(debug === true) {
+    if(debug) {
         console.log("DB rating value is " + ratingVal);
-    // }
+    }
 
     if(ratingVal !== null) {
         createNonEditableStarRating(ratingVal, noneditableRatings[i]);

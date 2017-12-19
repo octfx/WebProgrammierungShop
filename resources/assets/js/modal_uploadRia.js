@@ -8,8 +8,35 @@ var modalUploadRia_chooseFileBtn = document.getElementById('modal-upload-ria-cho
 var modalUploadRia_fileInput = document.getElementById('modal-upload-ria-input-file');
 var modalEditRia_iconRadios = document.getElementsByClassName('modal-upload-ria-icon-radio');
 
+
+/**
+ *  reset all inputs of modal, so that inputs are clear when reopened
+ */
+var modalUploadRia_resetModalInputs = function() {
+
+    if(debug) {
+        console.log("Resetting upload ria modal input values to database values");
+    }
+    location.reload();
+};
+
+var modalUploadRia_closeModal = function () {
+    if(modalUploadRia !== null) {
+        modalUploadRia.style.display = 'none';
+    }
+    modalUploadRia_resetModalInputs();
+
+    if(debug) {
+        console.log("Upload ria modal closed");
+    }
+};
+
 if (modalUploadRia_openBtn !== null && modalUploadRia !== null) {
+
     modalUploadRia_openBtn.onclick = function () {
+        if(debug) {
+            console.log("Open upload ria modal button clicked");
+        }
         modalUploadRia.style.display = 'block';
     };
 }
@@ -17,33 +44,39 @@ if (modalUploadRia_openBtn !== null && modalUploadRia !== null) {
 if (modalUploadRia_closeXBtn !== null && modalUploadRia !== null) {
     for (var i = 0; i < modalUploadRia_closeXBtn.length; i++) {
         modalUploadRia_closeXBtn[i].onclick = function () {
-            modalUploadRia.style.display = 'none';
+            modalUploadRia_closeModal();
         };
     }
 }
 
 window.onclick = function (event) {
     if (event.target === modalUploadRia && modalUploadRia !== null) {
-        modalUploadRia.style.display = 'none';
+        modalUploadRia_closeModal();
     }
 };
 
 if (modalUploadRia_saveBtn !== null && modalUploadRia !== null) {
     modalUploadRia_saveBtn.onclick = function () {
+        if(debug) {
+            console.log('Upload ria')
+        }
         document.getElementById('ria-upload-form').submit();
-        modalUploadRia.style.display = 'none';
+        modalUploadRia_closeModal();
     };
 }
 
 if (modalUploadRia_closeBtn !== null && modalUploadRia !== null) {
     modalUploadRia_closeBtn.onclick = function () {
-        modalUploadRia.style.display = 'none';
+        modalUploadRia_closeModal();
     };
 }
 
 if (modalUploadRia_chooseFileBtn !== null && modalUploadRia_fileInput !== null) {
     modalUploadRia_chooseFileBtn.onclick = function (event) {
         event.preventDefault();
+        if(debug) {
+            console.log("Choose file button clicked");
+        }
         modalUploadRia_fileInput.click();
     };
 }
@@ -61,6 +94,9 @@ if (modalEditRia_iconRadios !== null) {
 
 
 var removeSelectedFromAllIconRadios = function () {
+    if(debug) {
+        console.log('Remove selected attribute from all icons');
+    }
     if (modalEditRia_iconRadios !== null) {
         for (var i = 0; i < modalEditRia_iconRadios.length; i++) {
             modalEditRia_iconRadios[i].classList.remove('selected');
@@ -96,7 +132,6 @@ var getClassNameOfChosenIcon = function () {
 
 if(modalUploadRia_fileInput !== null) {
     modalUploadRia_fileInput.addEventListener('change', function (event) {
-        console.log(event); // TODO remove
         var fullPath = modalUploadRia_fileInput.value;
 
         if(fullPath) {
