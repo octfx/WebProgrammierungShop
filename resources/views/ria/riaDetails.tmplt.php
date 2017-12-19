@@ -71,12 +71,12 @@
             <?php if ($ria->user_id != app()->make(\App\SparkPlug\Auth\Auth::class)->getUser()->user_id) { ?>
                 <p>Geben Sie Ihre Bewertung ab.</p>
                 <!-- Open review ria modal -->
-                <a id="btn-review-ria" class="main-button small-button">Bewerten</a>
+                <a id="btn-review-ria" class="button main-button small-button">Bewerten</a>
             <?php } ?>
             <?php if ($ria->user_id == app()->make(\App\SparkPlug\Auth\Auth::class)->getUser()->user_id) { ?>
                 <p>RIA bearbeiten</p>
                 <!-- Open edit ria modal -->
-                <a class="button main-button small-button" id="btn-edit-ria" class="main-button small-button">Bearbeiten</a>
+                <a class="button main-button small-button" id="btn-edit-ria">Bearbeiten</a>
             <?php } ?>
         </div>
     </div>
