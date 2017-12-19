@@ -35,7 +35,7 @@
 
                 <div>
                     <label>RIA Datei</label>
-                    <p>Wählen Sie eine Datei im .war Format aus.</p>
+                    <p id="modal-upload-ria-file-name">Wählen Sie eine Datei im .war Format aus.</p>
                     <button id="modal-upload-ria-choose-file" class="extra-small-button main-button">Datei auswählen...</button>
                     <input type="file" id="modal-upload-ria-input-file" accept=".war" name="riaFile">
                 </div>

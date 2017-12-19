@@ -94,6 +94,21 @@ var getClassNameOfChosenIcon = function () {
     return null;
 }
 
+if(modalUploadRia_fileInput !== null) {
+    modalUploadRia_fileInput.addEventListener('change', function (event) {
+        console.log(event); // TODO remove
+        var fullPath = modalUploadRia_fileInput.value;
+        if(fullPath) {
+            if(debug) {
+                console.log("Update displayed name of chosen file")
+            }
+            document.getElementById('modal-upload-ria-file-name').innerHTML = fullPath;
+        }
+
+    });
+}
+
+
 
 
 
