@@ -68,7 +68,7 @@
 
     <div class="bottom-pane">
         <div>
-            <?php if ($ria->user_id != app()->make(\App\SparkPlug\Auth\Auth::class)->getUser()->user_id) { ?>
+            <?php if ($ria->user_id != app()->make(\App\SparkPlug\Auth\Auth::class)->getUser()->user_id && login_check()) { ?>
                 <p>Geben Sie Ihre Bewertung ab.</p>
                 <!-- Open review ria modal -->
                 <a id="btn-review-ria" class="button main-button small-button">Bewerten</a>
