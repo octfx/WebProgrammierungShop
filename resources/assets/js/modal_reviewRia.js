@@ -28,7 +28,6 @@ var modalReviewRia_closeModal = function () {
   if(modalReviewRia !== null) {
       modalReviewRia.style.display = 'none';
   }
-    document.getElementById('ria-review-modal').submit();
     modalReviewRia_resetModalInputs();
 };
 
@@ -58,7 +57,11 @@ window.onclick = function (event) {
 
 if (modalReviewRia_saveBtn !== null) {
     modalReviewRia_saveBtn.onclick = function () {
-        /* TODO save */
+
+        if(debug) {
+            console.log("Save review");
+        }
+        document.getElementById('ria-review-modal').submit();
         modalReviewRia_closeModal();
     };
 }

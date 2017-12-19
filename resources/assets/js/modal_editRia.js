@@ -2,7 +2,7 @@ var modalEditRia = document.getElementById('modal-edit-ria');
 var modalEditRia_openBtn = document.getElementById('btn-edit-ria');
 var modalEditRia_closeXBtn = document.getElementsByClassName('modal-edit-ria-closeX');
 var modalEditRia_saveBtn = document.getElementById('modal-edit-ria-save');
-var modalEditRia_deleteBtn = document.getElementById('modal-edit-ria-delete');
+var modalEditRia_cancelBtn = document.getElementById('modal-edit-ria-cancel');
 
 var modalEditRia_chooseFileBtn = document.getElementById('modal-edit-ria-choose-file');
 var modalEditRia_fileInput = document.getElementById('modal-edit-ria-input-file');
@@ -17,6 +17,9 @@ var modalEditRia_resetModalInputs = function() {
     }
 
     if(modalEditRia !== null) {
+
+        location.reload();
+
         // reset icon to db icon
         // TODO resetting to db values, ajax
 
@@ -86,8 +89,8 @@ if (modalEditRia_saveBtn !== null && modalEditRia !== null) {
     };
 }
 
-if (modalEditRia_deleteBtn !== null && modalEditRia !== null) {
-    modalEditRia_deleteBtn.onclick = function () {
+if (modalEditRia_cancelBtn !== null && modalEditRia !== null) {
+    modalEditRia_cancelBtn.onclick = function () {
         // TODO delete
         modalEditRia_closeModal();
     };
