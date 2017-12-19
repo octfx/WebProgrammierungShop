@@ -23,11 +23,34 @@ class Ria extends Model
         'icon_name',
     ];
 
+    /**
+     * Gibt User der Ria zurück
+     *
+     * @return \App\Models\User
+     */
     public function user()
     {
         return new User($this->user_id);
     }
 
+    /**
+     * Gibt Iconname der RIA zurück
+     *
+     * @return mixed
+     */
+    public function icon()
+    {
+        $icon = new Icon();
+        $icon = $icon->query('name')->where('icon_id', '=', $this->icon_id)->fetch();
+
+        return $icon['name'];
+    }
+
+    /**
+     * Gibt Alle Ratings der RIA zurück
+     *
+     * @return \App\Models\Rating|\App\SparkPlug\Collections\CollectionInterface|\App\SparkPlug\Models\ModelCollection|array|bool
+     */
     public function ratings()
     {
         $ratings = new Rating();
@@ -36,6 +59,11 @@ class Ria extends Model
         return $ratings;
     }
 
+    /**
+     * Totale Bewertung der RIA
+     *
+     * @return float
+     */
     public function totalRating(): float
     {
         $ratings = new Rating();
