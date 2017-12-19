@@ -10,6 +10,7 @@ $router->get('/gallery', 'Ria\GalleryController@showGalleryView')->name('gallery
 $router->get('/ria/[0]', 'Ria\RiaController@showRiaDetailsView')->name('riaDetails');
 $router->get('/profile', 'User\AccountController@showProfileView')->name('profile');
 
+$router->post('/profile', 'User\AccountController@updateProfile')->name('updateProfile');
 $router->post('/uploadRia', 'Ria\RiaController@uploadRia')->name('uploadRia');
 $router->post('/editRia/[0]', 'Ria\RiaController@editRia')->name('editRia');
 $router->post('/changePassword', 'User\AccountController@changePassword')->name('changePassword');

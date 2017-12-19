@@ -9,7 +9,7 @@ return [
     /**
      * True wenn Exception-Details mit ausgegeben werden sollen
      */
-    'debug' => true,
+    'debug' => false,
 
     /**
      * Timezone welche beim Laden der App gesetzt wird

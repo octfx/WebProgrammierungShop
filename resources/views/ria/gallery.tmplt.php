@@ -21,7 +21,8 @@
                 <div class="gallery-ria-icon">
                     <i class="fa fa-<?php echo $ria->icon_name; ?>" aria-hidden="true"></i>
                 </div>
-                <span class="ria-name"><?php echo $ria->name; ?></span>
+                <span class="ria-name" style="text-decoration: underline; text-decoration-color: <?php echo $ria->user()->color; ?>;">
+                    <?php echo $ria->name; ?></span>
             </a>
         </div>
         <?php } ?>

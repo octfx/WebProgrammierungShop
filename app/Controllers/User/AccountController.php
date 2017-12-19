@@ -73,4 +73,35 @@ class AccountController extends Controller
 
         return back();
     }
+
+    /**
+     * @return \App\SparkPlug\Response\Redirect
+     * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
+     */
+    public function updateProfile()
+    {
+        $validator = new Validation();
+
+        $data = $validator->validate(
+            [
+                'color' => 'string|min:7|max:7',
+            ],
+            $this->request
+        );
+
+        $user = app()->make(Auth::class)->getUser();
+        $user->color = data['color'];
+
+        try {
+            $user->save();
+        } catch (\PDOException $e) {
+            session_set('error', ['Fehler bei der Speicherung']);
+
+            return back();
+        }
+
+        session_set('message', 'Farbe gespeichert');
+
+        return back();
+    }
 }
