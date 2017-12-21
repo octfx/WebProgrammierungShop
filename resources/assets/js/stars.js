@@ -3,7 +3,7 @@ var noneditableRatings = document.getElementsByClassName('noneditable-star-ratin
 
 if (editableStarRatings !== null) {
 
-    if(debug) {
+    if (debug) {
         console.log('Initialize editable star ratings');
     }
 
@@ -34,24 +34,24 @@ if (editableStarRatings !== null) {
 var createNonEditableStarRating = function (rating, ratingDiv) {
     var numOfStars = getStarNumFromRating(rating);
 
-    if(debug) {
-        console.log("DB rating value of " + rating + " processed to " + numOfStars + " stars to be showed");
+    if (debug) {
+        console.log("DB rating value of " + rating + " processed to " + numOfStars + " stars to be shown");
     }
     var innerHtml = '';
 
-    for(var i = 5; i >= 1; i--) {
+    for (var i = 5; i >= 1; i--) {
         innerHtml += '<span class="star big-star star' + i;
 
         // add filled or half-filled attribute to html star element if necessary
-        if(numOfStars-i+1 === 0.5) {
+        if (numOfStars - i + 1 === 0.5) {
             innerHtml += ' half-filled';
-        } else if(Math.floor(numOfStars) - i >= 0){
+        } else if (Math.floor(numOfStars) - i >= 0) {
             innerHtml += ' filled';
         }
         innerHtml += '"></span>';
     }
 
-    if(ratingDiv !== null) {
+    if (ratingDiv !== null) {
         ratingDiv.innerHTML = innerHtml;
     }
 };
@@ -65,15 +65,15 @@ var createNonEditableStarRating = function (rating, ratingDiv) {
  * @return num of filled stars (0.5 for half filled stars)
  */
 var getStarNumFromRating = function (rating) {
-    if(rating < 0 || rating > 5) {
+    if (rating < 0 || rating > 5) {
         return 0;
     }
 
     var restRatingVal = rating - Math.floor(rating);
-    if(restRatingVal >= 0.0 && restRatingVal < 0.3) {
+    if (restRatingVal >= 0.0 && restRatingVal < 0.3) {
         // non filled star
         return Math.floor(rating);
-    } else if(restRatingVal >= 0.3 && restRatingVal < 0.7) {
+    } else if (restRatingVal >= 0.3 && restRatingVal < 0.7) {
         // half filled star
         return Math.floor(rating) + 0.5;
     } else { // restRatingVal >= 0.7 && restRatingVal < 1.0)
@@ -82,18 +82,18 @@ var getStarNumFromRating = function (rating) {
     }
 };
 
-for(var i = 0; i < noneditableRatings.length; i++) {
-
-    var ratingVal = noneditableRatings[i].getAttribute('data-value');
-    if(debug) {
+for (var i = 0; i < noneditableRatings.length; i++) {
+    var ratingVal = noneditableRatings[i].dataset.rating;
+    if (debug) {
         console.log("DB rating value is " + ratingVal);
     }
 
-    if(ratingVal !== null) {
+    if (ratingVal !== null) {
         createNonEditableStarRating(ratingVal, noneditableRatings[i]);
     }
 
 }
+
 
 
 

@@ -2,9 +2,9 @@
 
 return [
     /**
-     * APP Url
+     * APP Url inklusive Port
      */
-    'url' => 'http://localhost:30000',
+    'url' => 'http://localhost',
 
     /**
      * True wenn Exception-Details mit ausgegeben werden sollen
@@ -15,11 +15,6 @@ return [
      * Timezone welche beim Laden der App gesetzt wird
      */
     'timezone' => 'Europe/Berlin',
-
-    /**
-     * Log-Level des Loggers
-     */
-    'log_level' => 'debug',
 
     /**
      * Session Prefix

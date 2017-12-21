@@ -20,7 +20,7 @@
                     <?php foreach (app()->make(\App\Models\Icon::class)->all() as $icon) { ?>
                         <div class="modal-upload-ria-icon modal-upload-ria-icon-radio <?php if ($ria->icon() == $icon->name) { ?>selected<?php } ?>">
                             <input type="radio" name="icon_id" value="<?php echo $icon->icon_id ?>" <?php if ($ria->icon() == $icon->name) { ?>checked<?php } ?>>
-                            <i class="fa fa-<?php $icon->name ?>" aria-hidden="true"></i>
+                            <i class="fa fa-<?php echo $icon->name ?>" aria-hidden="true"></i>
                         </div>
                     <?php } ?>
 
@@ -28,12 +28,12 @@
 
                 <div>
                     <label for="input-edit-ria-title">RIA Titel</label>
-                    <input id="input-edit-ria-title" type="text" name="riaTitle" required tabindex="1" value="<?php echo $ria->name ?>">
+                    <input id="input-edit-ria-title" type="text" name="ria_name" required tabindex="1" value="<?php echo $ria->name ?>">
                 </div>
 
                 <div>
                     <label for="modal-edit-ria-description">Beschreibung</label>
-                    <textarea id="modal-edit-ria-description" name="riaDescription" tabindex="2"><?php echo $ria->description ?></textarea>
+                    <textarea id="modal-edit-ria-description" name="description" tabindex="2"><?php echo $ria->description ?></textarea>
                 </div>
             </div>
             <div class="modal-footer">

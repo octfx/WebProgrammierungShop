@@ -90,7 +90,7 @@ class AccountController extends Controller
         );
 
         $user = app()->make(Auth::class)->getUser();
-        $user->color = data['color'];
+        $user->color = $data['color'];
 
         try {
             $user->save();

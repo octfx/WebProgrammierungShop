@@ -6,7 +6,7 @@
         <h2>RIA - <?php echo $ria->name; ?></h2>
 
         <span id="ria-details-header-star-rating" class="noneditable-star-rating"
-              data-value="<?php echo $ria->totalRating(); ?>"> <!-- TODO set rating value from db -->
+              data-rating="<?php echo $ria->totalRating(); ?>"> <!-- TODO set rating value from db -->
             <?php for ($i = 5; $i > 0; $i--) { ?>
                 <span class="star-half star<?php echo $i; ?> <?php if ($ria->totalRating() >= $i) {
                     echo 'filled';
@@ -34,7 +34,7 @@
     <div class="ria-content">
         <div class="ria-description">
             <div class="ria-details-icon">
-                <i class="fa fa-<?php echo $ria->icon_name; ?>" aria-hidden="true"></i>
+                <i class="fa fa-<?php echo $ria->icon(); ?>" aria-hidden="true"></i>
             </div>
             <?php echo htmlspecialchars($ria->description); ?>
             <iframe src="/<?php echo $ria->storage_path; ?>/" scrolling="auto" sandbox="allow-scripts"></iframe>
@@ -51,7 +51,7 @@
                         'd.m.Y, H:i',
                         strtotime($rating->created_at)
                     ); ?> Uhr</span>
-                <span class="noneditable-star-rating">
+                <span class="noneditable-star-rating" data-rating="<?php echo $rating->rating; ?>">
                     <?php for ($i = 5; $i > 0; $i--) { ?>
                         <span class="star star<?php echo $i; ?> <?php if ($rating->rating >= $i) {
                             echo 'filled';

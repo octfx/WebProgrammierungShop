@@ -22,11 +22,21 @@ class Rating extends Model
         'comment',
     ];
 
+    /**
+     * Gibt User Objekt des Ratings zurück
+     *
+     * @return \App\Models\User
+     */
     public function user()
     {
         return new User($this->user_id);
     }
 
+    /**
+     * Gibt Ria des Ratings zurück
+     *
+     * @return \App\Models\Ria
+     */
     public function ria()
     {
         return new Ria($this->ria_id);

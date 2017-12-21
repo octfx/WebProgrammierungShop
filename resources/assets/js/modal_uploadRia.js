@@ -61,7 +61,6 @@ if (modalUploadRia_saveBtn !== null && modalUploadRia !== null) {
             console.log('Upload ria')
         }
         document.getElementById('ria-upload-form').submit();
-        modalUploadRia_closeModal();
     };
 }
 

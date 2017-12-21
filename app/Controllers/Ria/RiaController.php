@@ -61,13 +61,13 @@ class RiaController extends Controller
                 // TODO set data
                 'name'        => 'string|unique:rias|min:1|max:255',
                 'description' => 'string|min:3|max:1000',
-                'riaFile'     => 'file',
+                'file'        => 'file',
                 'icon_id'     => 'int|exists:icons',
             ],
             $this->request
         );
 
-        if ('.'.pathinfo($data['riaFile']['name'], PATHINFO_EXTENSION) !== static::RIA_EXTENSION) {
+        if ('.'.pathinfo($data['file']['name'], PATHINFO_EXTENSION) !== static::RIA_EXTENSION) {
             session_set('error', ['Es dürfen nur WAR Dateien hochgeladen werden']);
             session_set('name', $data['name']);
             session_set('description', $data['description']);
@@ -81,11 +81,11 @@ class RiaController extends Controller
         $ria->icon_id = $data['icon_id'];
         $ria->user_id = app()->make(Auth::class)->getUser()->user_id;
 
-        $fileHash = sha1($data['riaFile']['name'].uniqid());
+        $fileHash = sha1($data['file']['name'].uniqid());
         $fileName = $fileHash;
         $fileName = 'rias/'.$fileName;
 
-        if (!move_uploaded_file($data['riaFile']['tmp_name'], storage_path('').$fileName.static::RIA_EXTENSION)) {
+        if (!move_uploaded_file($data['file']['tmp_name'], storage_path('').$fileName.static::RIA_EXTENSION)) {
             session_set('error', ['Fehler beim Speichern der RIA']);
             session_set('name', $data['name']);
             session_set('description', $data['description']);
@@ -142,9 +142,9 @@ class RiaController extends Controller
         $data = $validator->validate(
             [
                 // TODO set data
-                'riaTitle'       => 'string|min:1|max:255',
-                'riaDescription' => 'string|max:1000',
-                'riaIcon'        => 'alpha_dash|min:2|max:20',
+                'ria_name'    => 'string|min:1|max:255',
+                'description' => 'string|max:1000',
+                'icon_id'     => 'int|exists:icons',
             ],
             $this->request
         );
@@ -157,9 +157,9 @@ class RiaController extends Controller
             return back();
         }
 
-        $ria->name = $data['riaTitle'];
-        $ria->icon_name = $data['riaIcon'];
-        $ria->description = $data['riaDescription'];
+        $ria->name = $data['ria_name'];
+        $ria->icon_id = $data['icon_id'];
+        $ria->description = $data['description'];
 
         try {
             $ria->save();
@@ -171,11 +171,5 @@ class RiaController extends Controller
         session_set('message', 'Gespeichert');
 
         return back();
-    }
-
-
-    private function saveFile()
-    {
-
     }
 }
