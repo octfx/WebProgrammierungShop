@@ -89,6 +89,7 @@ class AccountController extends Controller
             $this->request
         );
 
+        /** @var \App\Models\User $user */
         $user = app()->make(Auth::class)->getUser();
         $user->color = $data['color'];
 
