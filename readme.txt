@@ -26,16 +26,24 @@ Production:
 
 Installation:
     Development:
+        Benötigte PHP Erweiterungen:
+            php7.x-xml
+            php7.x-mbstring
+
         Folgende Kommandos im Root-Verzeichnis ausführen
+        Linux: apt-get install build-essential
+
+        Nicht als Root ausfüren:
         npm install
+        Als Root ausführen:
         npm install --global gulp-cli
         php composer.phar install
-        php composer.phar dump-autoload
 
         Erstellen der minifizierten JS und CSS Dateien:
         gulp default
 
     Production + Development:
+        php composer.phar dump-autoload
         Kopieren der Datei storage/database/app_schema.sqlite nach storage/app/app.sqlite
         Anpassen des Upload-Limits in php.ini
 
