@@ -12,7 +12,6 @@ Development:
     NodeJS
         Windows: https://nodejs.org/en/
         Linux: https://nodejs.org/en/download/package-manager/
-    Composer (https://getcomposer.org/download/)
 
 
 Production:
