@@ -12,6 +12,10 @@ use App\SparkPlug\Auth\Auth;
 use App\SparkPlug\Controllers\AbstractController as Controller;
 use App\SparkPlug\Validation\Validation;
 
+/**
+ * Class RatingController
+ * @package App\Controllers
+ */
 class RatingController extends Controller
 {
     /**
