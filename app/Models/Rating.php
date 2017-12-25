@@ -11,7 +11,6 @@ use App\SparkPlug\Models\AbstractBaseModel as Model;
 
 /**
  * Class Rating
- * @package App\Models
  */
 class Rating extends Model
 {

@@ -11,7 +11,6 @@ use App\SparkPlug\Models\AbstractBaseModel as Model;
 
 /**
  * Class Icon
- * @package App\Models
  */
 class Icon extends Model
 {

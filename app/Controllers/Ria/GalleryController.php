@@ -13,8 +13,6 @@ use App\SparkPlug\Views\View;
 
 /**
  * Class GalleryController
- *
- * @package App\Controllers\Ria
  */
 class GalleryController extends Controller
 {

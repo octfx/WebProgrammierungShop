@@ -15,8 +15,6 @@ use App\SparkPlug\Views\View;
 /**
  * Class AccountController
  * Controller für Login/Logout/Registrierung
- *
- * @package App\Controllers\User
  */
 class AccountController extends Controller
 {
@@ -44,6 +42,7 @@ class AccountController extends Controller
 
     /**
      * @return \App\SparkPlug\Response\Redirect
+     *
      * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
      */
     public function changePassword()
@@ -76,6 +75,7 @@ class AccountController extends Controller
 
     /**
      * @return \App\SparkPlug\Response\Redirect
+     *
      * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
      */
     public function updateProfile()

@@ -16,8 +16,7 @@ use App\SparkPlug\Views\ViewInterface;
 
 /**
  * Class RegisterController
- *
- * @package App\Controllers\User\Auth
+ * 
  */
 class RegisterController extends Controller
 {
@@ -37,6 +36,7 @@ class RegisterController extends Controller
 
     /**
      * @return \App\SparkPlug\Response\Redirect
+     *
      * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
      */
     public function register()

@@ -16,8 +16,6 @@ use ZipArchive;
 
 /**
  * Class RiaController
- *
- * @package App\Controllers\Ria
  */
 class RiaController extends Controller
 {
@@ -47,6 +45,8 @@ class RiaController extends Controller
      * Lädt Ria hoch
      *
      * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
+     *
+     * @return \App\SparkPlug\Response\ResponseInterface
      */
     public function uploadRia()
     {
@@ -98,7 +98,7 @@ class RiaController extends Controller
         $zip = new ZipArchive();
         $archive = $zip->open(storage_path('').$fileName.static::RIA_EXTENSION);
 
-        if ($archive !== true) {
+        if (true !== $archive) {
             session_set('error', ['Fehler beim Entpacken der RIA']);
             unlink(storage_path('').$fileName.static::RIA_EXTENSION);
             session_set('name', $data['name']);
@@ -129,6 +129,7 @@ class RiaController extends Controller
      * @param int $id
      *
      * @return mixed
+     *
      * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
      */
     public function editRia(int $id)

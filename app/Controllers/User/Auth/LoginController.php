@@ -16,8 +16,6 @@ use App\SparkPlug\Views\ViewInterface;
 
 /**
  * Class LoginController
- *
- * @package App\Controllers\User\Auth
  */
 class LoginController extends Controller
 {
@@ -33,6 +31,7 @@ class LoginController extends Controller
 
     /**
      * @return mixed
+     *
      * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
      */
     public function login()

@@ -10,18 +10,20 @@ namespace App\Controllers;
 use App\Models\Rating;
 use App\SparkPlug\Auth\Auth;
 use App\SparkPlug\Controllers\AbstractController as Controller;
+use App\SparkPlug\Response\ResponseInterface;
 use App\SparkPlug\Validation\Validation;
 
 /**
  * Class RatingController
- * @package App\Controllers
  */
 class RatingController extends Controller
 {
     /**
      * @throws \App\SparkPlug\Validation\Exceptions\ValidationException
+     *
+     * @return \App\SparkPlug\Response\ResponseInterface
      */
-    public function addRating()
+    public function addRating(): ResponseInterface
     {
         if (!login_check()) {
             return redirect('/login');
