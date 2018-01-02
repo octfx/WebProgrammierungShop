@@ -4,12 +4,12 @@ return [
     /**
      * APP Url inklusive Port
      */
-    'url' => 'http://localhost:30000',
+    'url' => 'http://localhost',
 
     /**
      * True wenn Exception-Details mit ausgegeben werden sollen
      */
-    'debug' => true,
+    'debug' => false,
 
     /**
      * Timezone welche beim Laden der App gesetzt wird
