@@ -7,8 +7,8 @@
     <div id="profile-details">
         <form id="profile-update-profile-form" method="post" action="@route('updateProfile')">
             <span>
-                <label for="profile-color-input">Profilfarbe</label>
-                <input id="profile-color-input" name="color" type="color" value="<?php $user->color; ?>"/>
+                <label for="profile-color-input">Profilfarbe <i class="fa fa-info-circle" title="Neue Farbe wird nach erneutem Login angezeigt"></i></label>
+                <input id="profile-color-input" name="color" type="color" value="<?php echo $user->color; ?>"/>
             </span>
         </form>
         <div>
