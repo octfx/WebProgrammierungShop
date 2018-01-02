@@ -39,4 +39,12 @@ class User extends Model
 
         return $rias;
     }
+
+    public function ratingsForRia(int $riaId)
+    {
+        $ratings = new Rating();
+        $ratings = $ratings->query()->where('ria_id', '=', $riaId)->where('user_id', '=', $this->user_id)->fetchAll();
+
+        return $ratings;
+    }
 }
