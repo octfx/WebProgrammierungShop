@@ -189,7 +189,7 @@ Weitere Werte im Array werden genauso zu Variablen mit Werten.
 #### Route ohne Parameter definieren
 Datei `routes/web.php` öffnen.  
 *Wichtig:* Der Router matched der Reihe nach. Beispiel:
-```PHP
+```php
 $router->get('/login', 'User\Auth\LoginController@showLoginView')->name('login_form');
 $router->get('/login', 'TestController@login')->name('login2');
 ```
@@ -224,7 +224,7 @@ Hier Würde *nicht* die Route mit Namen `login2` gematched werden, sondern nur d
 Um den definierten Parameter an einen Controller zu übergeben muss die entsprechende Methode um einen Parameter erweitert werden.  
 Am Beispiel der GET Route:  
 *Vorher:*  
-```PHP
+```php
 public function Methode()
 {
 ...
@@ -232,7 +232,7 @@ public function Methode()
 ```
 
 *Nacher:*  
-```PHP
+```php
 public function Methode($parameter)
 {
 ... Verarbeiten des Parameters
