@@ -42,8 +42,8 @@ if (modalUploadRia_openBtn !== null && modalUploadRia !== null) {
 }
 
 if (modalUploadRia_closeXBtn !== null && modalUploadRia !== null) {
-    for (var i = 0; i < modalUploadRia_closeXBtn.length; i++) {
-        modalUploadRia_closeXBtn[i].onclick = function () {
+    for (var j = 0; j < modalUploadRia_closeXBtn.length; j++) {
+        modalUploadRia_closeXBtn[j].onclick = function () {
             modalUploadRia_closeModal();
         };
     }
@@ -86,7 +86,6 @@ if (modalEditRia_iconRadios !== null) {
             removeSelectedFromAllIconRadios();
             this.classList.add('selected');
             this.getElementsByTagName('input')[0].checked = true;
-            // TODO process chosen icon with getClassNameOfChosenIcon();
         };
     }
 }
@@ -104,33 +103,8 @@ var removeSelectedFromAllIconRadios = function () {
     }
 };
 
-/**
- * @return font awesome icon class name of selected icon
- */
-var getClassNameOfChosenIcon = function () {
-    if (modalEditRia_iconRadios !== null) {
-        for (var i = 0; i < modalEditRia_iconRadios.length; i++) {
-            if (modalEditRia_iconRadios[i].classList.contains('selected')) {
-
-                var fa = modalEditRia_iconRadios[i].getElementsByClassName('fa')[0];
-                for (var j = 0; j < fa.classList.length; j++) {
-
-                    if (fa.classList[j].match('fa-')) {
-
-                        // TODO if(debug === true) {
-                        console.log("Font awesome icon for RIA with class " + fa.classList[j] + " selected");
-                        // }
-                        return fa.classList[j];
-                    }
-                }
-            }
-        }
-    }
-    return null;
-}
-
 if(modalUploadRia_fileInput !== null) {
-    modalUploadRia_fileInput.addEventListener('change', function (event) {
+    modalUploadRia_fileInput.addEventListener('change', function () {
         var fullPath = modalUploadRia_fileInput.value;
 
         if(fullPath) {

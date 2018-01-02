@@ -7,6 +7,7 @@ var modalChangePassword_cancelBtn = document.getElementById('modal-change-passwo
 var changePasswordModal_input1 = document.getElementById('modal-change-password-input');
 var changePasswordModal_input2 = document.getElementById('modal-change-password-wiederholt-input');
 
+var changePasswordModal_form = document.getElementById('modal-change-password-form');
 
 if(profileBtnChangePassword !== null) {
     profileBtnChangePassword.onclick = function () {
@@ -34,12 +35,12 @@ window.onclick = function (event) {
     }
 };
 
-if (modalChangePassword_saveBtn !== null) {
+if (modalChangePassword_saveBtn !== null && changePasswordModal_form !== null) {
     modalChangePassword_saveBtn.onclick = function () {
-        /* TODO save */
-        document.getElementById('modal-change-password-form').submit();
-
-
+        if(debug) {
+            console.log('Submit change password form');
+        }
+        changePasswordModal_form.submit();
         closeModalAndResetValues();
     };
 }

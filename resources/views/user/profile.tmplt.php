@@ -5,11 +5,10 @@
 
 <div class="container">
     <div id="profile-details">
-        <form method="post" action="@route('updateProfile')">
+        <form id="profile-update-profile-form" method="post" action="@route('updateProfile')">
             <span>
                 <label for="profile-color-input">Profilfarbe</label>
-                <input id="profile-color-input" name="profileColor" type="color"/>
-                <!-- TODO remove styles to css -->
+                <input id="profile-color-input" name="color" type="color" value="<?php $user->color; ?>"/>
             </span>
         </form>
         <div>

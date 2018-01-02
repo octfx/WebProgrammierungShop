@@ -64,8 +64,6 @@ if (modalEditRia_saveBtn !== null && modalEditRia !== null) {
         if(debug) {
             console.log("Saving ria values");
         }
-
-        // TODO save
         modalEditRia_closeModal();
     };
 }
