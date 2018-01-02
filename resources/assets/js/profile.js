@@ -1,11 +1,10 @@
-var profile_updateProfileForm = document.getElementById("profile-update-profile-form");
-var profile_colorChooser = document.getElementById("profile-color-input");
+var colorInput = document.getElementById('profile-color-input');
 
-if(profile_updateProfileForm !== null && profile_colorChooser !== null) {
-    profile_colorChooser.addEventListener('change', function (event) {
-        if(debug) {
-            console.log('Submit update profile form');
+if (null !== colorInput) {
+    colorInput.addEventListener('change', function (ev) {
+        if (debug) {
+            console.log('Profile color changed to ' + ev.target.value);
         }
-        profile_updateProfileForm.submit();
-    });
+        document.getElementById('profile-update-profile-form').submit();
+    })
 }

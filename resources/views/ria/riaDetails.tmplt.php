@@ -69,7 +69,7 @@
 
     <div class="bottom-pane">
         <div>
-            <?php if ($ria->user_id != app()->make(\App\SparkPlug\Auth\Auth::class)->getUser()->user_id && login_check()) { ?>
+            <?php if ($ria->user_id != app()->make(\App\SparkPlug\Auth\Auth::class)->getUser()->user_id && login_check() && count(app()->make(\App\SparkPlug\Auth\Auth::class)->getUser()->ratingsForRia($ria->ria_id)) === 0) { ?>
                 <p>Geben Sie Ihre Bewertung ab.</p>
                 <!-- Open review ria modal -->
                 <a id="btn-review-ria" class="button main-button small-button">Bewerten</a>

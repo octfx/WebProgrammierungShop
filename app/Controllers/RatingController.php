@@ -34,7 +34,7 @@ class RatingController extends Controller
         $data = $validator->validate(
             [
                 'rating'  => 'int|min:1|max:5',
-                'comment' => 'nullable|string|min:3|max:255',
+                'comment' => 'nullable|string|min:3|max:1000',
                 'ria_id'  => 'int|exists:rias',
             ],
             $this->request
