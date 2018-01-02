@@ -9,6 +9,7 @@ namespace App\Controllers\User;
 
 use App\SparkPlug\Auth\Auth;
 use App\SparkPlug\Controllers\AbstractController as Controller;
+use App\SparkPlug\Session;
 use App\SparkPlug\Validation\Validation;
 use App\SparkPlug\Views\View;
 
@@ -102,6 +103,10 @@ class AccountController extends Controller
         }
 
         session_set('message', 'Farbe gespeichert');
+        $session = app()->make(Session::class);
+        $user = $session->user;
+        $user['color'] = $data['color'];
+        $session->user = $user;
 
         return back();
     }
