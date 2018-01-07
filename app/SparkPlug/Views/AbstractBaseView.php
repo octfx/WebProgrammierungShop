@@ -21,7 +21,7 @@ abstract class AbstractBaseView implements ViewInterface, ResponseInterface
     /**
      * @param int $code
      */
-    public function setHttpCode(int $code): void
+    public function setHttpCode(int $code)
     {
         $this->httpCode = $code;
     }
@@ -39,7 +39,7 @@ abstract class AbstractBaseView implements ViewInterface, ResponseInterface
     /**
      * Send the rendered Response to the Browser
      */
-    public function send(): void
+    public function send()
     {
         http_response_code($this->getHttpCode());
         echo $this->getContent();

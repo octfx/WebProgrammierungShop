@@ -16,8 +16,8 @@ use App\SparkPlug\Routing\Exceptions\RouteNotFoundException;
  */
 class Router
 {
-    public const CONTROLLER_NAMESPACE = 'App\Controllers\\';
-    public const VERBS = ['GET', 'POST'];
+    const CONTROLLER_NAMESPACE = 'App\Controllers\\';
+    const VERBS = ['GET', 'POST'];
 
     /** @var \App\SparkPlug\Routing\RoutingCollection[] */
     private $routes = [];

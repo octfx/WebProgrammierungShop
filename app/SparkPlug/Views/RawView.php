@@ -19,7 +19,7 @@ class RawView extends AbstractBaseView implements ViewInterface
      * @param string $content  An den Browser sendbarer Inhalt
      * @param int    $httpCode HTTP Status Code
      */
-    public function setContent(string $content, int $httpCode = 200): void
+    public function setContent(string $content, int $httpCode = 200)
     {
         $this->httpCode = $httpCode;
         $this->content = $content;

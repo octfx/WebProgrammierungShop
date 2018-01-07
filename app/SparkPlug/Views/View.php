@@ -74,7 +74,7 @@ class View extends AbstractBaseView
      *
      * @param array $vars Array mit zu setzenden Variablen
      */
-    public function setVars(?array $vars): void
+    public function setVars($vars)
     {
         $this->variables = $vars;
     }
@@ -97,7 +97,7 @@ class View extends AbstractBaseView
      * Renders Templatesyntax into HTML
      * @throws \App\SparkPlug\Routing\Exceptions\RouteNotFoundException
      */
-    private function renderView(): void
+    private function renderView()
     {
         $content = $this->getViewFileContent();
 
@@ -126,7 +126,7 @@ class View extends AbstractBaseView
     /**
      * @throws \App\SparkPlug\Routing\Exceptions\RouteNotFoundException
      */
-    private function renderRoutes(): void
+    private function renderRoutes()
     {
         $routeNames = $this->getRoutesFromView();
         $routeWithArgs = $this->getRoutesWithArgsFromView();
@@ -160,7 +160,7 @@ class View extends AbstractBaseView
     /**
      * @throws \App\SparkPlug\Routing\Exceptions\RouteNotFoundException
      */
-    private function renderSubViews(): void
+    private function renderSubViews()
     {
         $subTemplates = $this->getSubTemplatesFromView();
 

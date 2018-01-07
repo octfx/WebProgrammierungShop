@@ -1,4 +1,4 @@
-Web-Programmierung - RIA-Shop
+﻿Web-Programmierung - RIA-Shop
 
 Gruppe 03
     Hannes Kruse
@@ -7,7 +7,7 @@ Gruppe 03
 
 
 Benötigte Software + Extensions:
-    PHP 7.x (http://be2.php.net/downloads.php)
+    PHP 7.x (http://php.net/downloads.php / http://windows.php.net/download)
         PHP Erweiterungen:
             Linux:
                 php7.x-sqlite3 - Datenbanktreiber
@@ -23,7 +23,18 @@ Benötigte Software + Extensions:
 
 
 Installation:
-    Development:
+    (Optional) Anpassen des Upload-Limits in php.ini
+	post_max_size, upload_max_filesize
+
+    Erstellen eines Symlinks von storage/app/rias nach public/rias
+	Ausführen im Hauptverzeichnis
+        Windows: cmd /c mklink /j public\rias storage\app\rias
+        Linux: ln -s ../storage/app/rias public/
+
+    Prüfen ob Server Schreibberechtigungen im storage Ordner hat
+
+
+    Wichtig nur für Entwicklungsumgebung:
         Benötigte PHP Erweiterungen:
             php7.x-xml
             php7.x-mbstring
@@ -41,18 +52,9 @@ Installation:
         Erstellen der minifizierten JS und CSS Dateien:
             gulp default
 
-    Production + Development:
-        php composer.phar dump-autoload
-        Kopieren der Datei storage/database/app_schema.sqlite nach storage/app/app.sqlite
-        Anpassen des Upload-Limits in php.ini
-
-        Erstellen eines Symlinks von storage/app/rias nach public/rias
-            Windows: mklink /j public\rias storage\app\rias
-            Linux: ln -s ../storage/app/rias public/
-
 
 Start des Servers:
-    Ausführen im Root-Verzeichnis:
+    Ausführen im Hauptverzeichnis:
         php -S localhost:80 -t public
     Bei abweichender URL oder Port muss die URL unter config/app.php angepasst werden.
     Sollen Exception-Details ausgegeben werden, so muss unter config/app.php debug auf true gesetzt werden.

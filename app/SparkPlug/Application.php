@@ -54,7 +54,7 @@ class Application
      * @param string $interface
      * @param string $implementation
      */
-    public function bind(string $interface, string $implementation): void
+    public function bind(string $interface, string $implementation)
     {
         $this->bindings[$interface] = $implementation;
     }
@@ -65,7 +65,7 @@ class Application
      * @param string $className
      *
      */
-    public function singleton(string $className): void
+    public function singleton(string $className)
     {
         $this->resolvedSingletons[$className] = $this->make($className);
     }
@@ -77,7 +77,7 @@ class Application
      * @param array  $args
      *
      */
-    public function singletonWith(string $className, array $args): void
+    public function singletonWith(string $className, array $args)
     {
         $this->resolvedSingletons[$className] = $this->makeWith($className, $args);
     }
@@ -174,7 +174,7 @@ class Application
      *
      * @throws \ErrorException
      */
-    public function loadRoutes(): void
+    public function loadRoutes()
     {
         if (!is_dir($this->basePath.'/routes')) {
             throw new \ErrorException('routes Dir is missing');
@@ -190,7 +190,7 @@ class Application
     /**
      * Löscht Error / Form-Eingaben aus Session und setzt URI der zuletzt aufgerufenen Seite
      */
-    public function terminate(): void
+    public function terminate()
     {
         $session = $this->make(Session::class);
         $session->error = null;

@@ -70,7 +70,7 @@ class Auth
     /**
      * @return \App\Models\User|null
      */
-    public function getUser(): ?User
+    public function getUser()
     {
         return $this->user;
     }

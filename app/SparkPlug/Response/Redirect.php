@@ -28,7 +28,7 @@ class Redirect implements ResponseInterface
     /**
      * Send the rendered Response to the Browser
      */
-    public function send(): void
+    public function send()
     {
         $url = config('app.url');
 

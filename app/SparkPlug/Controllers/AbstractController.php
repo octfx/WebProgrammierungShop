@@ -22,7 +22,7 @@ abstract class AbstractController
      *
      * @param \App\SparkPlug\Request\RequestInterface $request
      */
-    public function setRequest(RequestInterface $request): void
+    public function setRequest(RequestInterface $request)
     {
         $this->request = $request;
     }

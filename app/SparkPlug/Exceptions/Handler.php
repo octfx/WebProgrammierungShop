@@ -23,7 +23,7 @@ class Handler
      *
      * @param \Throwable $e Zu verarbeitende Exception
      */
-    public static function printException(Throwable $e): void
+    public static function printException(Throwable $e)
     {
         echo "Exception: ".get_class($e)."\nMessage:\n".htmlentities(
             $e->getMessage()

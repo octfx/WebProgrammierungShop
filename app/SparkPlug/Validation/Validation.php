@@ -18,7 +18,7 @@ use InvalidArgumentException;
  */
 class Validation
 {
-    private const TESTS = [
+    const TESTS = [
         'alpha',
         'alpha_num',
         'alpha_dash',
@@ -38,7 +38,7 @@ class Validation
         'file',
     ];
 
-    private const EXCLUDE_TESTS = [
+    const EXCLUDE_TESTS = [
         'nullable',
     ];
 
@@ -222,7 +222,7 @@ class Validation
      *
      * @return bool
      */
-    private function testUnique(string $table, ?string $attribute = null)
+    private function testUnique(string $table, $attribute = null)
     {
         /** @var DBAccessInterface $db */
         $db = app()->make(DBAccessInterface::class);
@@ -255,7 +255,7 @@ class Validation
      *
      * @return bool
      */
-    private function testExists(string $table, ?string $attribute = null)
+    private function testExists(string $table, $attribute = null)
     {
         /** @var DBAccessInterface $db */
         $db = app()->make(DBAccessInterface::class);

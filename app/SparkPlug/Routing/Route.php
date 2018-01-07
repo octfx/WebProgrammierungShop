@@ -96,7 +96,7 @@ class Route
      *
      * @param array|string $args
      */
-    public function setArguments($args): void
+    public function setArguments($args)
     {
         if (!is_array($args)) {
             $args = [$args];
@@ -121,7 +121,7 @@ class Route
      *
      * @return null|string
      */
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
@@ -168,7 +168,7 @@ class Route
      * @throws \App\SparkPlug\Routing\Exceptions\InvalidActionException
      * @throws \App\SparkPlug\Routing\Exceptions\MissingActionException
      */
-    private function parseOptions(): void
+    private function parseOptions()
     {
         $this->parseAction();
     }
@@ -177,7 +177,7 @@ class Route
      * @throws \App\SparkPlug\Routing\Exceptions\InvalidActionException
      * @throws \App\SparkPlug\Routing\Exceptions\MissingActionException
      */
-    private function parseAction(): void
+    private function parseAction()
     {
         if (!isset($this->rawOptions['action'])) {
             throw new MissingActionException();
