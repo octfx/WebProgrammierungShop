@@ -1,0 +1,96 @@
+.ria-content {
+  p.ria-description {
+    display: inline-block;
+    color: $font-color-darkgrey;
+    text-align: justify;
+  }
+
+  .ria-details-icon {
+    float: right;
+    border: 1px solid #e1e1e1;
+    width: 60px;
+    height: 60px;
+    padding: 14px;
+    margin-top: 20px;
+    margin-left: 20px;
+
+    .fa {
+      font-size: 60px;
+      color: $border-color;
+    }
+  }
+
+  iframe {
+    border: 1px solid #e1e1e1;
+    width: 100%;
+    min-height: 500px;
+    margin: 1rem 0;
+  }
+}
+
+.ria-header {
+
+  border-bottom: 1px solid $border-color;
+  padding: 20px 12px 5px 12px;
+  margin-bottom: 15px;
+
+  h2 {
+    display: inline-block;
+    margin: 0;
+    margin-right: 10px
+  }
+
+  .publisher-info {
+    margin-right: 5px;
+  }
+
+  #ria-header-right-pane {
+    float: right;
+
+    @media screen and (max-width: 900px) {
+      display: block;
+      float: none;
+      margin: 10px 0;
+    }
+
+
+  }
+}
+
+.user-review {
+
+  margin: 10px 0;
+  font-size: 1rem;
+  color: $font-color-grey;
+  font-family: $header-font;
+
+  span.user-review-header {
+    margin-right: 10px;
+    color: $font-color-darkgrey;
+  }
+
+  .noneditable-star-rating {
+    float: right;
+  }
+
+  p.user-description {
+    font-size: 1rem;
+  }
+}
+
+.content .container .contentbox {
+  &.user-review {
+    padding-bottom: 10px;
+  }
+}
+
+.modal-content .ria-image {
+  height: 100px; /* TODO */
+}
+
+
+
+
+
+
+

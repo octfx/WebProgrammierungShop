@@ -1,0 +1,12 @@
+/node_modules
+/vendor
+/.idea
+/public/css/
+/public/fonts/
+/public/js/
+/public/img/
+/public/rias/
+/storage/database/*.sqlite
+!/storage/database/app_schema.sqlite
+/storage/app/rias/*.war
+!/storage/app/rias/.gitignore

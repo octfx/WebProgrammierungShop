@@ -1,0 +1,68 @@
+.editable-star-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+
+  input[type="radio"] {
+    visibility:hidden;
+  }
+
+  label {
+    display: inline-block;
+    font-size: 0;
+    cursor: pointer;
+
+    &:before {
+      position: relative;
+      font: 24px/1 FontAwesome;
+      display: block;
+      content: "\f006";
+      color: #ccc;
+    }
+
+    &:hover:before,
+    &:hover ~ label:before,
+    &.selected:before,
+    &.selected ~ label:before {
+      content: "\f005";
+      color: #f0ad4e;
+    }
+
+  }
+
+}
+
+.noneditable-star-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+
+  .star {
+    display: inline-block;
+    font-size: 0;
+
+    &.big-star:before {
+      font: 20px/1 FontAwesome;
+    }
+
+    &:before {
+      position: relative;
+      font: 17px/1 FontAwesome;
+      display: block;
+      content: "\f006";
+      color: #ccc;
+    }
+
+    &.filled:before,
+    &.filled ~ &:before {
+      content: "\f005";
+      color: #f0ad4e;
+    }
+
+    &.half-filled:before,
+    &.half-filled ~ &:before {
+      content: "\f123";
+      color: #f0ad4e;
+    }
+
+  }
+
+}

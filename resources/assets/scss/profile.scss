@@ -1,0 +1,46 @@
+#profile-details {
+  margin-bottom: 30px;
+
+  h3 {
+    color: $font-color-darkgrey;
+  }
+
+  span:first-child {
+    text-align: center;
+    margin-right:30px;
+  }
+
+  #profile-color-input {
+    width: 80px;
+    height: 80px;
+    margin-top:5px;
+  }
+
+  span {
+    float: left;
+  }
+
+  p {
+    margin: 8px 0;
+  }
+
+  #password-text {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+#input-ria-file {
+  display: none;
+}
+
+#profile-upload-user-img-input {
+  display: none;
+}
+
