@@ -1,11 +1,6 @@
 # Web-Programmierung 
 Wintersemester 2017/18
- 
-## Gruppe 03  
-* Hannes Kruse  
-* Kevin Pape  
-* Nastassia Heumann
- 
+
  
 ## Benötigte Software + Extensions:
 PHP 7.x (http://be2.php.net/downloads.php)
